@@ -1,0 +1,26 @@
+.profileCard {
+  width: 20rem;
+  border: none;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #454c59;
+  color: #ffffff;
+}
+
+.profileCard img {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  margin-bottom: 12px;
+}
+.profileCard h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.profileCard p {
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
