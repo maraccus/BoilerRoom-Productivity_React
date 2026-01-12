@@ -5,7 +5,11 @@ import ProfileCard from "./components/ProfileCard";
 function App() {
   return (
     <>
-      <ProfileCard />
+      <div className="container">
+        <ProfileCard />
+        <ProfileCard />
+        <ProfileCard />
+      </div>
     </>
   );
 }
