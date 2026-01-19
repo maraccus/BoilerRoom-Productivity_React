@@ -1,0 +1,10 @@
+:root {
+    --lightmode-text: #494949;
+    --lightmode-bg: #D7D7D7;
+
+    --darkmode-text: #ffffff;
+    --darkmode-bg: #34353D;
+    --darkmode-bg-green: #2F3C2C;
+
+    --button-br: 1rem;
+}
