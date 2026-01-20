@@ -17,16 +17,20 @@
     width: 2rem;
     height: 2rem;
     cursor: pointer;
+    color: var(--darkmode-text);
+    transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .iconBtn:hover {
     color: var(--darkmode-hover-primary);
+    transform: scale(1.25);
 }
 
 .icon {
     width: 100%;
     height: 100%;
     display: block;
+    fill: currentColor;
 }
 
 .spacer {
