@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+*.DS_Store
+._*
+.AppleDouble
+.LSOverride
+
+# Andra vanliga (valfritt men bra för React/Vite-projekt)
+node_modules/
+.env
+dist/
+build/
+.vite/
