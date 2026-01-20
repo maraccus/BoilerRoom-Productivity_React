@@ -1,0 +1,34 @@
+.navBar {
+    /* background-color: aquamarine; */
+    width: 100%;
+    height: 6rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    padding: 0 2rem; /* Padding vänster och höger*/
+    /* gap: 1rem; */
+}
+
+.iconBtn {
+    background: none;
+    padding: 0;
+    border: 0;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+}
+
+.iconBtn:hover {
+    color: var(--darkmode-hover-primary);
+}
+
+.icon {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.spacer {
+    width: 1rem;
+}
