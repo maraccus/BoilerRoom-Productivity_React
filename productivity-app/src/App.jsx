@@ -11,6 +11,7 @@ function App() {
       <MainContainer>
         <Navigation/>
         {/*Add main components here*/}
+        <ProfileCard/>
         <Footer/>
       </MainContainer>
     </>
