@@ -7,7 +7,7 @@
     justify-content: end;
     align-items: center;
     padding: 0 2rem; /* Padding vänster och höger*/
-    /* gap: 1rem; */
+    gap: .4rem;
 }
 
 .iconBtn {

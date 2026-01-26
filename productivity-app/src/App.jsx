@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import MainContainer from "./components/MainContainer";
+import ContainerH from "./components/ContainerH";
 import ProfileCard from "./components/ProfileCard";
 import Navigation from "./components/Navigation";
+import Footer from "./components/Footer";
+import GraphWeekday from "./components/GraphWeekday";
 import ModeCard from "./components/ModeCard";
+
 import "./App.css";
 
 // Ikonerna
@@ -29,23 +33,27 @@ function App() {
             {" "}
             {/* Lägg till CSS i App.css för flex-layout */}
             <h1>Välj ett läge</h1>
-            <ModeCard
-              title="Deep Work"
-              icon={deepWorkIcon}
-              onClick={() => handleCardClick("deepwork")}
-            />
-            <ModeCard
-              title="Möte"
-              icon={meetingIcon}
-              onClick={() => handleCardClick("meeting")}
-            />
-            <ModeCard
-              title="Paus"
-              icon={breakIcon}
-              onClick={() => handleCardClick("break")}
-            />
           </div>
         )}
+        {/*Add main components here*/}
+        <ContainerH>
+          <ModeCard
+            title="Deep Work"
+            icon={deepWorkIcon}
+            onClick={() => handleCardClick("deepwork")}
+          />
+          <ModeCard
+            title="Möte"
+            icon={meetingIcon}
+            onClick={() => handleCardClick("meeting")}
+          />
+          <ModeCard
+            title="Paus"
+            icon={breakIcon}
+            onClick={() => handleCardClick("break")}
+          />
+        </ContainerH>
+        <Footer />
       </MainContainer>
     </>
   );
