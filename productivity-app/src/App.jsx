@@ -10,9 +10,9 @@ import ModeCard from "./components/ModeCard";
 import "./App.css";
 
 // Ikonerna
-import deepWorkIcon from "./assets/ModeCard/deepwork.svg";
-import meetingIcon from "./assets/ModeCard/meeting.svg";
-import breakIcon from "./assets/ModeCard/break.svg";
+import DeepWorkIcon from "./assets/ModeCard/deepwork.svg?react";
+import MeetingIcon from "./assets/ModeCard/meeting.svg?react";
+import BreakIcon from "./assets/ModeCard/break.svg?react";
 
 function App() {
   const [selectedMode, setSelectedMode] = useState(null);
@@ -39,17 +39,17 @@ function App() {
         <ContainerH>
           <ModeCard
             title="Deep Work"
-            icon={deepWorkIcon}
+            Icon={DeepWorkIcon}
             onClick={() => handleCardClick("deepwork")}
           />
           <ModeCard
             title="Möte"
-            icon={meetingIcon}
+            Icon={MeetingIcon}
             onClick={() => handleCardClick("meeting")}
           />
           <ModeCard
             title="Paus"
-            icon={breakIcon}
+            Icon={BreakIcon}
             onClick={() => handleCardClick("break")}
           />
         </ContainerH>

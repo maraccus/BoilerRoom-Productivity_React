@@ -2,26 +2,26 @@
 .mode-card {
   width: 200px;
   height: 300px;
-  border: 1px solid #ccc;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  background-color: #f9f9f9;
+  background-color: #4b4c59;
   margin: 10px;
   transition: background-color 0.3s;
 }
 
-.mode-card:hover {
-  background-color: #e0e0e0;
+.mode-card:hover .mode-icon {
+  color: #222; /* eller #222, #ff4444, etc. */
 }
 
 .mode-icon {
   width: 100px;
   height: 100px;
   margin-bottom: 20px;
+  color: lime !important;
 }
 
 .mode-title {
