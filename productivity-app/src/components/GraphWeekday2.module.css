@@ -1,0 +1,83 @@
+.day {
+  width: 280px;
+  background: #2f323a;
+  color: white;
+  font-family: system-ui, sans-serif;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.header h1 {
+  font-size: 32px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.header h2 {
+  font-size: 18px;
+  font-weight: 300;
+  opacity: 0.7;
+  margin: 4px 0 0;
+}
+
+.timeline {
+  position: relative;
+}
+
+.hour {
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.hourLabel {
+  width: 32px;
+  font-size: 12px;
+  opacity: 0.4;
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.event {
+  position: absolute;
+  left: 40px;
+  right: 8px;
+  border-radius: 6px;
+  padding: 6px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.yellow {
+  background: rgba(160, 150, 80, 0.7);
+}
+
+.green {
+  background: rgba(90, 140, 90, 0.9);
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.actions button {
+  background: #4a4d55;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}

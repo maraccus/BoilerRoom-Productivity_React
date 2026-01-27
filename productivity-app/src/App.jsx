@@ -1,10 +1,11 @@
 import React from "react";
 import MainContainer from "./components/MainContainer"
+import ContainerV from "./components/ContainerV";
 import ContainerH from "./components/ContainerH";
 import ProfileCard from "./components/ProfileCard";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
-import GraphWeekday from "./components/GraphWeekday";
+import GraphWeekday from "./components/GraphWeekdayV2";
 import "./App.css";
 
 function App() {
@@ -13,11 +14,17 @@ function App() {
       <MainContainer>
         <Navigation/>
         {/*Add main components here*/}
-        <ContainerH>
-          <ProfileCard/>
-          <ProfileCard/>
-          <ProfileCard/>
-        </ContainerH>
+        <ContainerV>
+          <ContainerH>
+            <GraphWeekday/>
+            <GraphWeekday/>
+            <GraphWeekday/>
+            <GraphWeekday/>
+            <GraphWeekday/>
+            <GraphWeekday/>
+            <GraphWeekday/>
+          </ContainerH>
+        </ContainerV>
         <Footer/>
       </MainContainer>
     </>
