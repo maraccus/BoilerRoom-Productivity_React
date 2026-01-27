@@ -2,7 +2,8 @@ import React from "react";
 import styles from "./Navigation.module.css";
 import NavigationSpacer from "./NavigationSpacer";
 
-import GearIcon from "../assets/gear-solid-full.svg?react";
+import ButtonSettings from "./ButtonSettings";
+
 import CalendarIcon from "../assets/calendar-regular-full.svg?react";
 import ChartIcon from "../assets/chart-simple-solid-full.svg?react";
 import ClockIcon from "../assets/clock-regular-full.svg?react";
@@ -22,9 +23,8 @@ const Navigation = () => {
 
       <NavigationSpacer />
 
-      <button className={styles.iconBtn} aria-label="Settings">
-        <GearIcon className={styles.icon} />
-      </button>
+      <ButtonSettings />
+      
     </nav>
   );
 };
