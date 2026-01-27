@@ -13,8 +13,8 @@ function App() {
     <>
       <MainContainer>
         <Navigation/>
-        {/*Add main components here*/}
         <ContainerV>
+        {/*Add main components here*/}
           <ContainerH>
             <GraphWeekday/>
             <GraphWeekday/>
