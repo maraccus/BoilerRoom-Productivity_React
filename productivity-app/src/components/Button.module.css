@@ -1,0 +1,35 @@
+.button {
+  padding: 12px 28px;
+  border-radius: 10px;
+
+  background: var(--darkmode-btn);
+  color: var(--darkmode-text);
+  border: 2px solid rgba(0, 0, 0, 0.35);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: transform 120ms ease, filter 120ms ease, opacity 120ms ease;
+}
+
+.button:hover {
+    filter: brightness(1.05);
+}
+
+.button:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.22);
+}
+
+.button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.primary {
+  background: var(--darkmode-btn);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  min-height: 44px;
+}
