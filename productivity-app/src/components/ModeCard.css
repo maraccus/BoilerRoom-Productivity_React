@@ -24,6 +24,10 @@
   color: lime !important;
 }
 
+.mode-card .mode-icon path {
+  fill: blue;
+}
+
 .mode-title {
   font-size: 18px;
   font-weight: bold;
