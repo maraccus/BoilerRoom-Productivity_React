@@ -12,16 +12,12 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 200ms ease;
+
 }
 
 .open {
   opacity: 1;
   pointer-events: auto;
-}
-
-.headerText {
-    user-select: none;
-    -webkit-user-select: none; /* Safari */
 }
 
 .iconWrapper {
@@ -64,6 +60,9 @@
   border-radius: 1rem;
   width: 400px;
   height: auto;
+
+  user-select: none;
+  -webkit-user-select: none; /* Safari */
 
   transform: translateY(12px) scale(0.98);
   opacity: 0;

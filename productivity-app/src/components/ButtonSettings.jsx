@@ -21,7 +21,7 @@ const ButtonSettings = () => {
       <div className={`${popupStyles.overlay} ${open ? popupStyles.open : "" }`} onClick={() => setOpen(false)}>
         <div
           className={popupStyles.modal} onClick={e => e.stopPropagation()}>
-          <h2 className={popupStyles.headerText}>Settings</h2>
+          <h2>Settings</h2>
 
           <div className={popupStyles.settingsBorder}>
             <ContainerH>
