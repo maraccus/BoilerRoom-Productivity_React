@@ -18,7 +18,7 @@ function App() {
       <MainContainer>
         <Navigation />
         {/* Add main components here – lägg till kort eller timer */}
-        {/* <NavTimerModes /> */}
+        <NavTimerModes />
         <TimerWrapper/>
         <Footer />
       </MainContainer>
