@@ -25,7 +25,7 @@ const NavTimerModes = () => {
       {/*Add main components here*/}
       <ContainerH>
         <ModeCard
-          title="Deep Work"
+          title="Work"
           Icon={DeepWorkIcon}
           onClick={() => handleCardClick("deepwork")}
         />
