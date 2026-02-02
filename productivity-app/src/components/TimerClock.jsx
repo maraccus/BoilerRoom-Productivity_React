@@ -1,70 +1,67 @@
-import React from 'react'
+import { useEffect, useState } from "react";
+import styles from "./TimerClock.module.css";
 
-const TimerClock = () => {
-  const totalTime = 60;
-  const [timeLeft, setTimeLeft] = React.useState(totalTime);
+export default function Timer({ isActive, duration }) {
+  const [timeLeft, setTimeLeft] = useState(duration);
 
   const radius = 90;
   const circumference = 2 * Math.PI * radius;
-  const progress = timeLeft / totalTime;
+
+  const progress = timeLeft / duration;
   const offset = circumference * (1 - progress);
+  const xy = 100;
+  const stroke = 10;
 
-  React.useEffect(() => {
-    if (timeLeft <= 0) return;
+  useEffect(() => {
+  if (!isActive) return;
 
-    const interval = setInterval(() => {
-      setTimeLeft(t => t - 1);
-    }, 1000);
+  const interval = setInterval(() => {
+    setTimeLeft(t => {
+      if (t <= 0) {
+        clearInterval(interval);
+        return 0;
+      }
+      return t - 1;
+    });
+  }, 1000);
 
-    return () => clearInterval(interval);
-  }, [timeLeft]);
+  return () => clearInterval(interval);
+}, [isActive]);
+
+
+  const minutes = String(Math.floor(timeLeft / 60)).padStart(2, "0");
+  const seconds = String(timeLeft % 60).padStart(2, "0");
 
   return (
-    <div style={{ width: 200, height: 200, position: "relative" }}>
-      <svg width="200" height="200">
-        {/* Background ring */}
+    <div className={styles.timer}>
+      <svg className={styles.svg} viewBox="0 0 200 200">
+        {/* Background circle */}
         <circle
-          cx="100"
-          cy="100"
+          className={styles.background}
+          cx={xy}
+          cy={xy}
           r={radius}
-          stroke="rgba(255,255,255,0.2)"
-          strokeWidth="8"
+          strokeWidth={stroke}
           fill="none"
         />
 
-        {/* Progress ring */}
+        {/* Progress circle */}
         <circle
-          cx="100"
-          cy="100"
+          className={styles.progress}
+          cx={xy}
+          cy={xy}
           r={radius}
-          stroke="#fff"
-          strokeWidth="8"
+          strokeWidth={stroke}
           fill="none"
           strokeDasharray={circumference}
           strokeDashoffset={offset}
-          strokeLinecap="round"
           transform="rotate(-90 100 100)"
         />
       </svg>
 
-      {/* Time text */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontSize: "32px",
-          fontWeight: "600",
-          color: "#fff"
-        }}
-      >
-        {String(Math.floor(timeLeft / 60)).padStart(2, "0")}:
-        {String(timeLeft % 60).padStart(2, "0")}
+      <div className={styles.time}>
+        {minutes}:{seconds}
       </div>
     </div>
   );
 }
-
-export default TimerClock
