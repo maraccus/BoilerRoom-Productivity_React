@@ -19,7 +19,7 @@
 .progress {
   stroke: #ffffff;
   stroke-linecap: round;
-  transition: stroke-dashoffset 0.5s linear;
+  transition: stroke-dashoffset 0.45s linear;
 }
 
 .time {
@@ -31,4 +31,6 @@
   font-size: 52px;
   font-weight: 600;
   color: #ffffff;
+  user-select: none;
+  -webkit-user-select: none; /* Safari */
 }

@@ -1,33 +1,85 @@
 .overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1000;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
 }
+
+.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.headerText {
+    user-select: none;
+    -webkit-user-select: none; /* Safari */
+}
+
+.iconWrapper {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+}
+
+.icon {
+  position: absolute;
+  inset: 0;
+
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease;
+}
+
+.visible {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.hidden {
+  opacity: 0;
+  transform: scale(0.7) rotate(-90deg);
+  pointer-events: none;
+}
+
 
 .modal {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 2rem;
-    align-items: center;
-    background: #2f323a;
-    color: white;
-    padding: 1.5rem;
-    border-radius: 1rem;
-    width: 400px;
-    height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: center;
+
+  background: #2f323a;
+  color: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  width: 400px;
+  height: auto;
+
+  transform: translateY(12px) scale(0.98);
+  opacity: 0;
+  transition: transform 200ms ease, opacity 200ms ease;
 }
 
-.settingsBorder{
-    border: 2px solid #434853;
-    border-radius: 1rem;
-    padding: 1rem;
+.open .modal {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
 
-    height: 100%;
+.settingsBorder {
+  border: 2px solid #434853;
+  border-radius: 1rem;
+  padding: 1rem;
+  height: 100%;
 }
 
 .icon {
