@@ -1,6 +1,7 @@
 /* src/components/ModeCard.css */
 .mode-card {
   width: 200px;
+  flex: none;
   height: 300px;
   border-radius: 8px;
   display: flex;
@@ -10,32 +11,39 @@
   cursor: pointer;
   background-color: #4b4c59;
   margin: 10px;
-  transition: background-color 0.3s;
+  transition:
+    transform 0.2s ease,
+    background-color 0.25s ease;
 }
-
-.mode-card:hover .mode-icon {
-  color: #222; /* eller #222, #ff4444, etc. */
+.mode-card:hover {
+  transform: scale(1.08);
+  background-color: #3e3f4a;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
 }
 
 .mode-icon {
   width: 100px;
   height: 100px;
   margin-bottom: 20px;
-  color: lime !important;
-}
-
-.mode-card .mode-icon path {
-  fill: blue;
+  fill: white;
+  transition: fill 0.2s ease;
 }
 
 .mode-title {
   font-size: 18px;
   font-weight: bold;
+  color: white;
+  transition: color 0.2s ease;
+}
+
+.mode-card:active {
+  transform: scale(1.03);
 }
 
 .cards-container {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 2rem 0;
 }
