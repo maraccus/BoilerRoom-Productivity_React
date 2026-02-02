@@ -3,6 +3,7 @@ import styles from "./Navigation.module.css";
 import popupStyles from "./ButtonSettings.module.css";
 import React from 'react'
 import { useState } from "react";
+import ButtonStd from "./ButtonStd";
 
 const ButtonSettings = () => {
     const [open, setOpen] = useState(false);
@@ -25,8 +26,9 @@ const ButtonSettings = () => {
                         <input type="checkbox" />
                         Dark mode
                     </label> */}
-        
-                    <button onClick={() => setOpen(false)}>Close</button>
+
+                    <ButtonStd onClick={() => setOpen(false)}>Close</ButtonStd>
+                    {/* <button onClick={() => setOpen(false)}>Close</button> */}
                   </div>
                 </div>
             )}

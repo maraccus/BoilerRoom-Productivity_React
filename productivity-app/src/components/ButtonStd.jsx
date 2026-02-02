@@ -1,6 +1,6 @@
-import styles from "./Button.module.css";
+import styles from "./ButtonStd.module.css";
 
-function Button({
+function ButtonStd({
   children = "",
   onClick,
   disabled = false,
@@ -19,4 +19,4 @@ function Button({
   );
 }
 
-export default Button;
+export default ButtonStd;
