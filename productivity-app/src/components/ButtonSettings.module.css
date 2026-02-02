@@ -58,7 +58,7 @@
   gap: 2rem;
   align-items: center;
 
-  background: #2f323a;
+  background: var(--darkmode-bg);
   color: white;
   padding: 1.5rem;
   border-radius: 1rem;

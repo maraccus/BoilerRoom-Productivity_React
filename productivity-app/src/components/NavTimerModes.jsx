@@ -19,9 +19,7 @@ const NavTimerModes = () => {
         <Timer mode={selectedMode} onBack={() => setSelectedMode(null)} />
       ) : (
         <div className="cards-container">
-          {" "}
-          {/* Lägg till CSS i App.css för flex-layout */}
-          <h1>Välj ett läge</h1>
+          <h1>What are we tracking?</h1>
         </div>
       )}
       {/*Add main components here*/}
@@ -32,12 +30,12 @@ const NavTimerModes = () => {
           onClick={() => handleCardClick("deepwork")}
         />
         <ModeCard
-          title="Möte"
+          title="Meeting"
           Icon={MeetingIcon}
           onClick={() => handleCardClick("meeting")}
         />
         <ModeCard
-          title="Paus"
+          title="Break"
           Icon={BreakIcon}
           onClick={() => handleCardClick("break")}
         />

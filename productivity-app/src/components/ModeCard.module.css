@@ -1,0 +1,32 @@
+.modeCard {
+  width: 225px;
+  height: 280px;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: var(--darkmode-card-bg);
+  margin: 10px;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+  border: 0;
+  color: var(--darkmode-text);
+}
+
+.modeCard:hover {
+  background-color: var(--darkmode-card-bg-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 8px rgba(0, 0, 0, 0.125);
+}
+
+.modeIcon {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.modeTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+}

@@ -1,12 +1,12 @@
 // src/components/ModeCard.jsx
 import React from "react";
-import "./ModeCard.css"; // Din CSS-fil för styling
+import styles from "./ModeCard.module.css";
 
 export default function ModeCard({ title, Icon, onClick }) {
   return (
-    <div className="mode-card" onClick={onClick}>
-      <Icon className="mode-icon" /> {/* ← nu renderas SVG:en som komponent */}
-      <p className="mode-title">{title}</p>
-    </div>
+    <button className={styles.modeCard} onClick={onClick}>
+      <Icon className={styles.modeIcon} />
+      <p className={styles.modeTitle}>{title}</p>
+    </button>
   );
 }
