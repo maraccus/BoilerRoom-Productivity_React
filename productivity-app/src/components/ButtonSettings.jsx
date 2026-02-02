@@ -4,6 +4,7 @@ import popupStyles from "./ButtonSettings.module.css";
 import React from 'react'
 import { useState } from "react";
 import ButtonStd from "./ButtonStd";
+import MoonIcon from "../assets/moon-solid-full.svg?react";
 
 const ButtonSettings = () => {
     const [open, setOpen] = useState(false);
@@ -22,13 +23,15 @@ const ButtonSettings = () => {
                   >
                     <h2>Settings</h2>
         
-                    {/* <label>
-                        <input type="checkbox" />
-                        Dark mode
-                    </label> */}
+                    <div className={popupStyles.settingsBorder}>
+                        <ButtonStd>
+                            <MoonIcon className={popupStyles.icon}/>
+                        </ButtonStd>
+                        
+                    </div>
 
                     <ButtonStd onClick={() => setOpen(false)}>Close</ButtonStd>
-                    {/* <button onClick={() => setOpen(false)}>Close</button> */}
+
                   </div>
                 </div>
             )}
