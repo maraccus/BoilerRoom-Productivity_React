@@ -20,7 +20,6 @@ const NavTimerModes = () => {
       ) : (
         <div className="cards-container">
           {" "}
-          {/* Lägg till CSS i App.css för flex-layout */}
           <h1>Välj ett läge</h1>
         </div>
       )}
