@@ -14,12 +14,13 @@
 
 .background {
   stroke: var(--timer-bg);
+  transition: stroke 0.3s ease;
 }
 
 .progress {
   stroke: var(--text);
   stroke-linecap: round;
-  transition: stroke-dashoffset 0.45s linear;
+  transition: stroke-dashoffset 0.45s linear, stroke 0.3s ease;
 }
 
 .time {
