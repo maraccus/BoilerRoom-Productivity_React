@@ -16,6 +16,7 @@ export default function Timer({ isActive, duration }) {
   if (!isActive) return;
 
   const interval = setInterval(() => {
+    console.log("Timer Started/Tick")
     setTimeLeft(t => {
       if (t <= 0) {
         clearInterval(interval);
@@ -25,7 +26,10 @@ export default function Timer({ isActive, duration }) {
     });
   }, 1000);
 
-  return () => clearInterval(interval);
+  return () => {
+    clearInterval(interval);
+    console.log("Timer Stopped")
+  }
 }, [isActive]);
 
 
