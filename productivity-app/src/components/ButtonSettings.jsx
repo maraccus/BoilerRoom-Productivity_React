@@ -25,7 +25,11 @@ const ButtonSettings = () => {
 
           <div className={popupStyles.settingsBorder}>
             <ContainerH>
-                <ButtonStd onClick={() => setDarkMode(d => !d)}>
+                <ButtonStd onClick={() => {
+                  setDarkMode(d => !d);
+                  document.body.classList.toggle("theme-dark");
+                  document.body.classList.toggle("theme-light");
+                  }}>
                     <span className={popupStyles.iconWrapper}>
                         <MoonIcon
                         className={`${popupStyles.icon} ${

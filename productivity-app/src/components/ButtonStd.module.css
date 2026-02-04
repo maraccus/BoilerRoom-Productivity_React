@@ -2,8 +2,8 @@
   padding: 12px 28px;
   border-radius: .5rem;
 
-  background: var(--darkmode-btn);
-  color: var(--darkmode-text);
+  background: var(--btn);
+  color: var(--btn-text);
   border: 2px solid rgba(0, 0, 0, 0.35);
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.35);
   cursor: pointer;
@@ -15,7 +15,7 @@
 }
 
 .button:hover {
-    background: var(--darkmode-btn-hover);
+    background: var(--btn-hover);
 }
 
 .button:active {
@@ -31,7 +31,7 @@
 }
 
 .primary {
-  background: var(--darkmode-btn);
+  background: var(--btn);
   font-size: 18px;
   font-weight: 700;
   letter-spacing: 0.2px;

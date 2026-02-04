@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useEffect, useState} from "react";
 import MainContainer from "./components/MainContainer";
 import ContainerV from "./components/ContainerV";
 import ContainerH from "./components/ContainerH";
@@ -13,6 +13,13 @@ import TimerWrapper from "./components/TimerWrapper";
 import "./App.css";
 
 function App() {
+  const [theme, setTheme] = useState("dark");
+
+  useEffect(() => {
+    document.body.classList.remove("theme-light", "theme-dark");
+    document.body.classList.add(`theme-${theme}`);
+  }, [theme]);
+
   return (
     <>
       <MainContainer>

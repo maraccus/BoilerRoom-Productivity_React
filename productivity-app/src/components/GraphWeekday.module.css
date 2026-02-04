@@ -8,7 +8,7 @@
     flex-direction: column;
     align-items: space-between;
     /* padding: .5rem 0 0 0; */
-    color: var(--darkmode-text-graph);
+    color: var(--text-graph);
 }
 
 .containerDay {
@@ -31,7 +31,7 @@
 
 .dividerLine {
     width: 100%;
-    border-top: 1px solid rgba(255,255,255,.4);
+    border-top: 1px solid var(--calendar-line);
     height: 0;
 }
 

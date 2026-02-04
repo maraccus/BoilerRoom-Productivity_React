@@ -17,12 +17,12 @@
     width: 2rem;
     height: 2rem;
     cursor: pointer;
-    color: var(--darkmode-icon);
+    color: var(--icon);
     transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .iconBtn:hover {
-    color: var(--darkmode-icon-hover);
+    color: var(--icon-hover);
     transform: scale(1.25);
 }
 

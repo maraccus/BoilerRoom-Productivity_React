@@ -54,8 +54,8 @@
   gap: 2rem;
   align-items: center;
 
-  background: var(--darkmode-bg);
-  color: white;
+  background: var(--bg);
+  color: var(--text);
   padding: 1.5rem;
   border-radius: 1rem;
   width: 400px;
@@ -75,7 +75,7 @@
 }
 
 .settingsBorder {
-  border: 2px solid #434853;
+  border: 2px solid var(--calendar-line);
   border-radius: 1rem;
   padding: 1rem;
   height: 100%;
@@ -85,5 +85,5 @@
   width: 2rem;
   height: 2rem;
   display: block;
-  fill: white;
+  fill: var(--btn-icon);
 }
