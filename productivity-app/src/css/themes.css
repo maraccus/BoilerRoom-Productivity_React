@@ -1,6 +1,14 @@
 :root {
     --lightmode-text: #494949;
+    --lightmode-icon: #858585;
+    --lightmode-icon-hover: #ffffff;
     --lightmode-bg: #D7D7D7;
+    --lightmode-bg-green: #2F3C2C;
+    --lightmode-btn: #34353D;
+    --lightmode-btn-hover: #37383f;
+    --lightmode-card-bg: #4a4b57;
+    --lightmode-card-bg-hover: #5a5b6a;
+    --lightmode-text-graph: rgba(255,255,255,.4);
 
     --darkmode-text: #ffffff;
     --darkmode-icon: #858585;
