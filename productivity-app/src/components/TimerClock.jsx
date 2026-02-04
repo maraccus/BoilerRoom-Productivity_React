@@ -65,6 +65,12 @@ export default function Timer({ isActive, duration }) {
         />
       </svg>
 
+      <div className={styles.currentTime}>
+        {new Date().toLocaleTimeString("sv-SE", {
+        hour: "2-digit",
+        minute: "2-digit",
+        })}
+      </div>
       <div className={styles.time}>
         {minutes}:{seconds}
       </div>
