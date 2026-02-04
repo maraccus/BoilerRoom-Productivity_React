@@ -8,6 +8,8 @@
 
 body {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: var(--darkmode-bg);
+  color: var(--darkmode-text);
   /* font-family: roboto; */
 }
 
