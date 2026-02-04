@@ -24,7 +24,6 @@ const Navigation = () => {
       <NavigationSpacer />
 
       <ButtonSettings />
-      
     </nav>
   );
 };
