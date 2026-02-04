@@ -1,0 +1,46 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  color: #222222;
+}
+
+.label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.scaleRow {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.option {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 2px solid #cccccc;
+  background: transparent;
+  color: #222222;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease,
+    border-color 0.15s ease;
+}
+
+.option:hover {
+  border-color: #999999;
+  transform: translateY(1px);
+}
+
+.selected {
+  background: #222222;
+  color: #ffffff;
+  border-color: #222222;
+}
+
