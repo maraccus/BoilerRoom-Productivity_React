@@ -4,9 +4,9 @@ import ButtonStd from './ButtonStd';
 import ContainerV from './ContainerV';
 
 const TimerWrapper = () => {
-    const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(false);
 
-    useEffect(() => {
+  useEffect(() => {
     document.body.classList.toggle("timer-active-bg", isActive);
 
     return () => {
@@ -16,11 +16,12 @@ const TimerWrapper = () => {
 
   return (
     <>
-        <ContainerV>
-            <TimerClock isActive={isActive} duration={10}/>
-            <ButtonStd onClick={() => setIsActive(true)}><p>Start Timer</p></ButtonStd>
-            <ButtonStd onClick={() => setIsActive(false)}><p>Stop Timer</p></ButtonStd>
-        </ContainerV>
+      <ContainerV>
+        <TimerClock isActive={isActive} duration={120} />
+        <ButtonStd onClick={() => setIsActive((prev) => !prev)}>
+          <p>{isActive ? 'Pause Timer' : 'Start Timer'}</p>
+        </ButtonStd>
+      </ContainerV>
     </>
   )
 }
