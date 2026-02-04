@@ -17,7 +17,7 @@ const TimerWrapper = () => {
   return (
     <>
         <ContainerV>
-            <TimerClock isActive={isActive} duration={120}/>
+            <TimerClock isActive={isActive} duration={10}/>
             <ButtonStd onClick={() => setIsActive(true)}><p>Start Timer</p></ButtonStd>
             <ButtonStd onClick={() => setIsActive(false)}><p>Stop Timer</p></ButtonStd>
         </ContainerV>

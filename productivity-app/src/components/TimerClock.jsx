@@ -20,6 +20,7 @@ export default function Timer({ isActive, duration }) {
     setTimeLeft(t => {
       if (t <= 0) {
         clearInterval(interval);
+        document.body.classList.remove("timer-active-bg");
         return 0;
       }
       return t - 1;
@@ -29,6 +30,7 @@ export default function Timer({ isActive, duration }) {
   return () => {
     clearInterval(interval);
     console.log("Timer Stopped")
+    
   }
 }, [isActive]);
 
