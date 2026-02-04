@@ -1,12 +1,13 @@
 .container {
     width: 9rem;
     height: auto;
-    border-radius: 1rem;
+    
+    /* background-color: black; */
     display: flex;
     flex-direction: column;
     align-items: space-between;
-    padding: .5rem 0 0 0;
-    color: rgba(255,255,255,.4);
+    /* padding: .5rem 0 0 0; */
+    color: var(--darkmode-text-graph);
 }
 
 .containerDay {
