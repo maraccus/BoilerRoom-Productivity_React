@@ -17,7 +17,7 @@ body.theme-light {
     --text-graph: #494949;
     --team-icon: rgb(64, 99, 139);
     --team-icon-text: rgb(255, 255, 255);
-    --timer-bg: #b1b1b1;
+    --timer-bg: #00000031;
     --calendar-line: rgba(73,73,73,.4);
 }
 
@@ -36,6 +36,6 @@ body.theme-dark {
     --text-graph: rgba(255,255,255,.4);
     --team-icon: rgb(64, 99, 139);
     --team-icon-text: rgb(255, 255, 255);
-    --timer-bg: #25252b;
+    --timer-bg: #00000046;
     --calendar-line: rgba(255,255,255,.4);
 }
