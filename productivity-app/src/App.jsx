@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import GraphWeekday from "./components/GraphWeekday";
 import ModeCard from "./components/ModeCard";
 import NavTimerModes from "./components/NavTimerModes";
+import TimerWrapper from "./components/TimerWrapper";
 
 import "./App.css";
 
@@ -17,7 +18,11 @@ function App() {
       <MainContainer>
         <Navigation />
         {/* Add main components here – lägg till kort eller timer */}
-        <NavTimerModes />
+        {/* <NavTimerModes /> */}
+        <ContainerH>
+          <TimerWrapper />
+          <GraphWeekday />
+        </ContainerH>
         <Footer />
       </MainContainer>
     </>

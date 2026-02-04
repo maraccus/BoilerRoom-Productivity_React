@@ -1,17 +1,21 @@
 .button {
   padding: 12px 28px;
-  border-radius: 10px;
+  border-radius: .5rem;
 
   background: var(--darkmode-btn);
   color: var(--darkmode-text);
   border: 2px solid rgba(0, 0, 0, 0.35);
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.35);
   cursor: pointer;
-  transition: transform 120ms ease, filter 120ms ease, opacity 120ms ease;
+  transition: transform 120ms ease, filter 120ms ease, opacity 120ms ease, box-shadow 200ms ease, background 120ms ease;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .button:hover {
-    filter: brightness(1.05);
+    background: var(--darkmode-btn-hover);
 }
 
 .button:active {
@@ -33,3 +37,4 @@
   letter-spacing: 0.2px;
   min-height: 44px;
 }
+
