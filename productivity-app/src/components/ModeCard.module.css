@@ -9,9 +9,13 @@
   cursor: pointer;
   background-color: var(--darkmode-card-bg);
   margin: 10px;
-  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+  transition:
+    background-color 0.3s,
+    transform 0.2s,
+    box-shadow 0.2s;
   border: 0;
   color: var(--darkmode-text);
+  fill: var(--darkmode-icon-hover);
 }
 
 .modeCard:hover {
