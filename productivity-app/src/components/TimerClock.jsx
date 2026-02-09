@@ -1,47 +1,52 @@
-import { useEffect, useState } from "react";
-import styles from "./TimerClock.module.css";
+import { useEffect, useState } from 'react'
+import styles from './TimerClock.module.css'
 
-export default function Timer({ isActive, duration }) {
-  const [timeLeft, setTimeLeft] = useState(duration);
+export default function TimerClock({
+  isActive,
+  isPaused,
+  duration,
+  onTimerComplete
+}) {
+  const [timeLeft, setTimeLeft] = useState(duration)
 
-  const radius = 90;
-  const circumference = 2 * Math.PI * radius;
+  const radius = 90
+  const circumference = 2 * Math.PI * radius
+  const progress = timeLeft / duration
+  const offset = circumference * (1 - progress)
+  const xy = 100
+  const stroke = 10
 
-  const progress = timeLeft / duration;
-  const offset = circumference * (1 - progress);
-  const xy = 100;
-  const stroke = 10;
-
+  // ===== Reset timer =====
   useEffect(() => {
-  if (!isActive) return;
+    if (!isActive) {
+      setTimeLeft(duration)
+    }
+  }, [isActive, duration])
 
-  const interval = setInterval(() => {
-    console.log("Timer Started/Tick")
-    setTimeLeft(t => {
-      if (t <= 0) {
-        clearInterval(interval);
-        document.body.classList.remove("timer-active-bg");
-        return 0;
-      }
-      return t - 1;
-    });
-  }, 1000);
+  // ===== Countdown =====
+  useEffect(() => {
+    if (!isActive || isPaused) return
 
-  return () => {
-    clearInterval(interval);
-    console.log("Timer Stopped")
-    
-  }
-}, [isActive]);
+    const interval = setInterval(() => {
+      setTimeLeft(t => {
+        if (t <= 1) {
+          clearInterval(interval)
+          onTimerComplete?.()
+          return 0
+        }
+        return t - 1
+      })
+    }, 1000)
 
+    return () => clearInterval(interval)
+  }, [isActive, isPaused, onTimerComplete])
 
-  const minutes = String(Math.floor(timeLeft / 60)).padStart(2, "0");
-  const seconds = String(timeLeft % 60).padStart(2, "0");
+  const minutes = String(Math.floor(timeLeft / 60)).padStart(2, '0')
+  const seconds = String(timeLeft % 60).padStart(2, '0')
 
   return (
     <div className={styles.timer}>
       <svg className={styles.svg} viewBox="0 0 200 200">
-        {/* Background circle */}
         <circle
           className={styles.background}
           cx={xy}
@@ -50,8 +55,6 @@ export default function Timer({ isActive, duration }) {
           strokeWidth={stroke}
           fill="none"
         />
-
-        {/* Progress circle */}
         <circle
           className={styles.progress}
           cx={xy}
@@ -66,14 +69,15 @@ export default function Timer({ isActive, duration }) {
       </svg>
 
       <div className={styles.currentTime}>
-        {new Date().toLocaleTimeString("sv-SE", {
-        hour: "2-digit",
-        minute: "2-digit",
+        {new Date().toLocaleTimeString('sv-SE', {
+          hour: '2-digit',
+          minute: '2-digit'
         })}
       </div>
+
       <div className={styles.time}>
         {minutes}:{seconds}
       </div>
     </div>
-  );
+  )
 }

@@ -26,11 +26,11 @@ function App() {
         <Navigation />
         {/* Add main components here – lägg till kort eller timer */}
         {/* <NavTimerModes /> */}
-        <NavTimerModes/>
-        {/* <ContainerH>
+        {/* <NavTimerModes/> */}
+        <ContainerH>
           <TimerWrapper/>
           <GraphWeekday/>
-        </ContainerH> */}
+        </ContainerH>
         <Footer />
       </MainContainer>
     </>
