@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import TimerClock from './TimerClock'
 import ButtonStd from './ButtonStd'
+import ButtonStdRed from './ButtonStdRed'
 import ContainerV from './ContainerV'
 import ContainerH from './ContainerH'
 import DebugSessions from './DebugSessions'
@@ -93,9 +94,9 @@ const TimerWrapper = () => {
         </p>
       </ButtonStd>
 
-      <ButtonStd onClick={handleStop} disabled={!isActive}>
+      <ButtonStdRed onClick={handleStop} disabled={!isActive}>
         <p>Stop & Log</p>
-      </ButtonStd>
+      </ButtonStdRed>
       </ContainerV>
       
             <ContainerV>

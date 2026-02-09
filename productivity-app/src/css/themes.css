@@ -9,7 +9,9 @@ body.theme-light {
     --bg: #D7D7D7;
     --bg-green: #b1d1a3;
     --btn: #494949;
+    --btn-red: #934444;
     --btn-hover: #515151;
+    --btn-red-hover: #a45353;
     --btn-text: #ffffff;
     --btn-icon: #ffffff;
     --card-bg: #494949;
@@ -28,7 +30,9 @@ body.theme-dark {
     --bg: #34353D;
     --bg-green: #2F3C2C;
     --btn: #34353D;
+    --btn-red: #4a2d2d;
     --btn-hover: #37383f;
+    --btn-red-hover: #543434;
     --btn-text: #ffffff;
     --btn-icon: #ffffff;
     --card-bg: #4a4b57;
