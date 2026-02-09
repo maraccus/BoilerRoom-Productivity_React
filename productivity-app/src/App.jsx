@@ -20,8 +20,8 @@ function App() {
         {/* Add main components here – lägg till kort eller timer */}
         <NavTimerModes />
         <ContainerH>
-          <TimerWrapper />
-          <GraphWeekday />
+          {/* <TimerWrapper /> */}
+          {/* <GraphWeekday /> */}
         </ContainerH>
         <Footer />
       </MainContainer>
