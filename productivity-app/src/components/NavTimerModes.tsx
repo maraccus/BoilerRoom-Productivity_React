@@ -6,10 +6,17 @@ import ModeCard from "./ModeCard";
 import DeepWorkIcon from "../assets/ModeCard/deepwork.svg?react";
 import MeetingIcon from "../assets/ModeCard/meeting.svg?react";
 import BreakIcon from "../assets/ModeCard/break.svg?react";
-const NavTimerModes = () => {
-  const [selectedMode, setSelectedMode] = useState(null);
 
-  const handleCardClick = (mode) => {
+// Här definieras en typ för props till ModeCard
+interface ModeCardProps {
+  title: string;
+  Icon: React.FC;
+  onClick: () => void;
+}
+const NavTimerModes: React.FC = () => {
+  const [selectedMode, setSelectedMode] = useState<string | null>(null);
+
+  const handleCardClick = (mode: string): void => {
     setSelectedMode(mode); //Detta uppdaterar alltså state!
   };
 

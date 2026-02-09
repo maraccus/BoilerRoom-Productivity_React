@@ -1,4 +1,4 @@
-import {React, useEffect, useState} from "react";
+import { React, useEffect, useState } from "react";
 import MainContainer from "./components/MainContainer";
 import ContainerV from "./components/ContainerV";
 import ContainerH from "./components/ContainerH";
@@ -6,8 +6,8 @@ import ProfileCard from "./components/ProfileCard";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import GraphWeekday from "./components/GraphWeekday";
-import ModeCard from "./components/ModeCard";
-import NavTimerModes from "./components/NavTimerModes";
+import ModeCard from "./components/ModeCard.tsx";
+import NavTimerModes from "./components/NavTimerModes.tsx";
 import TimerWrapper from "./components/TimerWrapper";
 
 import "./App.css";
@@ -26,7 +26,7 @@ function App() {
         <Navigation />
         {/* Add main components here – lägg till kort eller timer */}
         {/* <NavTimerModes /> */}
-        <NavTimerModes/>
+        <NavTimerModes />
         {/* <ContainerH>
           <TimerWrapper/>
           <GraphWeekday/>

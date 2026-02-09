@@ -52,14 +52,19 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": false,
+    "strict": true, //TOMAC ÄNDRADE EFTER TS
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "noEmit": true, //TOMAC ÄNDRADE EFTER TS!
+    "jsx": "react-jsx",
+
+    //TOMAC LADE TILL DESSA EFTER TS - fångar vanliga misstag:
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true
   },
   "include": ["src"]
 }
