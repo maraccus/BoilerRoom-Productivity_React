@@ -8,6 +8,7 @@ export default function TimerClock({
   onTimerComplete
 }) {
   const [timeLeft, setTimeLeft] = useState(duration)
+  const [mode, setMode] = useState("timer")
 
   const radius = 90
   const circumference = 2 * Math.PI * radius
@@ -45,39 +46,73 @@ export default function TimerClock({
   const seconds = String(timeLeft % 60).padStart(2, '0')
 
   return (
-    <div className={styles.timer}>
-      <svg className={styles.svg} viewBox="0 0 200 200">
-        <circle
-          className={styles.background}
-          cx={xy}
-          cy={xy}
-          r={radius}
-          strokeWidth={stroke}
-          fill="none"
-        />
-        <circle
-          className={styles.progress}
-          cx={xy}
-          cy={xy}
-          r={radius}
-          strokeWidth={stroke}
-          fill="none"
-          strokeDasharray={circumference}
-          strokeDashoffset={offset}
-          transform="rotate(-90 100 100)"
-        />
-      </svg>
+  <>
+    {/* PICK TIME */}
+    {mode === "select" && (
+      <div className={styles.timer}>
+        <svg className={styles.svg} viewBox="0 0 200 200">
+          <circle
+            className={styles.background}
+            cx={xy}
+            cy={xy}
+            r={radius}
+            strokeWidth={stroke}
+            fill="none"
+          />
+          
+        </svg>
 
-      <div className={styles.currentTime}>
-        {new Date().toLocaleTimeString('sv-SE', {
-          hour: '2-digit',
-          minute: '2-digit'
-        })}
-      </div>
+        <div className={styles.currentTime}>
+          {new Date().toLocaleTimeString('sv-SE', {
+            hour: '2-digit',
+            minute: '2-digit'
+          })}
+        </div>
 
-      <div className={styles.time}>
-        {minutes}:{seconds}
+        <div className={styles.time}>
+          {minutes}:{seconds}
+        </div>
       </div>
-    </div>
-  )
+    )}
+
+    {/* TIMER */}
+    {mode === "timer" && (
+      <div className={styles.timer}>
+        <svg className={styles.svg} viewBox="0 0 200 200">
+          <circle
+            className={styles.background}
+            cx={xy}
+            cy={xy}
+            r={radius}
+            strokeWidth={stroke}
+            fill="none"
+          />
+          <circle
+            className={styles.progress}
+            cx={xy}
+            cy={xy}
+            r={radius}
+            strokeWidth={stroke}
+            fill="none"
+            strokeDasharray={circumference}
+            strokeDashoffset={offset}
+            transform="rotate(-90 100 100)"
+          />
+        </svg>
+
+        <div className={styles.currentTime}>
+          {new Date().toLocaleTimeString('sv-SE', {
+            hour: '2-digit',
+            minute: '2-digit'
+          })}
+        </div>
+
+        <div className={styles.time}>
+          {minutes}:{seconds}
+        </div>
+      </div>
+    )}
+  </>
+)
+      
 }
