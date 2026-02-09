@@ -29,7 +29,7 @@ function App() {
         {/* <NavTimerModes/> */}
         <ContainerH>
           <TimerWrapper/>
-          <GraphWeekday/>
+          {/* <GraphWeekday/> */}
         </ContainerH>
         <Footer />
       </MainContainer>
