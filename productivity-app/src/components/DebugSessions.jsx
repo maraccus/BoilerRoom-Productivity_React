@@ -7,11 +7,11 @@ export default function DebugSessions({ sessions }) {
       style={{
         marginTop: '1rem',
         padding: '1rem',
-        background: '#111',
-        color: '#0f0',
-        fontSize: '0.8rem',
+        background: "var(--team-icon)",
+        color: "var(--btn-text)",
+        fontSize: '0.75rem',
         borderRadius: '6px',
-        maxHeight: '300px',
+        maxHeight: '400px',
         overflowY: 'auto'
       }}
     >
