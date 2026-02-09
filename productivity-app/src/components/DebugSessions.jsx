@@ -1,11 +1,6 @@
 export default function DebugSessions({ sessions }) {
-  if (!sessions || Object.keys(sessions).length === 0) {
-    return (
-      <div style={{ marginTop: '1rem', opacity: 0.7 }}>
-        <em>No sessions logged yet</em>
-      </div>
-    )
-  }
+  const today = new Date().toISOString().split('T')[0]
+  const todaysSessions = sessions[today] || []
 
   return (
     <div
@@ -15,26 +10,26 @@ export default function DebugSessions({ sessions }) {
         background: '#111',
         color: '#0f0',
         fontSize: '0.8rem',
+        borderRadius: '6px',
         maxHeight: '300px',
-        overflowY: 'auto',
-        borderRadius: '6px'
+        overflowY: 'auto'
       }}
     >
-      <strong>DEBUG – Sessions</strong>
+      <strong>DEBUG – Sessions for {today}</strong>
 
-      {Object.entries(sessions).map(([date, daySessions]) => (
-        <div key={date} style={{ marginTop: '0.75rem' }}>
-          <div style={{ color: '#6cf' }}>{date}</div>
-
-          <ul style={{ paddingLeft: '1rem' }}>
-            {daySessions.map((s, i) => (
-              <li key={i}>
-                {s.start} → {s.end} ({s.duration}s)
-              </li>
-            ))}
-          </ul>
+      {todaysSessions.length === 0 ? (
+        <div style={{ marginTop: '0.5rem' }}>
+          <em>No sessions logged today</em>
         </div>
-      ))}
+      ) : (
+        <ul style={{ marginTop: '0.5rem', paddingLeft: '1rem' }}>
+          {todaysSessions.map((s, i) => (
+            <li key={i}>
+              {s.start} → {s.end} ({s.duration}s)
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   )
 }

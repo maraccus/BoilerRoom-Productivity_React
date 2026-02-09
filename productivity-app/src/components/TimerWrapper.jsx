@@ -1,23 +1,25 @@
 import { useEffect, useState } from 'react'
 import TimerClock from './TimerClock'
 import ButtonStd from './ButtonStd'
-import DebugSessions from './DebugSessions'
 import ContainerV from './ContainerV'
+import DebugSessions from './DebugSessions'
+
+const DEBUG = true
+const DURATION = 120
 
 const TimerWrapper = () => {
-  const DEBUG = true
-
   const [isActive, setIsActive] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
-
-  const [sessions, setSessions] = useState({})
   const [startTime, setStartTime] = useState(null)
 
-  const DURATION = 120
+  // 🔑 Initiera sessions DIREKT från localStorage
+  const [sessions, setSessions] = useState(() => {
+    const stored = localStorage.getItem('timerSessions')
+    return stored ? JSON.parse(stored) : {}
+  })
 
   // ===== Helpers =====
   const getTodayKey = () => new Date().toISOString().split('T')[0]
-
   const formatTime = (date) => date.toTimeString().slice(0, 8)
 
   // ===== Stop + log + reset =====
@@ -59,17 +61,12 @@ const TimerWrapper = () => {
     stopAndLogSession()
   }
 
-  // ===== localStorage =====
+  // ===== Persist =====
   useEffect(() => {
     localStorage.setItem('timerSessions', JSON.stringify(sessions))
   }, [sessions])
 
-  useEffect(() => {
-    const stored = localStorage.getItem('timerSessions')
-    if (stored) setSessions(JSON.parse(stored))
-  }, [])
-
-  // ===== Background effect =====
+  // ===== Background =====
   useEffect(() => {
     document.body.classList.toggle('timer-active-bg', isActive && !isPaused)
     return () => document.body.classList.remove('timer-active-bg')
@@ -95,7 +92,7 @@ const TimerWrapper = () => {
       </ButtonStd>
 
       <ButtonStd onClick={handleStop} disabled={!isActive}>
-        <p>Stop Timer & Log</p>
+        <p>Stop & Log</p>
       </ButtonStd>
 
       {DEBUG && <DebugSessions sessions={sessions} />}

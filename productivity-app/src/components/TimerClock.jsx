@@ -16,14 +16,14 @@ export default function TimerClock({
   const xy = 100
   const stroke = 10
 
-  // ===== Reset timer =====
+  // Reset när session stoppas
   useEffect(() => {
     if (!isActive) {
       setTimeLeft(duration)
     }
   }, [isActive, duration])
 
-  // ===== Countdown =====
+  // Countdown
   useEffect(() => {
     if (!isActive || isPaused) return
 
