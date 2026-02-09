@@ -7,19 +7,18 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  background-color: var(--darkmode-card-bg);
+  background-color: var(--card-bg);
   margin: 10px;
   transition:
     background-color 0.3s,
     transform 0.2s,
     box-shadow 0.2s;
   border: 0;
-  color: var(--darkmode-text);
-  fill: var(--darkmode-icon-hover);
+  color: var(--text);
 }
 
 .modeCard:hover {
-  background-color: var(--darkmode-card-bg-hover);
+  background-color: var(--card-bg-hover);
   transform: translateY(-4px);
   box-shadow: 0 10px 8px rgba(0, 0, 0, 0.125);
 }

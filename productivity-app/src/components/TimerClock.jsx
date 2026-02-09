@@ -16,16 +16,22 @@ export default function Timer({ isActive, duration }) {
   if (!isActive) return;
 
   const interval = setInterval(() => {
+    console.log("Timer Started/Tick")
     setTimeLeft(t => {
       if (t <= 0) {
         clearInterval(interval);
+        document.body.classList.remove("timer-active-bg");
         return 0;
       }
       return t - 1;
     });
   }, 1000);
 
-  return () => clearInterval(interval);
+  return () => {
+    clearInterval(interval);
+    console.log("Timer Stopped")
+    
+  }
 }, [isActive]);
 
 
@@ -59,6 +65,12 @@ export default function Timer({ isActive, duration }) {
         />
       </svg>
 
+      <div className={styles.currentTime}>
+        {new Date().toLocaleTimeString("sv-SE", {
+        hour: "2-digit",
+        minute: "2-digit",
+        })}
+      </div>
       <div className={styles.time}>
         {minutes}:{seconds}
       </div>

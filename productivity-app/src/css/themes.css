@@ -1,17 +1,41 @@
 :root {
-    --lightmode-text: #494949;
-    --lightmode-bg: #D7D7D7;
-
-    --darkmode-text: #ffffff;
-    --darkmode-icon: #858585;
-    --darkmode-icon-hover: #ffffff;
-    --darkmode-bg: #34353D;
-    --darkmode-bg-green: #2F3C2C;
-    --darkmode-btn: #34353D;
-    --darkmode-btn-hover: #37383f;
-    --darkmode-card-bg: #4a4b57;
-    --darkmode-card-bg-hover: #5a5b6a;
-    --darkmode-text-graph: rgba(255,255,255,.4);
-
     --button-br: 1rem;
+}
+
+body.theme-light {
+    --text: rgb(73, 73, 73);
+    --icon: #494949;
+    --icon-hover: #707070;
+    --bg: #D7D7D7;
+    --bg-green: #b1d1a3;
+    --btn: #494949;
+    --btn-hover: #515151;
+    --btn-text: #ffffff;
+    --btn-icon: #ffffff;
+    --card-bg: #494949;
+    --card-bg-hover: #515151;
+    --text-graph: #494949;
+    --team-icon: rgb(64, 99, 139);
+    --team-icon-text: rgb(255, 255, 255);
+    --timer-bg: #00000031;
+    --calendar-line: rgba(73,73,73,.4);
+}
+
+body.theme-dark {
+    --text: #ffffff;
+    --icon: #858585;
+    --icon-hover: #ffffff;
+    --bg: #34353D;
+    --bg-green: #2F3C2C;
+    --btn: #34353D;
+    --btn-hover: #37383f;
+    --btn-text: #ffffff;
+    --btn-icon: #ffffff;
+    --card-bg: #4a4b57;
+    --card-bg-hover: #5a5b6a;
+    --text-graph: rgba(255,255,255,.4);
+    --team-icon: rgb(64, 99, 139);
+    --team-icon-text: rgb(255, 255, 255);
+    --timer-bg: #00000046;
+    --calendar-line: rgba(255,255,255,.4);
 }

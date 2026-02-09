@@ -9,5 +9,5 @@
 }
 
 .timerRunning {
-    background-color: var(--darkmode-bg-green);
+    background-color: var(--bg-green);
 }

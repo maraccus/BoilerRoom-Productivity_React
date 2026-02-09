@@ -13,13 +13,14 @@
 }
 
 .background {
-  stroke: rgba(255, 255, 255, 0.2);
+  stroke: var(--timer-bg);
+  transition: stroke 0.3s ease;
 }
 
 .progress {
-  stroke: #ffffff;
+  stroke: var(--text);
   stroke-linecap: round;
-  transition: stroke-dashoffset 0.45s linear;
+  transition: stroke-dashoffset 0.45s linear, stroke 0.3s ease;
 }
 
 .time {
@@ -30,7 +31,21 @@
   justify-content: center;
   font-size: 52px;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text);
+  user-select: none;
+  -webkit-user-select: none; /* Safari */
+}
+
+.currentTime {
+  position: absolute;
+  inset: 0;
+  top: -5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text);
   user-select: none;
   -webkit-user-select: none; /* Safari */
 }

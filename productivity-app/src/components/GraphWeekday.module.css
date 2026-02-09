@@ -8,14 +8,15 @@
     flex-direction: column;
     align-items: space-between;
     /* padding: .5rem 0 0 0; */
-    color: var(--darkmode-text-graph);
+    color: var(--text-graph);
 }
 
 .containerDay {
     width: 100%;
     display: flex;
     flex-direction: column;
-    height: 1.2rem;
+    height: 1rem;
+    margin-bottom: 4px;
 }
 
 .containerInfo {
@@ -30,7 +31,7 @@
 
 .dividerLine {
     width: 100%;
-    border-top: 1px solid rgba(255,255,255,.4);
+    border-top: 1px solid var(--calendar-line);
     height: 0;
 }
 

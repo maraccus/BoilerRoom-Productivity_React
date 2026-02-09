@@ -8,9 +8,10 @@
 
 body {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  background-color: var(--darkmode-bg);
-  color: var(--darkmode-text);
+  background-color: var(--bg);
+  color: var(--text);
   /* font-family: roboto; */
+  transition: background-color 0.5s;
 }
 
 .container {
@@ -19,4 +20,8 @@ body {
   align-items: center;
   justify-content: center;
   gap: 2rem;
+}
+
+.timer-active-bg {
+  background-color: var(--bg-green);
 }
