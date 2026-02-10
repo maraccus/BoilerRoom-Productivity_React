@@ -14,17 +14,16 @@ const TimerWrapper = () => {
   const [isPaused, setIsPaused] = useState(false)
   const [startTime, setStartTime] = useState(null)
 
-  // 🔑 Initiera sessions DIREKT från localStorage
+  // Initiera sessions från localStorage
   const [sessions, setSessions] = useState(() => {
     const stored = localStorage.getItem('timerSessions')
     return stored ? JSON.parse(stored) : {}
   })
 
-  // ===== Helpers =====
   const getTodayKey = () => new Date().toISOString().split('T')[0]
   const formatTime = (date) => date.toTimeString().slice(0, 8)
 
-  // ===== Stop + log + reset =====
+  // Stop and log
   const stopAndLogSession = () => {
     if (!startTime) return
 
@@ -47,7 +46,7 @@ const TimerWrapper = () => {
     setStartTime(null)
   }
 
-  // ===== Buttons =====
+  // Buttons
   const handleStartPause = () => {
     if (!isActive) {
       setStartTime(new Date())
@@ -63,12 +62,12 @@ const TimerWrapper = () => {
     stopAndLogSession()
   }
 
-  // ===== Persist =====
+  // Local storage
   useEffect(() => {
     localStorage.setItem('timerSessions', JSON.stringify(sessions))
   }, [sessions])
 
-  // ===== Background =====
+  // Change background color to green
   useEffect(() => {
     document.body.classList.toggle('timer-active-bg', isActive && !isPaused)
     return () => document.body.classList.remove('timer-active-bg')
