@@ -1,14 +1,12 @@
 import {React, useEffect, useState} from "react";
-import MainContainer from "./components/MainContainer";
-import ContainerV from "./components/ContainerV";
-import ContainerH from "./components/ContainerH";
-import ProfileCard from "./components/ProfileCard";
-import Navigation from "./components/Navigation";
-import Footer from "./components/Footer";
-import GraphWeekday from "./components/GraphWeekday";
-import ModeCard from "./components/ModeCard";
-import NavTimerModes from "./components/NavTimerModes";
-import TimerWrapper from "./components/TimerWrapper";
+import { Routes, Route } from "react-router-dom";
+
+
+import DashboardPage from "./pages/DashboardPage"
+import TimerPage from "./pages/TimerPage"
+import GraphPage from "./pages/GraphPage"
+import CalendarPage from "./pages/CalendarPage"
+import NotFoundPage from "./pages/NotFoundPage"
 
 import "./App.css";
 
@@ -21,19 +19,13 @@ function App() {
   }, [theme]);
 
   return (
-    <>
-      <MainContainer>
-        <Navigation />
-        {/* Add main components here – lägg till kort eller timer */}
-        {/* <NavTimerModes /> */}
-        {/* <NavTimerModes/> */}
-        <ContainerH>
-          <TimerWrapper/>
-          {/* <GraphWeekday/> */}
-        </ContainerH>
-        <Footer />
-      </MainContainer>
-    </>
+    <Routes>
+      <Route path="/" element={<DashboardPage/>} />
+      <Route path="/timer" element={<TimerPage/>} />
+      <Route path="/graphs" element={<GraphPage/>} />
+      <Route path="/calendar" element={<CalendarPage/>} />
+      <Route path="*" element={<NotFoundPage/>} />
+    </Routes>
   );
 }
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ContainerH from "./ContainerH";
+import ContainerV from "./ContainerV";
 import ModeCard from "./ModeCard";
 
 // Ikonerna
@@ -15,6 +16,7 @@ const NavTimerModes = () => {
 
   return (
     <>
+      <ContainerV>
       {selectedMode ? (
         <Timer mode={selectedMode} onBack={() => setSelectedMode(null)} />
       ) : (
@@ -22,7 +24,6 @@ const NavTimerModes = () => {
           <h1>What are we tracking?</h1>
         </div>
       )}
-      {/*Add main components here*/}
       <ContainerH>
         <ModeCard
           title="Work"
@@ -40,6 +41,7 @@ const NavTimerModes = () => {
           onClick={() => handleCardClick("break")}
         />
       </ContainerH>
+      </ContainerV>
     </>
   );
 };
