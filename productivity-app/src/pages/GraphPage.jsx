@@ -9,6 +9,7 @@ const GraphPage = () => {
   return (
     <MainContainer>
         <Navigation/>
+        <h1>Graphs Page</h1>
         <Footer/>
     </MainContainer>
   )

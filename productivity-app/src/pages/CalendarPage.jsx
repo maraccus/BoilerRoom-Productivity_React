@@ -9,6 +9,7 @@ const CalendarPage = () => {
   return (
     <MainContainer>
         <Navigation/>
+        <h1>Calendar Page</h1>
         <Footer/>
     </MainContainer>
   )
