@@ -4,7 +4,7 @@ import ModeCard from "./ModeCard";
 
 // Ikonerna
 // NOTERA TIDIGA TS-VARNING:
-// TypeScript-felen var bara "statiska" (editor-varningar), inte runtime-fel.
+// TypeScript-felen var bara "statiska" editor-varningar, inte runtime-fel.
 // Därför varningar, men allt fungerade.
 // Fixade med src/vite-env.d.ts. Går även med @ts-ignore, men dåligt långsiktigt.
 import DeepWorkIcon from "../assets/ModeCard/deepwork.svg?react";
