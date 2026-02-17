@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ContainerH from "./ContainerH";
 import ContainerV from "./ContainerV";
 import ModeCard from "./ModeCard";
+import TimerWrapper from "./TimerWrapper";
 
 // Ikonerna
 import DeepWorkIcon from "../assets/ModeCard/deepwork.svg?react";
@@ -18,7 +19,7 @@ const NavTimerModes = () => {
     <>
       <ContainerV>
       {selectedMode ? (
-        <Timer mode={selectedMode} onBack={() => setSelectedMode(null)} />
+        <TimerWrapper />
       ) : (
         <div className="cards-container">
           <h1>What are we tracking?</h1>

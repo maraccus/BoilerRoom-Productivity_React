@@ -63,8 +63,8 @@ const BarChart03 = () => {
     ];
 
     return (
-        <div className="flex h-60 flex-col gap-2">
-            <ResponsiveContainer className="h-full">
+        <div style={{ width: "100%", height: "400px", display: "flex" }}>
+            <ResponsiveContainer width="100%" height="100%">
                 <ComposedChart
                     data={data}
                     margin={{

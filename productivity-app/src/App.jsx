@@ -1,4 +1,4 @@
-import {React, useEffect, useState} from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 
@@ -11,13 +11,6 @@ import NotFoundPage from "./pages/NotFoundPage"
 import "./App.css";
 
 function App() {
-  const [theme, setTheme] = useState("dark");
-
-  useEffect(() => {
-    document.body.classList.remove("theme-light", "theme-dark");
-    document.body.classList.add(`theme-${theme}`);
-  }, [theme]);
-
   return (
     <Routes>
       <Route path="/" element={<DashboardPage/>} />
