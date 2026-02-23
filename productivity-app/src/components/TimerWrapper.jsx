@@ -1,107 +1,84 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import TimerClock from './TimerClock'
 import ButtonStd from './ButtonStd'
 import ButtonStdRed from './ButtonStdRed'
 import ContainerV from './ContainerV'
 import ContainerH from './ContainerH'
 import DebugSessions from './DebugSessions'
+import { useTimerReducer } from '../hooks/useTimerReducer'
 
 const DEBUG = true
 const DURATION = 120
 
 const TimerWrapper = () => {
-  const [isActive, setIsActive] = useState(false)
-  const [isPaused, setIsPaused] = useState(false)
-  const [startTime, setStartTime] = useState(null)
-
-  // Initiera sessions från localStorage
-  const [sessions, setSessions] = useState(() => {
-    const stored = localStorage.getItem('timerSessions')
-    return stored ? JSON.parse(stored) : {}
-  })
+  const { state, actions } = useTimerReducer()
 
   const getTodayKey = () => new Date().toISOString().split('T')[0]
   const formatTime = (date) => date.toTimeString().slice(0, 8)
 
+  const handleStartPause = () => {
+    if (!state.isActive) {
+      actions.start()
+    } else {
+      actions.togglePause()
+    }
+  }
+
   // Stop and log
-  const stopAndLogSession = () => {
-    if (!startTime) return
+  const handleStop = () => {
+    if (!state.startTime) return
 
     const endTime = new Date()
     const today = getTodayKey()
 
     const newSession = {
-      start: formatTime(startTime),
+      start: formatTime(state.startTime),
       end: formatTime(endTime),
-      duration: Math.floor((endTime - startTime) / 1000)
+      duration: Math.floor((endTime - state.startTime) / 1000)
     }
 
-    setSessions(prev => ({
-      ...prev,
-      [today]: [...(prev[today] || []), newSession]
-    }))
-
-    setIsActive(false)
-    setIsPaused(false)
-    setStartTime(null)
-  }
-
-  // Buttons
-  const handleStartPause = () => {
-    if (!isActive) {
-      setStartTime(new Date())
-      setIsActive(true)
-      setIsPaused(false)
-    } else {
-      setIsPaused(prev => !prev)
-    }
-  }
-
-  const handleStop = () => {
-    if (!isActive) return
-    stopAndLogSession()
+    actions.logSession(newSession)
   }
 
   // Local storage
   useEffect(() => {
-    localStorage.setItem('timerSessions', JSON.stringify(sessions))
-  }, [sessions])
+    localStorage.setItem('timerSessions', JSON.stringify(state.sessions))
+  }, [state.sessions])
 
   // Change background color to green
   useEffect(() => {
-    document.body.classList.toggle('timer-active-bg', isActive && !isPaused)
+    document.body.classList.toggle('timer-active-bg', state.isActive && !state.isPaused)
     return () => document.body.classList.remove('timer-active-bg')
-  }, [isActive, isPaused])
+  }, [state.isActive, state.isPaused])
 
   return (
     <ContainerH>
       <ContainerV>
         <TimerClock
-        isActive={isActive}
-        isPaused={isPaused}
-        duration={DURATION}
-        onTimerComplete={handleStop}
-      />
+          isActive={state.isActive}
+          isPaused={state.isPaused}
+          duration={DURATION}
+          onTimerComplete={handleStop}
+        />
 
-      <ButtonStd onClick={handleStartPause}>
-        <p>
-          {!isActive
-            ? 'Start Timer'
-            : isPaused
-              ? 'Resume Timer'
-              : 'Pause Timer'}
-        </p>
-      </ButtonStd>
+        <ButtonStd onClick={handleStartPause}>
+          <p>
+            {!state.isActive
+              ? 'Start Timer'
+              : state.isPaused
+                ? 'Resume Timer'
+                : 'Pause Timer'}
+          </p>
+        </ButtonStd>
 
-      <ButtonStdRed onClick={handleStop} disabled={!isActive}>
-        <p>Stop & Log</p>
-      </ButtonStdRed>
+        <ButtonStdRed onClick={handleStop} disabled={!state.isActive}>
+          <p>Stop & Log</p>
+        </ButtonStdRed>
       </ContainerV>
-      
-            <ContainerV>
-              {DEBUG && <DebugSessions sessions={sessions} />}
-            </ContainerV>
-      
+
+      <ContainerV>
+        {DEBUG && <DebugSessions sessions={state.sessions} />}
+      </ContainerV>
     </ContainerH>
   )
 }

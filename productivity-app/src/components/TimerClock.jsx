@@ -8,7 +8,7 @@ export default function TimerClock({
   onTimerComplete
 }) {
   const [timeLeft, setTimeLeft] = useState(duration)
-  const [mode, setMode] = useState("timer")
+  const mode = "timer" // Future: denna kan göras dynamic
 
   const radius = 90
   const circumference = 2 * Math.PI * radius
@@ -17,12 +17,10 @@ export default function TimerClock({
   const xy = 100
   const stroke = 10
 
-  // Reset när session stoppas
+  // Reset när duration ändras
   useEffect(() => {
-    if (!isActive) {
-      setTimeLeft(duration)
-    }
-  }, [isActive, duration])
+    setTimeLeft(duration)
+  }, [duration])
 
   // Countdown
   useEffect(() => {

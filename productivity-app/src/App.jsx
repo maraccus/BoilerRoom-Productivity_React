@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 
 import DashboardPage from "./pages/DashboardPage"
 import TimerPage from "./pages/TimerPage"
+import TimerModePage from "./pages/TimerModePage"
 import GraphPage from "./pages/GraphPage"
 import CalendarPage from "./pages/CalendarPage"
 import NotFoundPage from "./pages/NotFoundPage"
@@ -29,6 +30,7 @@ function App() {
         {/* Primary app routes (from dev) */}
         <Routes>
           <Route path="/" element={<DashboardPage/>} />
+          <Route path="/timer/:mode" element={<TimerModePage/>} />
           <Route path="/timer" element={<TimerPage/>} />
           <Route path="/graphs" element={<GraphPage/>} />
           <Route path="/calendar" element={<CalendarPage/>} />

@@ -1,7 +1,7 @@
 import styles from "./ButtonStdRed.module.css";
 
 function ButtonStd({
-  children = "",
+  children,
   onClick,
   disabled = false,
   variant = "primary",
