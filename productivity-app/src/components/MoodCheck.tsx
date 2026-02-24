@@ -1,44 +1,48 @@
 import { useState } from "react";
 import styles from "./MoodCheck.module.css";
 
+// Importera SVG:er som komponenter
+import ExhaustedSVG from "@/assets/MoodCheckEmoji/exhausted.svg?react";
+import TiredSVG from "@/assets/MoodCheckEmoji/tired.svg?react";
+import OkaySVG from "@/assets/MoodCheckEmoji/okay.svg?react";
+import EnergeticSVG from "@/assets/MoodCheckEmoji/energetic.svg?react";
+import ThrivingSVG from "@/assets/MoodCheckEmoji/thriving.svg?react";
+
 interface MoodCheckProps {
   onMoodSelected: (mood: string) => void;
 }
 
 const MOODS = [
-  { emoji: "😴", label: "Utmattad", value: "exhausted" },
-  { emoji: "😴", label: "Trött", value: "tired" },
-  { emoji: "😴", label: "Okej", value: "okay" },
-  { emoji: "😴", label: "Energisk", value: "energetic" },
-  { emoji: "😴", label: "Sprudlande", value: "thriving" },
-];
+  { component: ExhaustedSVG, label: "Utmattad", value: "exhausted" },
+  { component: TiredSVG, label: "Trött", value: "tired" },
+  { component: OkaySVG, label: "Okej", value: "okay" },
+  { component: EnergeticSVG, label: "Energisk", value: "energetic" },
+  { component: ThrivingSVG, label: "Sprudlande", value: "thriving" },
+] as const;
 
 export default function MoodCheck({ onMoodSelected }: MoodCheckProps) {
   const [selectedMood, setSelectedMood] = useState<string | null>(null);
 
   return (
     <div className={styles.container}>
-      {/* Den stora vita cirkeln – samma storlek som timern */}
       <div className={styles.circle}>
-        {/* Centrerat innehåll */}
         <div className={styles.content}>
-          <h2 className={styles.heading}>Hur mår du nu?</h2>
+          <h2 className={styles.heading}>Hur känner du dig?</h2>
 
           <div className={styles.moodGrid}>
             {MOODS.map((mood) => (
               <button
                 key={mood.value}
                 type="button"
-                className={`${styles.moodButton} ${
-                  selectedMood === mood.value ? styles.selected : ""
-                }`}
+                className={`${styles.moodButton} ${selectedMood === mood.value ? styles.selected : ""}`}
                 onClick={() => {
                   setSelectedMood(mood.value);
-                  onMoodSelected(mood.value); // skicka till parent / spara
+                  onMoodSelected(mood.value);
                 }}
+                title={mood.label} // ← tooltip vid hover!
+                aria-label={mood.label}
               >
-                <span className={styles.emoji}>{mood.emoji}</span>
-                <span className={styles.label}>{mood.label}</span>
+                <mood.component className={styles.emojiSvg} />
               </button>
             ))}
           </div>
@@ -46,10 +50,7 @@ export default function MoodCheck({ onMoodSelected }: MoodCheckProps) {
           {selectedMood && (
             <button
               className={styles.continueButton}
-              onClick={() => {
-                // Här kan du t.ex. gå vidare till nästa skärm
-                console.log("Valt humör:", selectedMood);
-              }}
+              onClick={() => console.log("Valt:", selectedMood)}
             >
               Fortsätt
             </button>

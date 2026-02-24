@@ -13,6 +13,16 @@
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
   position: relative;
   overflow: hidden;
+  /* TOMAC: Det här nedan är så att jag får svart text på vit bakgrund även i darkmode. Osäker på vad göra. Marcus sykk. */
+  --local-text: #1a1a1a;
+  background: white;
+}
+
+/* TOMAC: DET HÄR NEDAN ÄR FÖR MÖRK TEXT ÄVEN I DARK MODE. */
+.circle .heading,
+.circle .label,
+.circle .continueButton {
+  color: var(--local-text);
 }
 
 .content {
@@ -22,56 +32,64 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 1.5rem;
   text-align: center;
+  gap: 1.5rem; /* ← AVSTÅNDET MELLAN TEXT OCH EMOJIS! */
 }
 
 .heading {
-  font-size: 2rem;
-  margin: 0 0 2rem 0;
-  color: var(--text);
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: 100;
+  letter-spacing: 0.2px;
 }
 
 .moodGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  width: 100%;
-  max-width: 320px;
-}
-
-.moodButton {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.04);
-  border: 2px solid transparent;
-  border-radius: 16px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: all 0.15s ease;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.7rem;
+  margin: 0;
+  width: 100%;
+  max-width: none;
 }
 
-.moodButton:hover {
-  background: rgba(0, 0, 0, 0.08);
-  transform: translateY(-2px);
-}
-
-.moodButton.selected {
-  background: rgba(100, 200, 255, 0.18);
-  border-color: #64c8ff;
-  transform: scale(1.08);
-}
-
-.emoji {
-  font-size: 3.2rem;
+.emojiSvg {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
 }
 
 .label {
   font-size: 1rem;
   color: var(--text-secondary, #666);
+}
+
+.moodButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    filter 0.2s ease;
+}
+
+.moodButton:hover {
+  transform: scale(1.25);
+  filter: brightness(1.15);
+}
+
+.moodButton:active {
+  transform: scale(0.95);
+}
+
+.moodButton.selected {
+  transform: scale(1.3);
+  filter: brightness(1.3) drop-shadow(0 0 16px rgba(100, 200, 255, 0.6));
 }
 
 .continueButton {
