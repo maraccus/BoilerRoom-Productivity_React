@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styles from "./MoodCheck.module.css";
 
-// Importera SVG:er som komponenter
 import ExhaustedSVG from "@/assets/MoodCheckEmoji/exhausted.svg?react";
 import TiredSVG from "@/assets/MoodCheckEmoji/tired.svg?react";
 import OkaySVG from "@/assets/MoodCheckEmoji/okay.svg?react";
@@ -23,6 +22,9 @@ const MOODS = [
 export default function MoodCheck({ onMoodSelected }: MoodCheckProps) {
   const [selectedMood, setSelectedMood] = useState<string | null>(null);
 
+  // TOMAC: Just nu kommer man till en ful knapp när man trycker på en emoji. Detta är så klart INTE meningen.
+  // Dock osäker på vad göra. Avvaktar tills vidare. Knappen får vara där för att testa emojisarna.
+
   return (
     <div className={styles.container}>
       <div className={styles.circle}>
@@ -39,8 +41,9 @@ export default function MoodCheck({ onMoodSelected }: MoodCheckProps) {
                   setSelectedMood(mood.value);
                   onMoodSelected(mood.value);
                 }}
-                title={mood.label} // ← tooltip vid hover!
+                title={mood.label}
                 aria-label={mood.label}
+                data-mood={mood.value}
               >
                 <mood.component className={styles.emojiSvg} />
               </button>

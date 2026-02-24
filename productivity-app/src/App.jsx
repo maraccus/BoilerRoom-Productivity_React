@@ -27,7 +27,7 @@ function App() {
       <MainContainer>
         <Navigation />
 
-        {/* NOTERA: Jag kommenterar ut allt för att kunna se MoodChecker. */}
+        {/* TOMAC: Jag kommenterar ut allt för att kunna se MoodChecker. */}
         {/* Primary app routes (from dev) */}
         {/* <Routes>
           <Route path="/" element={<DashboardPage />} />

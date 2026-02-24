@@ -1,3 +1,12 @@
+:root {
+  /* TOMAC: Färgerna på Emojis vid Herbert Hoover. Detta är bara ett test. Ändra när färger bestämts. */
+  --mood-exhausted: #5c4b51;
+  --mood-tired: #7d8a99;
+  --mood-okay: #a0a0a0;
+  --mood-energetic: #f4a261;
+  --mood-thriving: #2a9d8f;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -34,7 +43,7 @@
   justify-content: center;
   padding: 1.5rem;
   text-align: center;
-  gap: 1.5rem; /* ← AVSTÅNDET MELLAN TEXT OCH EMOJIS! */
+  gap: 1.5rem; /* TOMAC: AVSTÅNDET MELLAN TEXT OCH EMOJIS */
 }
 
 .heading {
@@ -60,6 +69,10 @@
   flex-shrink: 0;
 }
 
+.emojiSvg path {
+  transition: fill 0.25s ease;
+}
+
 .label {
   font-size: 1rem;
   color: var(--text-secondary, #666);
@@ -76,6 +89,23 @@
   transition:
     transform 0.15s ease,
     filter 0.2s ease;
+}
+
+/* TOMAC: Färg vid Herbert Hoover. */
+.moodButton[data-mood="exhausted"]:hover .emojiSvg path {
+  fill: var(--mood-exhausted);
+}
+.moodButton[data-mood="tired"]:hover .emojiSvg path {
+  fill: var(--mood-tired);
+}
+.moodButton[data-mood="okay"]:hover .emojiSvg path {
+  fill: var(--mood-okay);
+}
+.moodButton[data-mood="energetic"]:hover .emojiSvg path {
+  fill: var(--mood-energetic);
+}
+.moodButton[data-mood="thriving"]:hover .emojiSvg path {
+  fill: var(--mood-thriving);
 }
 
 .moodButton:hover {
