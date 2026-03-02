@@ -40,10 +40,11 @@ export default function Step1() {
   return (
     <ResponsiveContainer width="100%" height={400}>
       <LineChart data={data}>
-        <CartesianGrid stroke="var(--chart-line1)" strokeDasharray="3 3" />
+        <CartesianGrid stroke="var(--text)" strokeDasharray="3 3" />
 
         <XAxis
           dataKey="date"
+          stroke="var(--text)"
           tickFormatter={(value) =>
             new Date(value).toLocaleDateString("sv-SE", {
               month: "short",
@@ -52,7 +53,10 @@ export default function Step1() {
           }
         />
 
-        <YAxis tickFormatter={formatMinutes} />
+        <YAxis 
+        stroke="var(--text)"
+        tickFormatter={formatMinutes} 
+        />
 
         <Tooltip formatter={(value) => formatMinutes(value)} />
 
