@@ -59,7 +59,8 @@ export default function Step1() {
         />
 
         <Tooltip 
-        contentStyle={{backgroundColor: "var(--btn)",
+        contentStyle={{
+            backgroundColor: "var(--btn)",
             border: "1px solid var(--btn-text)"
         }}
         labelStyle={{color: "var(--btn-text)"}}
