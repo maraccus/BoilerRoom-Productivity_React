@@ -58,7 +58,14 @@ export default function Step1() {
         tickFormatter={formatMinutes} 
         />
 
-        <Tooltip formatter={(value) => formatMinutes(value)} />
+        <Tooltip 
+        contentStyle={{backgroundColor: "var(--btn)",
+            border: "1px solid var(--btn-text)"
+        }}
+        labelStyle={{color: "var(--btn-text)"}}
+        itemStyle={{color: "var(--btn-text)"}}
+        formatter={(value) => formatMinutes(value)} 
+        />
 
         <Line
           type="monotone"
