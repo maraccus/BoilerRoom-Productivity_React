@@ -10,9 +10,17 @@ const TimerModePage: React.FC = () => {
     return <div>Mode not found</div>;
   }
 
+  // If the user somehow navigates to an unsupported mode we fall back to custom.
+  const validModes = ['custom', 'meeting'];
+  const useMode = validModes.includes(mode) ? mode : 'custom';
+
+  if (useMode !== mode) {
+    console.warn(`Unknown timer mode "${mode}", falling back to custom.`);
+  }
+
   return (
     <Timer 
-      mode={mode} 
+      mode={useMode} 
       onBack={() => navigate('/')} 
     />
   );

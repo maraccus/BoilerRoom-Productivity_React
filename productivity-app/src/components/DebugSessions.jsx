@@ -25,7 +25,7 @@ export default function DebugSessions({ sessions }) {
         <ul style={{ marginTop: '0.5rem', paddingLeft: '1rem' }}>
           {todaysSessions.map((s, i) => (
             <li key={i}>
-              {s.start} → {s.end} ({s.duration}s)
+              {s.mode ? `[${s.mode}] ` : ''}{s.start} → {s.end} ({s.duration}s)
             </li>
           ))}
         </ul>

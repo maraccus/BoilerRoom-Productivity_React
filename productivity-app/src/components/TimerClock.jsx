@@ -5,48 +5,49 @@ export default function TimerClock({
   isActive,
   isPaused,
   duration,
-  onTimerComplete
+  onTimerComplete,
+  variant = 'timer'
 }) {
-  const [timeLeft, setTimeLeft] = useState(duration)
-  const mode = "timer" // Future: denna kan göras dynamic
+  
+  const [time, setTime] = useState(() => (variant === 'stopwatch' ? 0 : duration));
 
-  const radius = 90
-  const circumference = 2 * Math.PI * radius
-  const progress = timeLeft / duration
-  const offset = circumference * (1 - progress)
-  const xy = 100
-  const stroke = 10
+  const radius = 90;
+  const circumference = 2 * Math.PI * radius;
+  const progress = variant === 'timer' && duration > 0 ? time / duration : 1;
+  const offset = circumference * (1 - progress);
+  const xy = 100;
+  const stroke = 10;
 
-  // Reset när duration ändras
+
+  // Tick interval
   useEffect(() => {
-    setTimeLeft(duration)
-  }, [duration])
-
-  // Countdown
-  useEffect(() => {
-    if (!isActive || isPaused) return
+    if (!isActive || isPaused) return;
 
     const interval = setInterval(() => {
-      setTimeLeft(t => {
-        if (t <= 1) {
-          clearInterval(interval)
-          onTimerComplete?.()
-          return 0
+      setTime(t => {
+        if (variant === 'stopwatch') {
+          return t + 1;
         }
-        return t - 1
-      })
-    }, 1000)
 
-    return () => clearInterval(interval)
-  }, [isActive, isPaused, onTimerComplete])
+        // countdown
+        if (t <= 1) {
+          clearInterval(interval);
+          onTimerComplete?.();
+          return 0;
+        }
+        return t - 1;
+      });
+    }, 1000);
 
-  const minutes = String(Math.floor(timeLeft / 60)).padStart(2, '0')
-  const seconds = String(timeLeft % 60).padStart(2, '0')
+    return () => clearInterval(interval);
+  }, [isActive, isPaused, variant, onTimerComplete]);
+
+  const minutes = String(Math.floor(time / 60)).padStart(2, '0');
+  const seconds = String(time % 60).padStart(2, '0');
 
   return (
-  <>
-    {/* PICK TIME */}
-    {mode === "select" && (
+    <>
+      {/* TIMER / STOPWATCH */}
       <div className={styles.timer}>
         <svg className={styles.svg} viewBox="0 0 200 200">
           <circle
@@ -57,7 +58,19 @@ export default function TimerClock({
             strokeWidth={stroke}
             fill="none"
           />
-          
+          {variant === 'timer' && (
+            <circle
+              className={styles.progress}
+              cx={xy}
+              cy={xy}
+              r={radius}
+              strokeWidth={stroke}
+              fill="none"
+              strokeDasharray={circumference}
+              strokeDashoffset={offset}
+              transform="rotate(-90 100 100)"
+            />
+          )}
         </svg>
 
         <div className={styles.currentTime}>
@@ -71,46 +84,6 @@ export default function TimerClock({
           {minutes}:{seconds}
         </div>
       </div>
-    )}
-
-    {/* TIMER */}
-    {mode === "timer" && (
-      <div className={styles.timer}>
-        <svg className={styles.svg} viewBox="0 0 200 200">
-          <circle
-            className={styles.background}
-            cx={xy}
-            cy={xy}
-            r={radius}
-            strokeWidth={stroke}
-            fill="none"
-          />
-          <circle
-            className={styles.progress}
-            cx={xy}
-            cy={xy}
-            r={radius}
-            strokeWidth={stroke}
-            fill="none"
-            strokeDasharray={circumference}
-            strokeDashoffset={offset}
-            transform="rotate(-90 100 100)"
-          />
-        </svg>
-
-        <div className={styles.currentTime}>
-          {new Date().toLocaleTimeString('sv-SE', {
-            hour: '2-digit',
-            minute: '2-digit'
-          })}
-        </div>
-
-        <div className={styles.time}>
-          {minutes}:{seconds}
-        </div>
-      </div>
-    )}
-  </>
-)
-      
+    </>
+  );
 }
