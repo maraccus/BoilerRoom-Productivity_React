@@ -1,38 +1,92 @@
 .navBar {
-    /* background-color: aquamarine; */
-    width: 100%;
-    height: 6rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-    align-items: center;
-    padding: 0 2rem; /* Padding vänster och höger*/
-    gap: .4rem;
+  /* background-color: aquamarine; */
+  width: 100%;
+  height: 6rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+  padding: 0 2rem; /* Padding vänster och höger*/
+  gap: 0.4rem;
 }
 
 .iconBtn {
-    background: none;
-    padding: 0;
-    border: 0;
-    width: 2rem;
-    height: 2rem;
-    cursor: pointer;
-    color: var(--icon);
-    transition: color 0.2s ease, transform 0.2s ease;
+  background: none;
+  padding: 0;
+  border: 0;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  color: var(--icon);
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .iconBtn:hover {
-    color: var(--icon-hover);
-    transform: scale(1.25);
+  color: var(--icon-hover);
+  transform: scale(1.25);
 }
 
 .icon {
-    width: 100%;
-    height: 100%;
-    display: block;
-    fill: currentColor;
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: currentColor;
 }
 
 .spacer {
-    width: 1rem;
+  width: 1rem;
+}
+
+/* NEW */
+
+.categoryHeading {
+  font-size: 1.2rem; /* Lite mindre än huvudheading */
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+  color: var(--local-text); /* Svart text i cirkeln */
+}
+
+.categorySelect {
+  width: 80%; /* Bred för att passa i cirkeln */
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: white;
+  color: var(--local-text);
+  cursor: pointer;
+  margin-bottom: 1rem; /* Avstånd till "Hur känner du dig?" */
+}
+
+.categorySelect:focus {
+  outline: none;
+  border-color: var(--primary, #4a90e2);
+}
+
+/* NEW */
+
+.categoryHeading {
+  font-size: 1.2rem; /* Lite mindre än huvudheading */
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+  color: var(--local-text); /* Svart text i cirkeln */
+}
+
+.categorySelect {
+  width: 80%; /* Bred för att passa i cirkeln */
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: white;
+  color: var(--local-text);
+  cursor: pointer;
+  margin-bottom: 1rem; /* Avstånd till "Hur känner du dig?" */
+}
+
+.categorySelect:focus {
+  outline: none;
+  border-color: var(--primary, #4a90e2);
 }
