@@ -8,9 +8,8 @@ import ModeCard from "./ModeCard";
 // TypeScript-felen var bara "statiska" editor-varningar, inte runtime-fel.
 // Därför varningar, men allt fungerade.
 // Fixade med src/vite-env.d.ts. Går även med @ts-ignore, men dåligt långsiktigt.
-import DeepWorkIcon from "../assets/ModeCard/deepwork.svg?react";
-import MeetingIcon from "../assets/ModeCard/meeting.svg?react";
-import BreakIcon from "../assets/ModeCard/break.svg?react";
+import ClockIcon from "../assets/ModeCard/clock.svg?react"; // generic timer icon
+import StopwatchIcon from "../assets/ModeCard/stopwatch.svg?react"; // stopwatch for meetings
 
 // Här definieras en typ för props till NavTimerModes
 interface NavTimerModesProps {
@@ -26,24 +25,20 @@ const NavTimerModes: React.FC<NavTimerModesProps> = ({ onModeSelect }) => {
     <>
       <ContainerV>
         <div className="cards-container">
-          <h1>What are we tracking?</h1>
+          <h1>Choose a timer</h1>
         </div>
         <ContainerH>
           <ModeCard
-            title="Work"
-            Icon={DeepWorkIcon}
-            onClick={() => handleCardClick("deepwork")}
+            title="Custom Timer"
+            Icon={ClockIcon}
+            onClick={() => handleCardClick("custom")}
           />
           <ModeCard
-            title="Meeting"
-            Icon={MeetingIcon}
+            title="Stopwatch"
+            Icon={StopwatchIcon}
             onClick={() => handleCardClick("meeting")}
           />
-          <ModeCard
-            title="Break"
-            Icon={BreakIcon}
-            onClick={() => handleCardClick("break")}
-          />
+          {/* only two options now */}
         </ContainerH>
       </ContainerV>
     </>
