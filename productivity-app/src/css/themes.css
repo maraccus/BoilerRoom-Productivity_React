@@ -1,45 +1,49 @@
 :root {
-    --button-br: 1rem;
+  --button-br: 1rem;
 }
 
 body.theme-light {
-    --text: rgb(73, 73, 73);
-    --icon: #494949;
-    --icon-hover: #707070;
-    --bg: #D7D7D7;
-    --bg-green: #b1d1a3;
-    --btn: #494949;
-    --btn-red: #934444;
-    --btn-hover: #5c5c5c;
-    --btn-red-hover: #a45353;
-    --btn-text: #ffffff;
-    --btn-icon: #ffffff;
-    --card-bg: #494949;
-    --card-bg-hover: #515151;
-    --text-graph: #494949;
-    --team-icon: rgb(64, 99, 139);
-    --team-icon-text: rgb(255, 255, 255);
-    --timer-bg: #00000031;
-    --calendar-line: rgba(73,73,73,.4);
+  --text: rgb(73, 73, 73);
+  --icon: #494949;
+  --icon-hover: #707070;
+  --bg: #d7d7d7;
+  --bg-green: #b1d1a3;
+  --btn: #494949;
+  --btn-red: #934444;
+  --btn-hover: #5c5c5c;
+  --btn-red-hover: #a45353;
+  --btn-text: #ffffff;
+  --btn-icon: #ffffff;
+  --card-bg: #494949;
+  --card-bg-hover: #515151;
+  --text-graph: #494949;
+  --team-icon: rgb(64, 99, 139);
+  --team-icon-text: rgb(255, 255, 255);
+  --timer-bg: #00000031;
+  --calendar-line: rgba(73, 73, 73, 0.4);
+  --moodcheck-bg: #404040;
+  --moodcheck-text: #d1d1d1;
 }
 
 body.theme-dark {
-    --text: #ffffff;
-    --icon: #858585;
-    --icon-hover: #ffffff;
-    --bg: #34353D;
-    --bg-green: #2F3C2C;
-    --btn: #34353D;
-    --btn-red: #4a2d2d;
-    --btn-hover: #37383f;
-    --btn-red-hover: #543434;
-    --btn-text: #ffffff;
-    --btn-icon: #ffffff;
-    --card-bg: #4a4b57;
-    --card-bg-hover: #5a5b6a;
-    --text-graph: rgba(255,255,255,.4);
-    --team-icon: rgb(64, 99, 139);
-    --team-icon-text: rgb(255, 255, 255);
-    --timer-bg: #00000046;
-    --calendar-line: rgba(255,255,255,.4);
+  --text: #ffffff;
+  --icon: #858585;
+  --icon-hover: #ffffff;
+  --bg: #34353d;
+  --bg-green: #2f3c2c;
+  --btn: #34353d;
+  --btn-red: #4a2d2d;
+  --btn-hover: #37383f;
+  --btn-red-hover: #543434;
+  --btn-text: #ffffff;
+  --btn-icon: #ffffff;
+  --card-bg: #4a4b57;
+  --card-bg-hover: #5a5b6a;
+  --text-graph: rgba(255, 255, 255, 0.4);
+  --team-icon: rgb(64, 99, 139);
+  --team-icon-text: rgb(255, 255, 255);
+  --timer-bg: #00000046;
+  --calendar-line: rgba(255, 255, 255, 0.4);
+  --moodcheck-bg: #ffffff;
+  --moodcheck-text: #404040;
 }
