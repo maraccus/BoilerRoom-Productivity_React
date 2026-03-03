@@ -1,58 +1,43 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./MoodCheck.module.css";
 
-import ExhaustedSVG from "@/assets/MoodCheckEmoji/exhausted.svg?react";
-import TiredSVG from "@/assets/MoodCheckEmoji/tired.svg?react";
-import OkaySVG from "@/assets/MoodCheckEmoji/okay.svg?react";
-import EnergeticSVG from "@/assets/MoodCheckEmoji/energetic.svg?react";
-import ThrivingSVG from "@/assets/MoodCheckEmoji/thriving.svg?react";
-
 import ButtonStd from "./ButtonStd";
+import { useMoodForm, MoodValue } from "@/hooks/useMoodForm";
+import { useMoodContext } from "@/contexts/MoodContext";
 
-interface MoodCheckProps {
-  onMoodSelected: (mood: string) => void;
-}
-
-const MOODS = [
-  { component: ExhaustedSVG, label: "Utmattad", value: "exhausted" },
-  { component: TiredSVG, label: "Trött", value: "tired" },
-  { component: OkaySVG, label: "Okej", value: "okay" },
-  { component: EnergeticSVG, label: "Energisk", value: "energetic" },
-  { component: ThrivingSVG, label: "Sprudlande", value: "thriving" },
-] as const;
-
-const CATEGORIES = [
-  { label: "Deep work", value: "deep_work" },
-  { label: "Möte", value: "meeting" },
-  { label: "Paus", value: "pause" },
-];
-
-export default function MoodCheck({ onMoodSelected }: MoodCheckProps) {
-  const [selectedMood, setSelectedMood] = useState<string | null>(null);
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-
+export default function MoodCheck() {
   const navigate = useNavigate();
 
-  const handleLog = () => {
-    if (!selectedMood || !selectedCategory) return;
+  let contextValue;
+  try {
+    contextValue = useMoodContext();
+  } catch (error) {
+    console.error("MoodContext ERROR:", error);
+    return (
+      <div style={{ color: "red", padding: "2rem", textAlign: "center" }}>
+        FEL: MoodCheck kunde inte hitta MoodProvider. Kontrollera att MoodCheck
+        ligger INUTI MoodProvider i App.tsx.
+      </div>
+    );
+  }
 
-    const logEntry = {
-      mood: selectedMood,
-      category: selectedCategory,
-      timestamp: new Date().toISOString(),
-    };
+  const { onMoodSelected } = contextValue;
 
-    // Sparae i localStorage – överskriver tidigare logg (enklast just nu)
-    localStorage.setItem("latestMoodLog", JSON.stringify(logEntry));
-
-    onMoodSelected(selectedMood);
-
-    // Kolla att det fungerar att gå tillbaka till startsidan när du mergat med DEV
+  const {
+    state,
+    setMood,
+    setCategory,
+    handleLog,
+    isFormComplete,
+    MOODS,
+    CATEGORIES,
+  } = useMoodForm((mood) => {
+    onMoodSelected(mood);
     navigate("/");
-  };
+  });
 
-  const isFormComplete = Boolean(selectedMood && selectedCategory);
+  // Kontrollerar att komponenten når hit:
+  console.log("MoodCheck renderades! State:", state);
 
   return (
     <div className={styles.container}>
@@ -62,8 +47,8 @@ export default function MoodCheck({ onMoodSelected }: MoodCheckProps) {
 
           <select
             className={styles.categorySelect}
-            value={selectedCategory || ""}
-            onChange={(e) => setSelectedCategory(e.target.value || null)}
+            value={state.selectedCategory || ""}
+            onChange={(e) => setCategory(e.target.value as CategoryValue)}
             aria-label="Välj kategori"
           >
             <option value="" disabled>
@@ -76,7 +61,7 @@ export default function MoodCheck({ onMoodSelected }: MoodCheckProps) {
             ))}
           </select>
 
-          <h2 className={styles.heading}>Hur känner du dig?</h2>
+          <h2 className={styles.heading}>Ange humör:</h2>
 
           <div className={styles.moodGrid}>
             {MOODS.map((mood) => (
@@ -84,11 +69,9 @@ export default function MoodCheck({ onMoodSelected }: MoodCheckProps) {
                 key={mood.value}
                 type="button"
                 className={`${styles.moodButton} ${
-                  selectedMood === mood.value ? styles.selected : ""
+                  state.selectedMood === mood.value ? styles.selected : ""
                 }`}
-                onClick={() => {
-                  setSelectedMood(mood.value);
-                }}
+                onClick={() => setMood(mood.value)}
                 title={mood.label}
                 aria-label={mood.label}
                 data-mood={mood.value}

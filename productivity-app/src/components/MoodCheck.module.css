@@ -14,11 +14,16 @@
   min-height: 70vh;
 }
 
-.circle {
-  width: var(--timer-size);
+/* Detta här nedan gäller för .circle, om du vill ha tillbaka cirkeln. 
+width: var(--timer-size);
   height: var(--timer-size);
+border-radius: 15%; */
+
+.circle {
+  width: 300px;
+  height: 400px;
+  border-radius: 15px;
   background: white;
-  border-radius: 50%;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
   position: relative;
   overflow: hidden;

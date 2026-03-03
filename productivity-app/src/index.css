@@ -1,3 +1,7 @@
+:root {
+  --timer-size: 400px;
+}
+
 *,
 *::before,
 *::after {
