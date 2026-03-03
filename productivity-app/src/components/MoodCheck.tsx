@@ -82,18 +82,23 @@ export default function MoodCheck() {
           </div>
 
           <div className={styles.logButtonWrapper}>
-            <ButtonStd
-              onClick={handleLog}
-              disabled={!isFormComplete}
-              variant="primary"
-              title={
-                !isFormComplete
-                  ? "Välj både kategori och humör för att kunna logga"
-                  : undefined
-              }
+            <span
+              className={`${styles.tooltipWrapper} ${isFormComplete ? styles.enabled : ""}`}
+              aria-describedby={isFormComplete ? undefined : "log-hint"}
             >
-              Logga
-            </ButtonStd>
+              <ButtonStd
+                onClick={handleLog}
+                disabled={!isFormComplete}
+                variant="primary"
+              >
+                Logga
+              </ButtonStd>
+            </span>
+            {!isFormComplete && (
+              <div id="log-hint" className={styles.srOnly}>
+                Välj kategori och humör för att kunna logga
+              </div>
+            )}
           </div>
         </div>
       </div>
