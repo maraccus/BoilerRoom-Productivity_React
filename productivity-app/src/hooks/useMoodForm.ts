@@ -33,11 +33,13 @@ type FormAction =
   | { type: "SET_CATEGORY"; payload: CategoryValue }
   | { type: "RESET" };
 
+// Default-värde:
 const initialState: FormState = {
   selectedMood: null,
   selectedCategory: null,
 };
 
+// Reducer för uppdateringar (state-förändringar):
 function formReducer(state: FormState, action: FormAction): FormState {
   switch (action.type) {
     case "SET_MOOD":
@@ -55,6 +57,7 @@ function formReducer(state: FormState, action: FormAction): FormState {
 export function useMoodForm(onComplete: (mood: MoodValue) => void) {
   const [state, dispatch] = useReducer(formReducer, initialState);
 
+  // Loggning och callback
   const handleLog = () => {
     if (!state.selectedMood || !state.selectedCategory) return;
 

@@ -81,6 +81,7 @@ export default function MoodCheck() {
             ))}
           </div>
 
+          {/* isFormComplete: Aktiverar/disablerar knapp */}
           <div className={styles.logButtonWrapper}>
             <span
               className={`${styles.tooltipWrapper} ${isFormComplete ? styles.enabled : ""}`}
