@@ -29,8 +29,6 @@ const Timer: React.FC<TimerProps> = ({ mode, onBack }) => {
     return 25 * 60;
   }, [isStopwatchRoute, isCustomRoute, numericMinutes]);
 
-  // When a timer is already running, always show that active timer
-  // regardless of the current route. Otherwise, use the route mode/duration.
   const effectiveMode: TimerMode = state.isActive && state.mode ? state.mode : mode;
   const isStopwatch = effectiveMode === 'stopwatch';
   const effectiveDuration =

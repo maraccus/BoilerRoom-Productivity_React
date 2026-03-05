@@ -9,8 +9,7 @@ export default function TimerClock({
   variant = 'timer',
   startTime,
 }) {
-  // when we mount (e.g. after navigating back), derive the initial
-  // elapsed time from the global startTime so the timer "catches up"
+  
   const [elapsed, setElapsed] = useState(() => {
     if (!startTime) return 0;
     const startedAt = startTime instanceof Date ? startTime : new Date(startTime);

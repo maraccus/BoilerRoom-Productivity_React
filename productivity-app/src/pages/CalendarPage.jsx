@@ -1,8 +1,9 @@
 import React from 'react'
+import CalendarHistory from '../components/CalendarHistory';
 
 const CalendarPage = () => {
   return (
-    <h1>Calendar Page</h1>
+    <CalendarHistory />
   )
 }
 
