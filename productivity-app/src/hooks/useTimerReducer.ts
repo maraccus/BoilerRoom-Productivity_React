@@ -1,4 +1,5 @@
-import { useReducer, useCallback } from 'react';
+import { useReducer, useCallback, useEffect } from 'react';
+import type { TimerMode } from '../timerModes';
 
 export interface Session {
   mode: string;
@@ -12,10 +13,12 @@ export interface TimerState {
   isPaused: boolean;
   startTime: Date | null;
   sessions: Record<string, Session[]>;
+  mode: TimerMode | null;
+  durationSeconds: number;
 }
 
 export type TimerAction =
-  | { type: 'START' }
+  | { type: 'START'; payload: { mode: TimerMode; durationSeconds: number } }
   | { type: 'PAUSE' }
   | { type: 'RESUME' }
   | { type: 'STOP' }
@@ -30,6 +33,8 @@ const timerReducer = (state: TimerState, action: TimerAction): TimerState => {
         isActive: true,
         isPaused: false,
         startTime: new Date(),
+        mode: action.payload.mode,
+        durationSeconds: action.payload.durationSeconds,
       };
 
     case 'PAUSE':
@@ -86,9 +91,21 @@ export const useTimerReducer = () => {
       const stored = localStorage.getItem('timerSessions');
       return stored ? JSON.parse(stored) : {};
     })(),
+    mode: null,
+    durationSeconds: 0,
   });
 
-  const start = useCallback(() => dispatch({ type: 'START' }), []);
+  // Persist session history whenever it changes so callers
+  // don't need to repeat this side effect in each component.
+  useEffect(() => {
+    localStorage.setItem('timerSessions', JSON.stringify(state.sessions));
+  }, [state.sessions]);
+
+  const start = useCallback(
+    (mode: TimerMode, durationSeconds: number) =>
+      dispatch({ type: 'START', payload: { mode, durationSeconds } }),
+    [],
+  );
   const pause = useCallback(() => dispatch({ type: 'PAUSE' }), []);
   const resume = useCallback(() => dispatch({ type: 'RESUME' }), []);
   const stop = useCallback(() => dispatch({ type: 'STOP' }), []);

@@ -9,8 +9,13 @@ import HomeIcon from "../assets/house-regular-full.svg?react"
 import CalendarIcon from "../assets/calendar-regular-full.svg?react";
 import ChartIcon from "../assets/chart-simple-solid-full.svg?react";
 import ClockIcon from "../assets/clock-regular-full.svg?react";
+import { useTimer } from "../TimerContext";
 
 const Navigation = () => {
+  const { state } = useTimer();
+  const activeMode = state.isActive ? state.mode : null;
+  const timerHref = activeMode ? `/timer/${activeMode}` : "/timer";
+
   return (
     <nav className={styles.navBar}>
       <NavLink to="/">
@@ -18,7 +23,7 @@ const Navigation = () => {
           <HomeIcon className={styles.icon} />
         </button>    
       </NavLink>
-      <NavLink to="/timer">
+      <NavLink to={timerHref}>
         <button className={styles.iconBtn} aria-label="Timer">
           <ClockIcon className={styles.icon} />
         </button>

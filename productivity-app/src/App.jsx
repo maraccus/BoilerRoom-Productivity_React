@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import MainContainer from "./components/MainContainer";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
+import { TimerProvider } from "./TimerContext";
 
 import DashboardPage from "./pages/DashboardPage"
 import TimerPage from "./pages/TimerPage"
@@ -25,19 +26,21 @@ function App() {
   return (
     <>
       <MainContainer>
-        <Navigation />
+        <TimerProvider>
+          <Navigation />
 
-        {/* Primary app routes (from dev) */}
-        <Routes>
-          <Route path="/" element={<DashboardPage/>} />
-          <Route path="/timer/:mode" element={<TimerModePage/>} />
-          <Route path="/timer" element={<TimerPage/>} />
-          <Route path="/graphs" element={<GraphPage/>} />
-          <Route path="/calendar" element={<CalendarPage/>} />
-          <Route path="*" element={<NotFoundPage/>} />
-        </Routes>
+          {/* Primary app routes (from dev) */}
+          <Routes>
+            <Route path="/" element={<DashboardPage/>} />
+            <Route path="/timer/:mode" element={<TimerModePage/>} />
+            <Route path="/timer" element={<TimerPage/>} />
+            <Route path="/graphs" element={<GraphPage/>} />
+            <Route path="/calendar" element={<CalendarPage/>} />
+            <Route path="*" element={<NotFoundPage/>} />
+          </Routes>
 
-        <Footer />
+          <Footer />
+        </TimerProvider>
       </MainContainer>
     </>
   );

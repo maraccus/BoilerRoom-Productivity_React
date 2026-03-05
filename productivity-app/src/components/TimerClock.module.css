@@ -20,7 +20,7 @@
 .progress {
   stroke: var(--text);
   stroke-linecap: round;
-  transition: stroke-dashoffset 0.45s linear, stroke 0.3s ease;
+  transition: stroke-dashoffset 0.12s linear, stroke 0.3s ease;
 }
 
 .time {
@@ -33,7 +33,7 @@
   font-weight: 600;
   color: var(--text);
   user-select: none;
-  -webkit-user-select: none; /* Safari */
+  -webkit-user-select: none; 
 }
 
 .currentTime {
@@ -47,5 +47,5 @@
   font-weight: 400;
   color: var(--text);
   user-select: none;
-  -webkit-user-select: none; /* Safari */
+  -webkit-user-select: none; 
 }
