@@ -8,7 +8,7 @@ interface MoodContextType {
 // Context här:
 const MoodContext = createContext<MoodContextType | undefined>(undefined);
 
-// Custom Hook:
+// Custom Hook, gör handleMoodSelected tillgänglig för MoodCheck (App.tsx):
 export function useMoodContext(): MoodContextType {
   const context = useContext(MoodContext);
 
