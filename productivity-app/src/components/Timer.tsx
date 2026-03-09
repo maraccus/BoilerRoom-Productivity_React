@@ -4,7 +4,7 @@ import ButtonStd from './ButtonStd';
 import ButtonStdRed from './ButtonStdRed';
 import ContainerV from './ContainerV';
 import ContainerH from './ContainerH';
-import MoodLogModal from './MoodLogModal';
+import MoodLogForm from './MoodLogForm';
 import type { Session } from '../hooks/useTimerReducer';
 import { useTimer } from '../TimerContext';
 import { getTimerModeLabel, type TimerMode } from '../timerModes';
@@ -98,6 +98,20 @@ const Timer: React.FC<TimerProps> = ({ mode, onBack }) => {
     setShowMoodLog(false);
   };
 
+  if (showMoodLog && pendingSession) {
+    return (
+      <ContainerV>
+        <h2>Logga tidsperiod</h2>
+
+        <MoodLogForm onCancel={handleCancelMoodLog} onSubmit={handleMoodLog} />
+
+        <ButtonStd onClick={onBack}>
+          <p>Back to Modes</p>
+        </ButtonStd>
+      </ContainerV>
+    );
+  }
+
   return (
     <ContainerV>
       <h2>{getTimerModeLabel(effectiveMode)}</h2>
@@ -156,12 +170,6 @@ const Timer: React.FC<TimerProps> = ({ mode, onBack }) => {
       <ButtonStd onClick={onBack}>
         <p>Back to Modes</p>
       </ButtonStd>
-
-      <MoodLogModal
-        open={showMoodLog}
-        onCancel={handleCancelMoodLog}
-        onSubmit={handleMoodLog}
-      />
     </ContainerV>
   );
 };
