@@ -5,78 +5,64 @@ export default function TimerClock({
   isActive,
   isPaused,
   duration,
-  onTimerComplete
+  onTimerComplete,
+  variant = 'timer',
+  startTime,
 }) {
-  const [timeLeft, setTimeLeft] = useState(duration)
-  const [mode, setMode] = useState("timer")
+  
+  const [elapsed, setElapsed] = useState(() => {
+    if (!startTime) return 0;
+    const startedAt = startTime instanceof Date ? startTime : new Date(startTime);
+    return (Date.now() - startedAt.getTime()) / 1000;
+  });
 
-  const radius = 90
-  const circumference = 2 * Math.PI * radius
-  const progress = timeLeft / duration
-  const offset = circumference * (1 - progress)
-  const xy = 100
-  const stroke = 10
+  const radius = 90;
+  const circumference = 2 * Math.PI * radius;
+  const progress =
+    variant === 'timer'
+      ? duration > 0
+        ? Math.max((duration - elapsed) / duration, 0) 
+        : 1
+      : (elapsed % 60) / 60; 
+  const offset = circumference * (1 - progress);
+  const xy = 100;
+  const stroke = 10;
 
-  // Reset när session stoppas
   useEffect(() => {
-    if (!isActive) {
-      setTimeLeft(duration)
-    }
-  }, [isActive, duration])
-
-  // Countdown
-  useEffect(() => {
-    if (!isActive || isPaused) return
+    if (!isActive || isPaused) return;
 
     const interval = setInterval(() => {
-      setTimeLeft(t => {
-        if (t <= 1) {
-          clearInterval(interval)
-          onTimerComplete?.()
-          return 0
+      setElapsed(prev => {
+        const step = 0.1;
+        const next = prev + step;
+
+        if (variant === 'timer' && duration > 0) {
+          if (next >= duration) {
+            onTimerComplete?.();
+            return duration;
+          }
         }
-        return t - 1
-      })
-    }, 1000)
 
-    return () => clearInterval(interval)
-  }, [isActive, isPaused, onTimerComplete])
+        return next;
+      });
+    }, 100);
 
-  const minutes = String(Math.floor(timeLeft / 60)).padStart(2, '0')
-  const seconds = String(timeLeft % 60).padStart(2, '0')
+    return () => clearInterval(interval);
+  }, [isActive, isPaused, variant, duration, onTimerComplete]);
+
+  const totalSeconds =
+    variant === 'stopwatch'
+      ? Math.floor(elapsed)
+      : duration > 0
+        ? Math.max(duration - Math.floor(elapsed), 0)
+        : 0;
+
+  const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, '0');
+  const seconds = String(totalSeconds % 60).padStart(2, '0');
 
   return (
-  <>
-    {/* PICK TIME */}
-    {mode === "select" && (
-      <div className={styles.timer}>
-        <svg className={styles.svg} viewBox="0 0 200 200">
-          <circle
-            className={styles.background}
-            cx={xy}
-            cy={xy}
-            r={radius}
-            strokeWidth={stroke}
-            fill="none"
-          />
-          
-        </svg>
-
-        <div className={styles.currentTime}>
-          {new Date().toLocaleTimeString('sv-SE', {
-            hour: '2-digit',
-            minute: '2-digit'
-          })}
-        </div>
-
-        <div className={styles.time}>
-          {minutes}:{seconds}
-        </div>
-      </div>
-    )}
-
-    {/* TIMER */}
-    {mode === "timer" && (
+    <>
+      {/* TIMER / STOPWATCH */}
       <div className={styles.timer}>
         <svg className={styles.svg} viewBox="0 0 200 200">
           <circle
@@ -111,8 +97,6 @@ export default function TimerClock({
           {minutes}:{seconds}
         </div>
       </div>
-    )}
-  </>
-)
-      
+    </>
+  );
 }

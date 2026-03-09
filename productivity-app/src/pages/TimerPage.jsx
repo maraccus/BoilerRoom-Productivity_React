@@ -1,11 +1,14 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import ContainerH from "../components/ContainerH";
-import TimerWrapper from "../components/TimerWrapper";
+import Timer from "../components/Timer";
 
 const TimerPage = () => {
+  const navigate = useNavigate();
+  // default to custom timer when no mode is specified
   return (
     <ContainerH>
-      <TimerWrapper />
+      <Timer mode="custom" onBack={() => navigate('/')} />
     </ContainerH>
   )
 }

@@ -35,7 +35,7 @@
   font-weight: 600;
   color: var(--text);
   user-select: none;
-  -webkit-user-select: none; /* Safari */
+  -webkit-user-select: none; 
 }
 
 .currentTime {
@@ -49,5 +49,10 @@
   font-weight: 400;
   color: var(--text);
   user-select: none;
+<<<<<<< HEAD
   -webkit-user-select: none; /* Safari */
 }
+=======
+  -webkit-user-select: none; 
+}
+>>>>>>> fa73d5b2a52d05432c3c48ea3139023eccfe1e72
