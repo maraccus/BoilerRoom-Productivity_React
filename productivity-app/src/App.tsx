@@ -25,8 +25,29 @@ function App() {
     document.body.classList.add(`theme-${theme}`);
   }, [theme]);
 
-  const handleMoodSelected = (mood) => {
-    console.log("Humör loggat:", mood);
+  const handleMoodSelected = (mood: MoodValue) => {
+    // ----------------------------------------------------------------
+    //          TILLFÄLLIG PLATS – VÄNTAR PÅ RIKTIG IMPLEMENTATION
+    // ----------------------------------------------------------------
+    // När vi kopplar ihop med:
+    //   • backend API
+    //   • global state (Zustand/Redux/Context)
+    //   • toast-notifikationer
+    //   • event-spårning
+    // så ska all logik flyttas hit eller till en dedikerad hook/funktion
+    //
+    // Exempel på hur det kan se ut senare:
+    //
+    // try {
+    //   await moodService.log({ mood, timestamp: new Date() });
+    //   toast.success("Humör sparat!");
+    //   trackEvent("mood_logged", { value: mood });
+    // } catch (err) {
+    //   toast.error("Kunde inte spara humör");
+    //   reportError(err);
+    // }
+    //
+    // console.log("Humör loggat:", mood); // ← borttagen
   };
 
   return (
