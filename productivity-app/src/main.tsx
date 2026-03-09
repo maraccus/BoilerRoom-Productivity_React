@@ -8,7 +8,7 @@ import "./css/themes.css";
 
 // Notera: Jag ändrade från .jsx till .tsx för att stödja full TypeScript-syntax (Tomac)
 // Vet ICKE hur detta kommer att fungera när vi mergar min branch.
-import App from "./App.tsx";
+import App from "./App";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <StrictMode>
