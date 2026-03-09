@@ -31,7 +31,7 @@ export default function MoodCheck() {
     isFormComplete,
     MOODS,
     CATEGORIES,
-  } = useMoodForm((mood) => {
+  } = useMoodForm(({ mood }) => {
     onMoodSelected(mood);
     navigate("/");
   });

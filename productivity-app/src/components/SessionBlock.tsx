@@ -15,12 +15,21 @@ const SessionBlock: React.FC<SessionBlockProps> = ({ session }) => {
 
   if (heightPercent <= 0) return null;
 
-  const title = [
+  const details = [
     `Start: ${session.start.slice(0, 5)}`,
     `End: ${session.end.slice(0, 5)}`,
     `Duration: ${formatDuration(session.duration)}`,
     `Mode: ${session.mode}`,
-  ].join("\n");
+  ];
+
+  if (session.category) {
+    details.push(`Category: ${session.category}`);
+  }
+  if (session.mood) {
+    details.push(`Mood: ${session.mood}`);
+  }
+
+  const title = details.join("\n");
 
   return (
     <div

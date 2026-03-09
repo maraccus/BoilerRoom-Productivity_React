@@ -4,9 +4,11 @@ import ButtonStd from './ButtonStd';
 import ButtonStdRed from './ButtonStdRed';
 import ContainerV from './ContainerV';
 import ContainerH from './ContainerH';
+import MoodLogModal from './MoodLogModal';
 import type { Session } from '../hooks/useTimerReducer';
 import { useTimer } from '../TimerContext';
 import { getTimerModeLabel, type TimerMode } from '../timerModes';
+import type { MoodValue, CategoryValue } from '../hooks/useMoodForm';
 
 interface TimerProps {
   mode: TimerMode;
@@ -43,6 +45,9 @@ const Timer: React.FC<TimerProps> = ({ mode, onBack }) => {
 
   const formatTime = (date: Date) => date.toTimeString().slice(0, 8);
 
+  const [pendingSession, setPendingSession] = React.useState<Session | null>(null);
+  const [showMoodLog, setShowMoodLog] = React.useState(false);
+
   const handleStartPause = () => {
     if (isCustomRoute && !state.isActive && numericMinutes <= 0) {
       setWarning('Add time for how long you want to work.');
@@ -69,7 +74,28 @@ const Timer: React.FC<TimerProps> = ({ mode, onBack }) => {
       duration: Math.floor((endTime.getTime() - state.startTime.getTime()) / 1000),
     };
 
-    actions.logSession(newSession);
+    // Stop timer and show mood log form before actually saving the session.
+    actions.stop();
+    setPendingSession(newSession);
+    setShowMoodLog(true);
+  };
+
+  const handleMoodLog = ({ mood, category }: { mood: MoodValue; category: CategoryValue }) => {
+    if (!pendingSession) return;
+
+    actions.logSession({
+      ...pendingSession,
+      mood,
+      category,
+    });
+
+    setPendingSession(null);
+    setShowMoodLog(false);
+  };
+
+  const handleCancelMoodLog = () => {
+    setPendingSession(null);
+    setShowMoodLog(false);
   };
 
   return (
@@ -130,6 +156,12 @@ const Timer: React.FC<TimerProps> = ({ mode, onBack }) => {
       <ButtonStd onClick={onBack}>
         <p>Back to Modes</p>
       </ButtonStd>
+
+      <MoodLogModal
+        open={showMoodLog}
+        onCancel={handleCancelMoodLog}
+        onSubmit={handleMoodLog}
+      />
     </ContainerV>
   );
 };

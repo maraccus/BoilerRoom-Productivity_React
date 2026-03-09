@@ -54,7 +54,9 @@ function formReducer(state: FormState, action: FormAction): FormState {
 }
 
 // CUSTOM HOOK: Tar emot en callback som inkluderar onMoodSelected och navigate
-export function useMoodForm(onComplete: (mood: MoodValue) => void) {
+export function useMoodForm(
+  onComplete: (data: { mood: MoodValue; category: CategoryValue }) => void,
+) {
   const [state, dispatch] = useReducer(formReducer, initialState);
 
   // Loggning och callback
@@ -69,7 +71,7 @@ export function useMoodForm(onComplete: (mood: MoodValue) => void) {
 
     localStorage.setItem("latestMoodLog", JSON.stringify(logEntry));
 
-    onComplete(state.selectedMood); // Kallar callback (som inkluderar onMoodSelected och navigate)
+    onComplete({ mood: state.selectedMood, category: state.selectedCategory });
 
     dispatch({ type: "RESET" });
   };

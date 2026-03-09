@@ -55,31 +55,19 @@ const CalendarHistory: React.FC = () => {
   const { state } = useTimer();
   const weekDays = useMemo(() => getCurrentWeek(), []);
 
-  /* const sessionsByDay: Record<string, Session[]> = state.sessions || {}; */ // Original code
+  const sessionsByDay: Record<string, Session[]> = useMemo(() => {
+    const base = state.sessions || {};
 
-// Dummy data for testing 60 -82
-const sessionsByDay: Record<string, Session[]> = useMemo(() => {
-  const base = state.sessions || {};
+    const weekDays = getCurrentWeek();
 
-  const demoSession: Session = {
-    mode: "demo",
-    start: "09:00:00",
-    end: "13:00:00",
-    duration: 4 * 60 * 60,
-  };
+    const result: Record<string, Session[]> = {};
 
-  const weekDays = getCurrentWeek();
+    weekDays.forEach((day) => {
+      result[day.date] = base[day.date] || [];
+    });
 
-  const result: Record<string, Session[]> = {};
-
-  weekDays.forEach((day) => {
-    const realSessions = base[day.date] || [];
-
-    result[day.date] = [...realSessions, demoSession];
-  });
-
-  return result;
-}, [state.sessions]);
+    return result;
+  }, [state.sessions]);
 
   const totalsByDay = useMemo(() => {
     return weekDays.reduce<Record<string, number>>((acc, day) => {

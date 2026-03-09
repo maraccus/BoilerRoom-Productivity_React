@@ -1,11 +1,14 @@
 import { useReducer, useCallback, useEffect } from 'react';
 import type { TimerMode } from '../timerModes';
+import type { MoodValue, CategoryValue } from './useMoodForm';
 
 export interface Session {
   mode: string;
   start: string;
   end: string;
   duration: number;
+  mood?: MoodValue;
+  category?: CategoryValue;
 }
 
 export interface TimerState {
