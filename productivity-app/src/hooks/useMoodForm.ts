@@ -6,7 +6,7 @@ import OkaySVG from "@/assets/MoodCheckEmoji/okay.svg?react";
 import EnergeticSVG from "@/assets/MoodCheckEmoji/energetic.svg?react";
 import ThrivingSVG from "@/assets/MoodCheckEmoji/thriving.svg?react";
 
-const MOODS = [
+export const MOODS = [
   { component: ExhaustedSVG, label: "Utmattad", value: "exhausted" },
   { component: TiredSVG, label: "Trött", value: "tired" },
   { component: OkaySVG, label: "Okej", value: "okay" },
@@ -14,7 +14,7 @@ const MOODS = [
   { component: ThrivingSVG, label: "Sprudlande", value: "thriving" },
 ] as const;
 
-const CATEGORIES = [
+export const CATEGORIES = [
   { label: "Deep work", value: "deep_work" },
   { label: "Möte", value: "meeting" },
   { label: "Paus", value: "pause" },

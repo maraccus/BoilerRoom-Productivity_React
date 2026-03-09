@@ -9,6 +9,7 @@ import type { Session } from '../hooks/useTimerReducer';
 import { useTimer } from '../TimerContext';
 import { getTimerModeLabel, type TimerMode } from '../timerModes';
 import type { MoodValue, CategoryValue } from '../hooks/useMoodForm';
+import { MOODS, CATEGORIES } from '../hooks/useMoodForm';
 
 interface TimerProps {
   mode: TimerMode;
@@ -80,13 +81,38 @@ const Timer: React.FC<TimerProps> = ({ mode, onBack }) => {
     setShowMoodLog(true);
   };
 
+  const normalizeCategory = (value: CategoryValue | string) => {
+    // Support both `value` (e.g. "deep_work") and numeric strings (e.g. "1")
+    const byValue = CATEGORIES.find((c) => c.value === value);
+    if (byValue) return byValue.label;
+
+    const idx = Number(value);
+    if (!Number.isNaN(idx) && idx >= 1 && idx <= CATEGORIES.length) {
+      return CATEGORIES[idx - 1].label;
+    }
+
+    return String(value);
+  };
+
+  const normalizeMood = (value: MoodValue | string) => {
+    const byValue = MOODS.find((m) => m.value === value);
+    if (byValue) return byValue.label;
+
+    const idx = Number(value);
+    if (!Number.isNaN(idx) && idx >= 1 && idx <= MOODS.length) {
+      return MOODS[idx - 1].label;
+    }
+
+    return String(value);
+  };
+
   const handleMoodLog = ({ mood, category }: { mood: MoodValue; category: CategoryValue }) => {
     if (!pendingSession) return;
 
     actions.logSession({
       ...pendingSession,
-      mood,
-      category,
+      mood: normalizeMood(mood),
+      category: normalizeCategory(category),
     });
 
     setPendingSession(null);
