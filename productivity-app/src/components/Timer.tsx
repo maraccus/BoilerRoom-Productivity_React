@@ -111,8 +111,8 @@ const Timer: React.FC<TimerProps> = ({ mode, onBack }) => {
 
     actions.logSession({
       ...pendingSession,
-      mood: normalizeMood(mood),
-      category: normalizeCategory(category),
+      mood: mood,
+      category: category,
     });
 
     setPendingSession(null);

@@ -7,7 +7,7 @@ export interface Session {
   start: string;
   end: string;
   duration: number;
-  mood?: MoodValue;
+  mood?: number;
   category?: CategoryValue;
 }
 

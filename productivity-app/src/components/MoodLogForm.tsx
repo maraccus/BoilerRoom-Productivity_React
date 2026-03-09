@@ -55,7 +55,7 @@ export default function MoodLogForm({ onCancel, onSubmit }: MoodLogFormProps) {
                   onClick={() => setMood(mood.value)}
                   title={mood.label}
                   aria-label={mood.label}
-                  data-mood={mood.value}
+                  data-mood={mood.key}
                 >
                   <mood.component className={styles.emojiSvg} />
                 </button>

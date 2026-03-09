@@ -1,6 +1,7 @@
 import React from "react";
 import type { Session } from "../hooks/useTimerReducer";
 import { getBlockPosition, formatDuration } from "../utils/timeUtils";
+import { MOODS } from "../hooks/useMoodForm";
 import styles from "./CalendarHistory.module.css";
 
 interface SessionBlockProps {
@@ -26,7 +27,8 @@ const SessionBlock: React.FC<SessionBlockProps> = ({ session }) => {
     details.push(`Category: ${session.category}`);
   }
   if (session.mood) {
-    details.push(`Mood: ${session.mood}`);
+    const moodLabel = MOODS.find(m => m.value === session.mood)?.label || session.mood;
+    details.push(`Mood: ${moodLabel} (${session.mood})`);
   }
 
   const title = details.join("\n");
