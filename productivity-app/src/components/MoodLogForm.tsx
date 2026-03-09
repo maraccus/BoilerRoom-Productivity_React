@@ -80,9 +80,9 @@ export default function MoodLogForm({ onCancel, onSubmit }: MoodLogFormProps) {
               )}
             </div>
 
-            <ButtonStdRed onClick={onCancel}>
+            {/* <ButtonStdRed onClick={onCancel}>
               <span style={{ fontSize: "0.85rem" }}>Avbryt</span>
-            </ButtonStdRed>
+            </ButtonStdRed> */}
           </div>
         </div>
       </div>
