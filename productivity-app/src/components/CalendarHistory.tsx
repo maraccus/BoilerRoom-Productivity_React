@@ -1,81 +1,115 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { useTimer } from "../TimerContext";
 import type { Session } from "../hooks/useTimerReducer";
 import { formatDuration } from "../utils/timeUtils";
+import { useWorkDaySettings } from "../WorkDaySettingsContext";
 import SessionBlock from "./SessionBlock";
+import SessionEditModal from "./SessionEditModal";
 import styles from "./CalendarHistory.module.css";
 
-type DayConfig = {
-  label: string;
-  date: string;
-};
-
-const weekdayLabels = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const toLocalDateString = (d: Date): string => {
-  const year = d.getFullYear();
-  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
   const day = String(d.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
+  return `${y}-${m}-${day}`;
 };
 
-const getCurrentWeek = (): DayConfig[] => {
+const getCurrentWeek = () => {
   const today = new Date();
-  const dayOfWeek = today.getDay();
-
-  const diffToMonday = (dayOfWeek + 6) % 7;
-
   const monday = new Date(today);
   monday.setHours(0, 0, 0, 0);
-  monday.setDate(today.getDate() - diffToMonday);
+  monday.setDate(today.getDate() - ((today.getDay() + 6) % 7));
 
-  const days: DayConfig[] = [];
-  for (let i = 0; i < 7; i += 1) {
+  return Array.from({ length: 7 }, (_, i) => {
     const d = new Date(monday);
     d.setDate(monday.getDate() + i);
-    days.push({
-      label: weekdayLabels[d.getDay()],
-      date: toLocalDateString(d),
-    });
-  }
-  return days;
+    return { date: toLocalDateString(d), jsDay: d.getDay() };
+  });
 };
 
-const prettyDayTitle = (dateStr: string) => {
+const prettyHeader = (dateStr: string) => {
   const d = new Date(`${dateStr}T00:00:00`);
-  return d.toLocaleDateString("en-US", { weekday: "long" });
+  return {
+    weekday: d.toLocaleDateString("en-US", { weekday: "long" }),
+    sub: d.toLocaleDateString("en-US", { month: "long", day: "numeric" }),
+  };
 };
 
-const prettyDaySubtitle = (dateStr: string) => {
-  const d = new Date(`${dateStr}T00:00:00`);
-  return d.toLocaleDateString("en-US", { month: "long", day: "numeric" });
+const timeStringToFractional = (t: string): number => {
+  const [h, m, s = 0] = t.split(":").map(Number);
+  return h + m / 60 + s / 3600;
 };
+
+const blockPosition = (
+  start: string,
+  end: string,
+  windowStart: number,
+  windowEnd: number,
+): { topPercent: number; heightPercent: number } => {
+  const span = windowEnd - windowStart;
+  if (span <= 0) return { topPercent: 0, heightPercent: 0 };
+
+  const s = Math.max(timeStringToFractional(start), windowStart);
+  const e = Math.min(timeStringToFractional(end), windowEnd);
+
+  return {
+    topPercent: ((s - windowStart) / span) * 100,
+    heightPercent: Math.max(((e - s) / span) * 100, 0.5),
+  };
+};
+
+interface EditTarget {
+  date: string;
+  index: number;
+  session: Session;
+}
 
 const CalendarHistory: React.FC = () => {
-  const { state } = useTimer();
+  const { state, actions } = useTimer();
+  const { settings } = useWorkDaySettings();
+  const { startHour, endHour } = settings;
+
+  const [editTarget, setEditTarget] = useState<EditTarget | null>(null);
+
   const weekDays = useMemo(() => getCurrentWeek(), []);
 
-  const sessionsByDay: Record<string, Session[]> = useMemo(() => {
-    const base = state.sessions || {};
-
-    const weekDays = getCurrentWeek();
-
-    const result: Record<string, Session[]> = {};
-
-    weekDays.forEach((day) => {
-      result[day.date] = base[day.date] || [];
-    });
-
-    return result;
-  }, [state.sessions]);
+  const sessionsByDay = useMemo(() => {
+    return Object.fromEntries(
+      weekDays.map((day) => [day.date, state.sessions[day.date] ?? []]),
+    );
+  }, [state.sessions, weekDays]);
 
   const totalsByDay = useMemo(() => {
-    return weekDays.reduce<Record<string, number>>((acc, day) => {
-      const sessions = sessionsByDay[day.date] || [];
-      acc[day.date] = sessions.reduce((sum, s) => sum + (s.duration || 0), 0);
-      return acc;
-    }, {});
+    return Object.fromEntries(
+      weekDays.map((day) => [
+        day.date,
+        (sessionsByDay[day.date] ?? []).reduce(
+          (sum, s) => sum + (s.duration || 0),
+          0,
+        ),
+      ]),
+    );
   }, [sessionsByDay, weekDays]);
+
+  const hourRows = useMemo(() => {
+    return Array.from({ length: endHour - startHour + 1 }, (_, i) => {
+      const h = startHour + i;
+      return { h, label: h % 2 === 0 ? String(h).padStart(2, "0") : "" };
+    });
+  }, [startHour, endHour]);
+
+  const handleSaveEdit = (updated: Session) => {
+    if (!editTarget) return;
+    actions.updateSession(editTarget.date, editTarget.index, updated);
+    setEditTarget(null);
+  };
+
+  const handleDeleteEdit = () => {
+    if (!editTarget) return;
+    actions.deleteSession(editTarget.date, editTarget.index);
+    setEditTarget(null);
+  };
 
   return (
     <div className={styles.calendarContainer}>
@@ -83,45 +117,66 @@ const CalendarHistory: React.FC = () => {
 
       <div className={styles.weekContainer}>
         {weekDays.map((day) => {
-          const sessions = sessionsByDay[day.date] || [];
-          const totalSeconds = totalsByDay[day.date] || 0;
+          const sessions = sessionsByDay[day.date] ?? [];
+          const total = totalsByDay[day.date] ?? 0;
+          const { weekday, sub } = prettyHeader(day.date);
 
           return (
             <section key={day.date} className={styles.dayColumn}>
-              {/* Header */}
               <div className={styles.dayHeader}>
-                <h2 className={styles.dayTitle}>{prettyDayTitle(day.date)}</h2>
-                <h3 className={styles.daySubtitle}>{prettyDaySubtitle(day.date)}</h3>
+                <h2 className={styles.dayTitle}>{weekday}</h2>
+                <h3 className={styles.daySubtitle}>{sub}</h3>
                 <p className={styles.dayTotal}>
-                  {totalSeconds > 0 ? formatDuration(totalSeconds) : "0m"}
+                  {total > 0 ? formatDuration(total) : "0m"}
                 </p>
               </div>
 
-              {/* Timeline area (24 rows) */}
               <div className={styles.timelineArea}>
-                {Array.from({ length: 24 }).map((_, hour) => (
-                  <div key={hour} className={styles.containerDay}>
+                {hourRows.map(({ h, label }) => (
+                  <div key={h} className={styles.containerDay}>
                     <div className={styles.dividerLine} />
                     <div className={styles.containerInfo}>
-                      <span className={styles.hourLabel}>
-                        {hour.toString().padStart(2, "0")}
-                      </span>
+                      <span className={styles.hourLabel}>{label}</span>
                     </div>
                   </div>
                 ))}
                 <div className={styles.dividerLine} />
 
-                {/* Overlay: session blocks */}
                 <div className={styles.blocksLayer}>
-                  {sessions.map((session, idx) => (
-                    <SessionBlock key={`${day.date}-${idx}`} session={session} />
-                  ))}
+                  {sessions.map((session, idx) => {
+                    const { topPercent, heightPercent } = blockPosition(
+                      session.start,
+                      session.end,
+                      startHour,
+                      endHour,
+                    );
+                    return (
+                      <SessionBlock
+                        key={`${day.date}-${idx}`}
+                        session={session}
+                        topPercent={topPercent}
+                        heightPercent={heightPercent}
+                        onClick={() =>
+                          setEditTarget({ date: day.date, index: idx, session })
+                        }
+                      />
+                    );
+                  })}
                 </div>
               </div>
             </section>
           );
         })}
       </div>
+
+      {editTarget && (
+        <SessionEditModal
+          session={editTarget.session}
+          onSave={handleSaveEdit}
+          onDelete={handleDeleteEdit}
+          onClose={() => setEditTarget(null)}
+        />
+      )}
     </div>
   );
 };

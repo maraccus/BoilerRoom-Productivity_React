@@ -1,0 +1,36 @@
+.containerInput {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 1.5rem;
+}
+
+.inputLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.warningText {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  margin: 0.25rem 0 0 0;
+  color: red;
+  font-size: 0.9rem;
+}
+
+.timeInput {
+  width: 5rem;
+  height: 3rem;
+  margin-left: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #666;
+  font-size: 1rem;
+}
+
+.warningText {
+  min-height: 1.2rem;
+  margin-top: 0.4rem;
+  color: red;
+}

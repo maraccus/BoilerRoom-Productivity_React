@@ -1,5 +1,4 @@
 import ButtonStd from "./ButtonStd";
-import ButtonStdRed from "./ButtonStdRed";
 import { useMoodForm, MoodValue, CategoryValue } from "@/hooks/useMoodForm";
 import styles from "./MoodCheck.module.css";
 
@@ -8,7 +7,7 @@ interface MoodLogFormProps {
   onSubmit: (data: { mood: MoodValue; category: CategoryValue }) => void;
 }
 
-export default function MoodLogForm({ onCancel, onSubmit }: MoodLogFormProps) {
+export default function MoodLogForm({ onSubmit }: MoodLogFormProps) {
   const {
     state,
     setMood,
