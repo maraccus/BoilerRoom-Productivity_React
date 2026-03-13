@@ -7,7 +7,6 @@ import SessionBlock from "./SessionBlock";
 import SessionEditModal from "./SessionEditModal";
 import styles from "./CalendarHistory.module.css";
 
-
 const toLocalDateString = (d: Date): string => {
   const y = d.getFullYear();
   const m = String(d.getMonth() + 1).padStart(2, "0");
@@ -92,12 +91,17 @@ const CalendarHistory: React.FC = () => {
     );
   }, [sessionsByDay, weekDays]);
 
+  const minVisibleRows = 10;
+  const selectedRowCount = endHour - startHour;
+  const visibleRowCount = Math.max(selectedRowCount, minVisibleRows);
+  const visibleEndHour = startHour + visibleRowCount;
+
   const hourRows = useMemo(() => {
-    return Array.from({ length: endHour - startHour + 1 }, (_, i) => {
+    return Array.from({ length: visibleRowCount }, (_, i) => {
       const h = startHour + i;
-      return { h, label: h % 2 === 0 ? String(h).padStart(2, "0") : "" };
+      return { h, label: String(h).padStart(2, "0") };
     });
-  }, [startHour, endHour]);
+  }, [startHour, visibleRowCount]);
 
   const handleSaveEdit = (updated: Session) => {
     if (!editTarget) return;
@@ -148,8 +152,9 @@ const CalendarHistory: React.FC = () => {
                       session.start,
                       session.end,
                       startHour,
-                      endHour,
+                      visibleEndHour,
                     );
+
                     return (
                       <SessionBlock
                         key={`${day.date}-${idx}`}
