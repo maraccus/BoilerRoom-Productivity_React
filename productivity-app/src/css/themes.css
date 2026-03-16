@@ -24,6 +24,7 @@ body.theme-light {
   --moodcheck-bg: #404040;
   --moodcheck-text: #d1d1d1;
   --chart-line1: rgb(64, 99, 139);
+  --chart-line2: rgb(172, 120, 57);
 }
 
 body.theme-dark-old {
@@ -72,4 +73,5 @@ body.theme-dark {
   --moodcheck-bg: #ffffff;
   --moodcheck-text: #404040;
   --chart-line1: rgb(64, 99, 139);
+  --chart-line2: rgb(172, 120, 57);
 }
