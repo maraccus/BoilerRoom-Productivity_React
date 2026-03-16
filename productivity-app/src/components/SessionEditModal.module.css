@@ -9,8 +9,8 @@
 }
 
 .modal {
-  background: var(--bg-modal, #1e1e2e);
-  color: var(--text-primary, #cdd6f4);
+  background: var(--bg);
+  color: var(--text-primary);
   border-radius: 12px;
   padding: 1.5rem;
   width: min(90vw, 340px);
@@ -40,7 +40,7 @@
 
 .field input,
 .field select {
-  background: var(--bg-input, #313244);
+  background: var(--bg);
   color: inherit;
   border: 1px solid var(--border, #45475a);
   border-radius: 6px;
@@ -69,32 +69,33 @@
   font-size: 0.9rem;
   cursor: pointer;
   border: none;
+  transition: transform 120ms ease, filter 120ms ease, opacity 120ms ease, box-shadow 200ms ease, background 120ms ease;
 }
 
 .saveBtn {
-  background: rgba(79, 70, 229, 0.9);
-  color: #fff;
+  background: var(--btn);
+  color: var(--btn-text);
 }
 
 .saveBtn:hover {
-  background: rgba(67, 56, 202, 1);
+  background: var(--btn-hover);
 }
 
 .cancelBtn {
-  background: var(--bg-input, #313244);
-  color: inherit;
+  background: var(--btn);
+  color: var(--btn-text);
 }
 
 .cancelBtn:hover {
-  opacity: 0.8;
+  background: var(--btn-hover);
 }
 
 .deleteBtn {
-  background: rgba(220, 38, 38, 0.15);
-  color: rgba(252, 165, 165, 1);
+  background: var(--btn-red);
+  color: var(--btn-text);
   border: 1px solid rgba(220, 38, 38, 0.3);
 }
 
 .deleteBtn:hover {
-  background: rgba(220, 38, 38, 0.3);
+  background: var(--btn-red-hover);
 }
