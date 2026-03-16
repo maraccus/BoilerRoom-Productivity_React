@@ -4,8 +4,8 @@ import ContainerV from "./ContainerV";
 import ModeCard from "./ModeCard";
 import { TIMER_MODES } from "../timerModes";
 
-import ClockIcon from "../assets/ModeCard/clock.svg?react";
-import StopwatchIcon from "../assets/ModeCard/stopwatch.svg?react"; 
+import ClockIcon from "../assets/alarm-clock-solid-full.svg?react";
+import StopwatchIcon from "../assets/stopwatch-solid-full.svg?react"; 
 
 interface NavTimerModesProps {
   onModeSelect?: (mode: string) => void;
