@@ -6,16 +6,16 @@ body.theme-light {
   --text: rgb(73, 73, 73);
   --icon: #494949;
   --icon-hover: #707070;
-  --bg: #d7d7d7;
+  --bg: #cdcdcd;
   --bg-green: #b1d1a3;
   --btn: #494949;
   --btn-red: #934444;
-  --btn-hover: #5c5c5c;
+  --btn-hover: color-mix(in srgb, var(--btn), white 5%);
   --btn-red-hover: #a45353;
   --btn-text: #ffffff;
   --btn-icon: #ffffff;
   --card-bg: #494949;
-  --card-bg-hover: #515151;
+  --card-bg-hover: color-mix(in srgb, var(--card-bg), white 5%);
   --text-graph: #494949;
   --team-icon: rgb(64, 99, 139);
   --team-icon-text: rgb(255, 255, 255);
@@ -26,7 +26,7 @@ body.theme-light {
   --chart-line1: rgb(64, 99, 139);
 }
 
-body.theme-dark {
+body.theme-dark-old {
   --text: #ffffff;
   --icon: #858585;
   --icon-hover: #ffffff;
@@ -40,6 +40,30 @@ body.theme-dark {
   --btn-icon: #ffffff;
   --card-bg: #4a4b57;
   --card-bg-hover: #5a5b6a;
+  --text-graph: rgba(255, 255, 255, 0.4);
+  --team-icon: rgb(64, 99, 139);
+  --team-icon-text: rgb(255, 255, 255);
+  --timer-bg: #00000046;
+  --calendar-line: rgba(255, 255, 255, 0.4);
+  --moodcheck-bg: #ffffff;
+  --moodcheck-text: #404040;
+  --chart-line1: rgb(64, 99, 139);
+}
+
+body.theme-dark {
+  --text: #ffffff;
+  --icon: #858585;
+  --icon-hover: #ffffff;
+  --bg: #1f2027;
+  --bg-green: #2f3c2c;
+  --btn: #2c2d3a;
+  --btn-red: #4a2d2d;
+  --btn-hover: color-mix(in srgb, var(--btn), white 5%);
+  --btn-red-hover: #543434;
+  --btn-text: #ffffff;
+  --btn-icon: #ffffff;
+  --card-bg: #2c2d3a;
+  --card-bg-hover: color-mix(in srgb, var(--card-bg), white 5%);
   --text-graph: rgba(255, 255, 255, 0.4);
   --team-icon: rgb(64, 99, 139);
   --team-icon-text: rgb(255, 255, 255);
