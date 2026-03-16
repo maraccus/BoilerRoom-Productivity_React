@@ -42,13 +42,14 @@
   cursor: pointer;
   color: var(--btn-text);
 
-  position: absolute;
+  /* position: absolute;
   left: 2rem;
-  top: 2rem;
+  top: 2rem; */
   font-size: 1rem;
   transition:
     color 0.2s ease,
     transform 0.2s ease;
+    margin-right: auto; /* ⭐ detta trycker resten av navbaren åt höger */
 }
 
 .runningBtn p {

@@ -20,13 +20,13 @@ const Navigation = () => {
 
   return (
     <>
+      
+
+      <nav className={styles.navBar}>
       <button className={styles.runningBtn} aria-label="Timer">
         <TimerRunningIcon className={styles.iconRunning}/>
         <p>Timer is running...</p>
       </button>
-
-      <nav className={styles.navBar}>
-      
       <NavLink to="/">
         <button className={styles.iconBtn} aria-label="Dashboard">
           <HomeIcon className={styles.icon} />
