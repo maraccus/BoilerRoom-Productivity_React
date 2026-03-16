@@ -17,7 +17,7 @@ const timeToSeconds = (t: string): number => {
 };
 
 const SessionEditModal: React.FC<Props> = ({ session, onSave, onDelete, onClose }) => {
-  const [start, setStart] = useState(session.start.slice(0, 5)); // HH:MM
+  const [start, setStart] = useState(session.start.slice(0, 5));
   const [end, setEnd] = useState(session.end.slice(0, 5));
   const [mood, setMood] = useState<MoodValue | "">(session.mood ?? "");
   const [category, setCategory] = useState<CategoryValue | "">(session.category ?? "");

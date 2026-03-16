@@ -1,108 +1,92 @@
+# Produktivitetsapplikation
+
+Enkel och snygg produktivitetsapp byggd med React och TypeScript.  
+Tanken är att hjälpa dig hålla koll på arbetstid, logga hur du mår och se mönster över tid – allt i ett minimalistiskt gränssnitt som fungerar bra både på dator och mobil.
+
+## Vad kan man göra?
+
+- **Timer & klocka**  
+  Välj mellan anpassad timer (till exempel 25 minuter arbete samt paus) eller vanlig stopwatch.  
+  Alla avslutade pass sparas automatiskt.
+
+- **Humörlogg**  
+  Logga kategori samt humör efter avslutat pass.  
+  Se historiken och trender i grafer.
+
+- **Kalender & historik**  
+  Bläddra bland dina dagar och se vilka pass du körde.  
+  Visa arbetsblock och sessioner per dag.
+
+- **Grafer & statistik**  
+  Veckoöversikt – vilka dagar är du som mest produktiv?  
+  Humörtrender över tid.  
+  Enkel dashboard med senaste aktiviteten.
+
+## Tech vi använt
+
+- React 19, TypeScript och React Native
+- Vite
+- React Router för navigation
+- Recharts för alla grafer
+- Tailwind + CSS Modules för styling
+- Dark mode från start
+- Jest för enhetstester
+- ESLint
+
+## Kom igång
+
+1. Klona repot
+
+   ```bash
+   git clone https://github.com/maraccus/BoilerRoom-Productivity_React.git
+   cd BoilerRoom-Productivity_React/productivity-app
+   ```
+
+2. Installera paket
+
+   ```bash
+   npm install
+   ```
+
+3. Starta utvecklingsservern
+   ```bash
+   npm run dev
+   ```
+   → Öppna http://localhost:5173 i webbläsaren
+
+## Vanliga kommandon
+
+```bash
+npm run dev       # Starta och utveckla (med live-reload)
+npm run build     # Bygg för produktion
+npm run preview   # Testa byggen lokalt
+npm run lint      # Kolla kodkvalitet
+npm test          # Kör enhetstester
+```
+
+## Så funkar det (kort)
+
+Appen använder React Context för timer och humör-state.  
+De viktigaste delarna sitter i:
 
 ```
-BoilerRoom-Productivity_React
-└─ productivity-app
-   ├─ README.md
-   ├─ eslint.config.js
-   ├─ index.html
-   ├─ package-lock.json
-   ├─ package.json
-   ├─ public
-   │  └─ vite.svg
-   ├─ src
-   │  ├─ App.css
-   │  ├─ App.jsx
-   │  ├─ App.tsx
-   │  ├─ TimerContext.tsx
-   │  ├─ assets
-   │  │  ├─ ModeCard
-   │  │  │  ├─ break.svg
-   │  │  │  ├─ clock.svg
-   │  │  │  ├─ deepwork.svg
-   │  │  │  ├─ meeting.svg
-   │  │  │  └─ stopwatch.svg
-   │  │  ├─ MoodCheckEmoji
-   │  │  │  ├─ energetic.svg
-   │  │  │  ├─ exhausted.svg
-   │  │  │  ├─ okay.svg
-   │  │  │  ├─ thriving.svg
-   │  │  │  └─ tired.svg
-   │  │  ├─ calendar-regular-full.svg
-   │  │  ├─ chart-line-solid-full.svg
-   │  │  ├─ chart-simple-solid-full.svg
-   │  │  ├─ clock-regular-full.svg
-   │  │  ├─ gear-solid-full.svg
-   │  │  ├─ house-regular-full.svg
-   │  │  ├─ moon-solid-full.svg
-   │  │  ├─ react.svg
-   │  │  └─ sun-solid-full.svg
-   │  ├─ components
-   │  │  ├─ BarChart.tsx
-   │  │  ├─ ButtonSettings.module.css
-   │  │  ├─ ButtonSettings.tsx
-   │  │  ├─ ButtonStd.jsx
-   │  │  ├─ ButtonStd.module.css
-   │  │  ├─ ButtonStdRed.jsx
-   │  │  ├─ ButtonStdRed.module.css
-   │  │  ├─ CalendarHistory.module.css
-   │  │  ├─ CalendarHistory.tsx
-   │  │  ├─ ContainerH.jsx
-   │  │  ├─ ContainerH.module.css
-   │  │  ├─ ContainerV.jsx
-   │  │  ├─ ContainerV.module.css
-   │  │  ├─ DebugSessions.jsx
-   │  │  ├─ Footer.jsx
-   │  │  ├─ Footer.module.css
-   │  │  ├─ GraphWeekday.jsx
-   │  │  ├─ GraphWeekday.module.css
-   │  │  ├─ MainContainer.jsx
-   │  │  ├─ MainContainer.module.css
-   │  │  ├─ ModeCard.module.css
-   │  │  ├─ ModeCard.tsx
-   │  │  ├─ MoodCheck.module.css
-   │  │  ├─ MoodCheck.tsx
-   │  │  ├─ MoodLogForm.tsx
-   │  │  ├─ NavTimerModes.tsx
-   │  │  ├─ Navigation.jsx
-   │  │  ├─ Navigation.module.css
-   │  │  ├─ NavigationSpacer.jsx
-   │  │  ├─ NavigationSpacer.module.css
-   │  │  ├─ ProfileCard.css
-   │  │  ├─ ProfileCard.jsx
-   │  │  ├─ Rechart.jsx
-   │  │  ├─ SessionBlock.tsx
-   │  │  ├─ SessionEditModal.module.css
-   │  │  ├─ SessionEditModal.tsx
-   │  │  ├─ Timer.tsx
-   │  │  ├─ TimerClock.jsx
-   │  │  ├─ TimerClock.module.css
-   │  │  ├─ TimerWrapper.jsx
-   │  │  └─ application
-   │  │     └─ charts
-   │  │        └─ charts-base.tsx
-   │  ├─ contexts
-   │  │  └─ MoodContext.tsx
-   │  ├─ css
-   │  │  └─ themes.css
-   │  ├─ hooks
-   │  │  ├─ Useworkdaysettings.ts
-   │  │  ├─ useMoodForm.ts
-   │  │  └─ useTimerReducer.ts
-   │  ├─ index.css
-   │  ├─ main.tsx
-   │  ├─ pages
-   │  │  ├─ CalendarPage.jsx
-   │  │  ├─ DashboardPage.jsx
-   │  │  ├─ GraphPage.jsx
-   │  │  ├─ NotFoundPage.jsx
-   │  │  ├─ TimerModePage.tsx
-   │  │  └─ TimerPage.jsx
-   │  ├─ timerModes.ts
-   │  ├─ utils
-   │  │  ├─ cx.ts
-   │  │  └─ timeUtils.ts
-   │  └─ vite-env.d.ts
-   ├─ tsconfig.json
-   └─ vite.config.ts
-
+src/
+├── components/       ← Alla återanvändbara bitar
+│   ├── Timer.tsx
+│   ├── MoodCheck.tsx
+│   ├── CalendarHistory.tsx
+│   └── ... (grafkomponenter, knappar, etc.)
+├── contexts/         ← State som delas
+│   └── TimerContext.tsx
+├── pages/            ← Huvudsidorna
+│   ├── TimerPage...
+│   ├── Dashboard...
+│   └── Graph...
+├── hooks/            ← Smart logik
+│   └── useTimerReducer.ts
+└── utils/            ← Hjälpfunktioner
 ```
+
+Timerlogiken styrs via `TimerContext` och olika lägen definieras i `timerModes.ts`.
+
+Projektet är skapat av Marcus Johansson, Pontus Ingenius och Tomac Jansson.
