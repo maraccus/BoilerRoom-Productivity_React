@@ -20,12 +20,14 @@
 }
 
 .timeInput {
-  width: 5rem;
+  width: 4.5rem;
+  text-align: center;
   height: 3rem;
-  margin-left: 0.5rem;
-  padding: 0.4rem 0.6rem;
-  border-radius: 8px;
-  border: 1px solid #666;
+  margin-left: 1rem;
+  border: 0;
+  border-radius: .5rem;
+  background-color: var(--card-bg);
+  color: var(--btn-text);
   font-size: 1rem;
 }
 

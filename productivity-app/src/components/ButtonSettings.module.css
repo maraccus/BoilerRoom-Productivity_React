@@ -87,3 +87,15 @@
   display: block;
   fill: var(--btn-icon);
 }
+
+.select {
+  width: 4.5rem;
+  text-align: center;
+  height: 2rem;
+  margin-left: 1rem;
+  border: 0;
+  border-radius: .5rem;
+  background-color: var(--card-bg);
+  color: var(--btn-text);
+  font-size: 1rem;
+}
