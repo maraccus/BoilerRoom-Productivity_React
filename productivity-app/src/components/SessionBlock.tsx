@@ -13,7 +13,7 @@ const CATEGORY_COLORS: Record<string, string> = {
 
 const CATEGORY_COLORS_HOVER: Record<string, string> = {
   deep_work: "rgba(178, 67, 44, 0.75)",  
-  meeting:   "rgba(238, 222, 98, 0.75)",  
+  meeting:   "rgba(227, 177, 50, 0.75)", 
   pause:     "rgba(69, 115, 195, 0.75)",  
 };
 

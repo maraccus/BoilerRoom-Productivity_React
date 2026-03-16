@@ -6,7 +6,7 @@
   flex-direction: row;
   justify-content: end;
   align-items: center;
-  padding: 0 2rem; /* Padding vänster och höger*/
+  padding: 0 2rem; 
   gap: 0.4rem;
 }
 
@@ -23,15 +23,52 @@
     transform 0.2s ease;
 }
 
+.iconBtn:hover{
+  background: var(--btn-red-hover);
+}
+
+.runningBtn{
+  display: flex;
+  align-items: center;   /* vertikal centrering */
+  gap: 0.4rem;           /* avstånd mellan ikon och text */
+
+  border-radius: .5rem;
+  background: var(--btn-red);
+  padding: 0 0.5rem;
+  border: 0;
+  width: 12rem;
+  height: 2rem;
+  cursor: pointer;
+  color: var(--btn-text);
+
+  position: absolute;
+  left: 2rem;
+  top: 2rem;
+  font-size: 1rem;
+}
+
+.runningBtn p {
+  margin: 0;
+}
+
+.firstButton {
+  margin-right: auto;
+}
+
 .iconBtn:hover {
   color: var(--icon-hover);
   transform: scale(1.25);
 }
 
 .icon {
-  width: 100%;
   height: 100%;
-  display: block;
+  display: inline-block;
+  fill: currentColor;
+}
+
+.iconRunning {
+  height: 50%;
+  display: inline-block;
   fill: currentColor;
 }
 

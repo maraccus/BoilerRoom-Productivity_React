@@ -11,13 +11,22 @@ import ChartIcon from "../assets/chart-simple-solid-full.svg?react";
 import ClockIcon from "../assets/clock-regular-full.svg?react";
 import { useTimer } from "../TimerContext";
 
+import TimerRunningIcon from "../assets/hourglass-half-solid-full.svg?react"
+
 const Navigation = () => {
   const { state } = useTimer();
   const activeMode = state.isActive ? state.mode : null;
   const timerHref = activeMode ? `/timer/${activeMode}` : "/timer";
 
   return (
-    <nav className={styles.navBar}>
+    <>
+      <button className={styles.runningBtn} aria-label="Timer">
+        <TimerRunningIcon className={styles.iconRunning}/>
+        <p>Timer is running...</p>
+      </button>
+
+      <nav className={styles.navBar}>
+      
       <NavLink to="/">
         <button className={styles.iconBtn} aria-label="Dashboard">
           <HomeIcon className={styles.icon} />
@@ -41,6 +50,8 @@ const Navigation = () => {
       <NavigationSpacer />
       <ButtonSettings />
     </nav>
+    </>
+    
   );
 };
 
