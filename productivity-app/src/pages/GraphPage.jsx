@@ -6,8 +6,8 @@ import Rechart from "../components/Rechart"
 const GraphPage = () => {
   return (
     <>
-      <h1>Graphs Page</h1>
       <ContainerV>
+      <h1>Graphs Page</h1>
         <Rechart />
       </ContainerV>
     </>
