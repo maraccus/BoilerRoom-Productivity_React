@@ -31,7 +31,7 @@ function App() {
           <WorkDaySettingsProvider>
             <Navigation />
 
-            <div style={{ flex: 1, width: '100%', display: 'flex', justifyContent: 'center' }}>
+            <div style={{ flex: 1, width: '100%', display: 'flex', justifyContent: 'center', alignItems: "center" }}>
               <Routes>
                 <Route path="/" element={<DashboardPage />} />
                 <Route path="/timer/:mode" element={<TimerModePage />} />
