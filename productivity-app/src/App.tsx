@@ -31,14 +31,16 @@ function App() {
           <WorkDaySettingsProvider>
             <Navigation />
 
-            <Routes>
-              <Route path="/" element={<DashboardPage />} />
-              <Route path="/timer/:mode" element={<TimerModePage />} />
-              <Route path="/timer" element={<TimerPage />} />
-              <Route path="/graphs" element={<GraphPage />} />
-              <Route path="/calendar" element={<CalendarPage />} />
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
+            <div style={{ flex: 1, width: '100%', display: 'flex', justifyContent: 'center' }}>
+              <Routes>
+                <Route path="/" element={<DashboardPage />} />
+                <Route path="/timer/:mode" element={<TimerModePage />} />
+                <Route path="/timer" element={<TimerPage />} />
+                <Route path="/graphs" element={<GraphPage />} />
+                <Route path="/calendar" element={<CalendarPage />} />
+                <Route path="*" element={<NotFoundPage />} />
+              </Routes>
+            </div>
 
             <Footer />
           </WorkDaySettingsProvider>

@@ -7,6 +7,12 @@ justify-content: center;
 align-items: center;
 }
 
+@media (max-width: 768px) {
+    .footer {
+        height: 4rem;
+    }
+}
+
 .footerText {
   color: var(--text);
   font-size: .8rem;

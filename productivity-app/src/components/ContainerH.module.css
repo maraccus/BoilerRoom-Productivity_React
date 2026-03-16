@@ -1,9 +1,13 @@
-.mainContainer {
-    /* width: 100%; */
+.containerH {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0;
 
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 1rem;
+    /* background-color: aquamarine; */
 }

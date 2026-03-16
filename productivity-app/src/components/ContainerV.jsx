@@ -4,7 +4,7 @@ import styles from "./ContainerV.module.css";
 
 const ContainerV = ({ children }) => {
   return (
-    <div className={styles.mainContainer}>
+    <div className={styles.containerV}>
       {children}
     </div>
   )
