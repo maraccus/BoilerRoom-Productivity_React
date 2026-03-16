@@ -79,7 +79,6 @@
   font-size: 0.6rem;
   width: 1.6rem;
   flex: 0 0 auto;
-  /* empty labels still occupy space to keep rows uniform */
 }
 
 .dividerLine {
