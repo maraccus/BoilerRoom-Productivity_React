@@ -1,7 +1,7 @@
 .footer {
 height: 10rem;
 width: 100%;
-background: linear-gradient(to top, rgba(0, 0, 0, .4), rgba(0, 0, 0, 0));
+/* background: linear-gradient(to top, rgba(0, 0, 0, .4), rgba(0, 0, 0, 0)); */
 display: flex;
 justify-content: center;
 align-items: center;
