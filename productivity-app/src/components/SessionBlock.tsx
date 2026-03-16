@@ -6,15 +6,15 @@ import styles from "./CalendarHistory.module.css";
 
 // Cool-tone transparent colors per category
 const CATEGORY_COLORS: Record<string, string> = {
-  deep_work: "rgba(99, 102, 241, 0.75)",  // indigo
-  meeting:   "rgba(14, 165, 233, 0.75)",  // sky blue
-  pause:     "rgba(20, 184, 166, 0.75)",  // teal
+  deep_work: "rgba(178, 67, 44, 0.75)",  
+  meeting:   "rgba(227, 177, 50, 0.75)",  
+  pause:     "rgba(69, 115, 195, 0.75)",  
 };
 
 const CATEGORY_COLORS_HOVER: Record<string, string> = {
-  deep_work: "rgba(79, 70, 229, 0.92)",
-  meeting:   "rgba(2, 132, 199, 0.92)",
-  pause:     "rgba(13, 148, 136, 0.92)",
+  deep_work: "rgba(178, 67, 44, 0.75)",  
+  meeting:   "rgba(238, 222, 98, 0.75)",  
+  pause:     "rgba(69, 115, 195, 0.75)",  
 };
 
 const DEFAULT_COLOR       = "rgba(99, 102, 241, 0.75)";

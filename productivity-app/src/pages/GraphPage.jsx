@@ -7,7 +7,7 @@ const GraphPage = () => {
   return (
     <>
       <ContainerV>
-      <h1>Graphs Page</h1>
+      <h1>Graphs</h1>
         <Rechart />
       </ContainerV>
     </>
