@@ -24,21 +24,28 @@ const Navigation = () => {
 
       <nav className={styles.navBar}>
 
-      <button className={styles.runningBtn} aria-label="Timer">
-        <TimerRunningIcon className={styles.iconRunning}/>
-        <p>Timer is running...</p>
-      </button>
+      {activeMode && (
+
+        <NavLink to={timerHref} className={styles.firstInNav}>
+          <button className={styles.runningBtn} aria-label="Timer">
+            <TimerRunningIcon className={styles.iconRunning}/>
+            <p>Timer is running...</p>
+          </button>
+        </NavLink>
+      )}
       
       <NavLink to="/">
         <button className={styles.iconBtn} aria-label="Dashboard">
           <HomeIcon className={styles.icon} />
         </button>    
       </NavLink>
-      <NavLink to={timerHref}>
-        <button className={styles.iconBtn} aria-label="Timer">
-          <ClockIcon className={styles.icon} />
-        </button>
-      </NavLink>
+      {activeMode && (
+        <NavLink to={timerHref}>
+          <button className={styles.iconBtn} aria-label="Timer">
+            <ClockIcon className={styles.icon} />
+          </button>
+        </NavLink>
+      )}
       <NavLink to="/calendar">
         <button className={styles.iconBtn} aria-label="Settings">
           <CalendarIcon className={styles.icon} />

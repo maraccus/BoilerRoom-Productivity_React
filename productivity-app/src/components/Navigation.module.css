@@ -28,6 +28,12 @@
   background: var(--btn-red-hover);
 } */
 
+.firstInNav {
+  margin-right: auto; /* ⭐ detta trycker resten av navbaren åt höger */
+  border: 0;
+  text-decoration: 0;
+}
+
 .runningBtn{
   display: flex;
   align-items: center;   /* vertikal centrering */
@@ -49,7 +55,6 @@
   transition:
     color 0.2s ease,
     transform 0.2s ease;
-    margin-right: auto; /* ⭐ detta trycker resten av navbaren åt höger */
 }
 
 .runningBtn p {
