@@ -85,8 +85,8 @@ export default function TimerClock({
 
   return (
     <div className={styles.clockBlock}>
-      <div className={styles.currentTime}>{currentTime}</div>
 
+      
       <div className={styles.timer}>
         <svg className={styles.svg} viewBox="0 0 200 200">
           <circle
@@ -111,6 +111,7 @@ export default function TimerClock({
         </svg>
 
         <div className={styles.time}>
+          <div className={styles.currentTime}>{currentTime}</div>
           {minutes}:{seconds}
         </div>
       </div>
