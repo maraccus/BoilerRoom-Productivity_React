@@ -12,6 +12,8 @@ import type { MoodValue, CategoryValue } from "../hooks/useMoodForm";
 import { getRecommendation } from "../utils/getRecommendation";
 import styles from "./Timer.module.css";
 
+import BackIcon from "../assets/arrow-left-solid-full.svg?react";
+import StartTimerIcon from "../assets/alarm-clock-solid-full.svg?react";
 import RobotIcon from "../assets/robot-solid-full.svg?react";
 
 interface TimerProps {
@@ -184,7 +186,14 @@ const Timer: React.FC<TimerProps> = ({ mode, onBack }) => {
         />
 
         <ContainerH>
+          <ButtonStd onClick={handleBack}>
+            {/* </span className="styles.btnIcon">
+              <BackIcon/>
+            <span> */}
+            <p>Go Back</p>
+          </ButtonStd>
           <ButtonStd onClick={handleStartPause}>
+            {/* <StartTimerIcon className="styles.btnIcon"/> */}
             <p>
               {!state.isActive
                 ? "Start Timer"
@@ -200,9 +209,6 @@ const Timer: React.FC<TimerProps> = ({ mode, onBack }) => {
             </ButtonStdRed>
           )}
 
-          <ButtonStd onClick={handleBack}>
-            <p>Back to Modes</p>
-          </ButtonStd>
         </ContainerH>
       </ContainerV>
     </ContainerV>
