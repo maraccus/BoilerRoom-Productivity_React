@@ -162,7 +162,10 @@ const Timer: React.FC<TimerProps> = ({ mode, onBack }) => {
           </label>
 
           {isRecommendation && !state.isActive && (
-            <p>{recommendation.reason}</p>
+            <div className={styles.robotContainer}>
+              <RobotIcon className={styles.icon}/>
+              <p>{recommendation.reason}</p>
+            </div>
           )}
 
           {warning && <p className={styles.warningText}>{warning}</p>}
