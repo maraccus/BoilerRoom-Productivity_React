@@ -8,7 +8,7 @@ export interface TimerModeConfig {
 export const TIMER_MODES: TimerModeConfig[] = [
   { id: 'custom', label: 'Custom Timer' },
   { id: 'stopwatch', label: 'Stopwatch' },
-  { id: 'recommendation', label: 'Recommendation' },
+  { id: 'recommendation', label: 'Recommended' },
 ];
 
 export const isValidTimerMode = (mode: string | undefined): mode is TimerMode =>

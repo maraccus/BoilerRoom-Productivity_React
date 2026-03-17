@@ -12,8 +12,6 @@ import type { MoodValue, CategoryValue } from "../hooks/useMoodForm";
 import { getRecommendation } from "../utils/getRecommendation";
 import styles from "./Timer.module.css";
 
-import RobotIcon from "../assets/robot-solid-full.svg?react";
-
 interface TimerProps {
   mode: TimerMode;
   onBack: () => void;
@@ -139,9 +137,9 @@ const Timer: React.FC<TimerProps> = ({ mode, onBack }) => {
 
   return (
     <ContainerV>
-      <h1>
+      <h2>
         {isRecommendation ? "Recommended Timer" : getTimerModeLabel(mode)}
-      </h1>
+      </h2>
 
       {isTimerMode && (
         <div className={styles.containerInput}>
@@ -162,10 +160,7 @@ const Timer: React.FC<TimerProps> = ({ mode, onBack }) => {
           </label>
 
           {isRecommendation && !state.isActive && (
-            <div className={styles.robotContainer}>
-              <RobotIcon className={styles.icon}/>
-              <p>{recommendation.reason}</p>
-            </div>
+            <p>{recommendation.reason}</p>
           )}
 
           {warning && <p className={styles.warningText}>{warning}</p>}

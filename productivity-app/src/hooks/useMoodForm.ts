@@ -15,9 +15,10 @@ export const MOODS = [
 ] as const;
 
 export const CATEGORIES = [
+  { label: "Work", value: "work"},
   { label: "Deep work", value: "deep_work" },
-  { label: "Möte", value: "meeting" },
-  { label: "Paus", value: "pause" },
+  { label: "Meet", value: "meeting" },
+  { label: "Pause", value: "pause" },
 ] as const;
 
 export type MoodValue = (typeof MOODS)[number]["value"];

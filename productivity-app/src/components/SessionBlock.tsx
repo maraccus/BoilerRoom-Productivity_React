@@ -6,6 +6,7 @@ import styles from "./CalendarHistory.module.css";
 
 // Cool-tone transparent colors per category
 const CATEGORY_COLORS: Record<string, string> = {
+  work:      "rgba(44, 178, 51, 0.75)",
   deep_work: "rgba(178, 67, 44, 0.75)",  
   meeting:   "rgba(227, 177, 50, 0.75)",  
   pause:     "rgba(69, 115, 195, 0.75)",  
