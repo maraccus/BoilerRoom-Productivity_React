@@ -20,7 +20,7 @@ body.theme-light {
   --team-icon: rgb(64, 99, 139);
   --team-icon-text: rgb(255, 255, 255);
   --timer-bg: #00000031;
-  --calendar-line: rgba(73, 73, 73, 0.4);
+  --calendar-line: rgba(73, 73, 73, 0.577);
   --moodcheck-bg: #404040;
   --moodcheck-text: #d1d1d1;
   --chart-line1: rgb(64, 99, 139);
@@ -69,7 +69,7 @@ body.theme-dark {
   --team-icon: rgb(64, 99, 139);
   --team-icon-text: rgb(255, 255, 255);
   --timer-bg: #00000046;
-  --calendar-line: rgba(255, 255, 255, 0.4);
+  --calendar-line: rgba(255, 255, 255, 0.549);
   --moodcheck-bg: #ffffff;
   --moodcheck-text: #404040;
   --chart-line1: rgb(64, 99, 139);
