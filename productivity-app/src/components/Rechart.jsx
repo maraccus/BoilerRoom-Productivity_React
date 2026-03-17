@@ -47,11 +47,11 @@ export default function Step1() {
       <h2>Hours Logged</h2>
       <ResponsiveContainer width="100%" height={400}>
         <LineChart data={data}>
-          <CartesianGrid stroke="var(--text)" strokeDasharray="3 3" />
+          <CartesianGrid stroke="var(--calendar-line)" strokeDasharray="3 3" />
 
           <XAxis
             dataKey="date"
-            stroke="var(--text)"
+            stroke="var(--calendar-line)"
             tickFormatter={(value) =>
               new Date(value).toLocaleDateString("sv-SE", {
                 month: "short",
@@ -61,7 +61,7 @@ export default function Step1() {
           />
 
           <YAxis 
-          stroke="var(--text)"
+          stroke="var(--calendar-line)"
           tickFormatter={formatMinutes} 
           />
 
@@ -87,11 +87,11 @@ export default function Step1() {
           <h2>General Mood</h2>
       <ResponsiveContainer width="100%" height={400}>
       <LineChart data={data}>
-        <CartesianGrid stroke="var(--text)" strokeDasharray="3 3" />
+        <CartesianGrid stroke="var(--calendar-line)" strokeDasharray="3 3" />
 
         <XAxis
           dataKey="date"
-          stroke="var(--text)"
+          stroke="var(--calendar-line)"
           tickFormatter={(value) =>
             new Date(value).toLocaleDateString("sv-SE", {
               month: "short",
@@ -101,7 +101,7 @@ export default function Step1() {
         />
 
         <YAxis 
-        stroke="var(--text)"
+        stroke="var(--calendar-line)"
         tickFormatter={formatMinutes} 
         />
 
