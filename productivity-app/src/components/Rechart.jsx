@@ -84,7 +84,7 @@ export default function Step1() {
         </LineChart>
       </ResponsiveContainer>
 
-          <h2>General Mood</h2>
+      <h2>General Mood</h2>
       <ResponsiveContainer width="100%" height={400}>
       <LineChart data={data}>
         <CartesianGrid stroke="var(--calendar-line)" strokeDasharray="3 3" />
@@ -102,7 +102,8 @@ export default function Step1() {
 
         <YAxis 
         stroke="var(--calendar-line)"
-        tickFormatter={formatMinutes} 
+        domain={[1,5]}
+        tickFormatter={(value) => value}
         />
 
         <Tooltip 
@@ -112,12 +113,12 @@ export default function Step1() {
         }}
         labelStyle={{color: "var(--btn-text)"}}
         itemStyle={{color: "var(--btn-text)"}}
-        formatter={(value) => formatMinutes(value)} 
+        formatter={(value) => value} 
         />
         <Line
           type="monotone"
           dataKey="averageMood"
-          name="Time logged"
+          name="Average Mood"
           stroke="var(--chart-line2)"
           strokeWidth={5}
         />
