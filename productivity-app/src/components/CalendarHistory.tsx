@@ -117,7 +117,6 @@ const CalendarHistory: React.FC = () => {
 
   return (
     <div className={styles.calendarContainer}>
-      <h1 className={styles.heading}>Weekly Session History</h1>
 
       <div className={styles.weekContainer}>
         {weekDays.map((day) => {

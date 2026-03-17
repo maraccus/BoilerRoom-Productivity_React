@@ -5,6 +5,7 @@ import ContainerV from '@/components/ContainerV';
 const CalendarPage = () => {
   return (
     <ContainerV>
+      <h1>Weekly Session History</h1>
       <CalendarHistory />
     </ContainerV>
   )

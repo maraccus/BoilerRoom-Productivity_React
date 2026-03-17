@@ -7,7 +7,7 @@ body.theme-light {
   --icon: #494949;
   --icon-hover: #707070;
   --bg: #cdcdcd;
-  --bg-green: #b1d1a3;
+  --bg-green: #d0e9c5;
   --btn: #494949;
   --btn-red: #934444;
   --btn-hover: color-mix(in srgb, var(--btn), white 5%);
