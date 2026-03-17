@@ -20,7 +20,7 @@ const NavTimerModes: React.FC<NavTimerModesProps> = ({ onModeSelect }) => {
     <>
       <ContainerV>
         <div className="cards-container">
-          <h1>Choose a timer</h1>
+          <h1>How are we tracking time today?</h1>
         </div>
         <ContainerH>
           <ModeCard
