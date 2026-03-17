@@ -35,7 +35,7 @@ const NavTimerModes: React.FC<NavTimerModesProps> = ({ onModeSelect }) => {
             onClick={() => handleCardClick("stopwatch")}
           />
           <ModeCard
-          title={TIMER_MODES.find(m => m.id === "recommendation")?.label ?? "Recommendation"}
+          title={TIMER_MODES.find(m => m.id === "recommended")?.label ?? "Recommended"}
           Icon={RobotIcon}
           onClick={() => handleCardClick("recommendation")}
           />
