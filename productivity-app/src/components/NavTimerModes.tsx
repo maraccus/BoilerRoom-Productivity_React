@@ -6,7 +6,6 @@ import { TIMER_MODES } from "../timerModes";
 
 import ClockIcon from "../assets/alarm-clock-solid-full.svg?react";
 import StopwatchIcon from "../assets/stopwatch-solid-full.svg?react"; 
-import ChartIcon from "../assets/chart-line-solid-full.svg?react";
 import RobotIcon from "../assets/robot-solid-full.svg?react";
 
 interface NavTimerModesProps {

@@ -19,6 +19,11 @@
   padding: 0 0.5rem;
 }
 
+.icn{
+  fill: var(--btn-text);
+  height: 80%;
+}
+
 .dayColumn {
   width: 9rem;
   flex: 0 0 auto;
@@ -143,13 +148,18 @@
 
 .weekNavButton,
 .todayButton {
-  border: 1px solid var(--calendar-line);
-  background: transparent;
-  color: var(--text-graph);
+  /* border: 1px solid var(--calendar-line); */
+  background: var(--btn);
+  border: 0;
+  color: var(--btn-text);
   border-radius: 8px;
   padding: 0.35rem 0.7rem;
   cursor: pointer;
   font: inherit;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .weekNavButton:hover,

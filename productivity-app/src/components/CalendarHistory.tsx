@@ -7,6 +7,9 @@ import SessionBlock from "./SessionBlock";
 import SessionEditModal from "./SessionEditModal";
 import styles from "./CalendarHistory.module.css";
 
+import LeftIcon from "../assets/arrow-left-solid-full.svg?react";
+import RightIcon from "../assets/arrow-right-solid-full.svg?react";
+
 const toLocalDateString = (d: Date): string => {
   const y = d.getFullYear();
   const m = String(d.getMonth() + 1).padStart(2, "0");
@@ -139,7 +142,7 @@ const CalendarHistory: React.FC = () => {
           className={styles.weekNavButton}
           onClick={() => setWeekOffset((prev) => prev - 1)}
         >
-          &lt;
+          <LeftIcon className={styles.icn}/>
         </button>
 
         <h2 className={styles.weekLabel}>{getWeekRangeLabel(weekDays)}</h2>
@@ -152,7 +155,7 @@ const CalendarHistory: React.FC = () => {
           disabled={weekOffset === 0}
           aria-hidden={weekOffset === 0}
         >
-          &gt;
+          <RightIcon className={styles.icn}/>
         </button>
         <button
           className={`${styles.todayButton} ${
