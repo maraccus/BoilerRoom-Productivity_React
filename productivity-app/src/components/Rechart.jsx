@@ -41,6 +41,15 @@ export default function Step1() {
     return `${hours}h ${minutes}m`;
   };
 
+  // Mood emojis mapping
+  const moodEmojis = {
+    1: '😢',
+    2: '😕',
+    3: '😐',
+    4: '😊',
+    5: '😄'
+  };
+
   return (
     <>
     
@@ -103,7 +112,8 @@ export default function Step1() {
         <YAxis 
         stroke="var(--calendar-line)"
         domain={[1,5]}
-        tickFormatter={(value) => value}
+        ticks={[1,2,3,4,5]}
+        tickFormatter={(value) => moodEmojis[value]}
         />
 
         <Tooltip 
@@ -113,7 +123,7 @@ export default function Step1() {
         }}
         labelStyle={{color: "var(--btn-text)"}}
         itemStyle={{color: "var(--btn-text)"}}
-        formatter={(value) => value} 
+        formatter={(value) => `${moodEmojis[Math.round(value)]} (${value.toFixed(1)})`} 
         />
         <Line
           type="monotone"
