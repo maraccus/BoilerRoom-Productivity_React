@@ -6,6 +6,7 @@ import { TIMER_MODES } from "../timerModes";
 
 import ClockIcon from "../assets/alarm-clock-solid-full.svg?react";
 import StopwatchIcon from "../assets/stopwatch-solid-full.svg?react"; 
+import ChartIcon from "../assets/chart-line-solid-full.svg?react";
 
 interface NavTimerModesProps {
   onModeSelect?: (mode: string) => void;
@@ -32,6 +33,11 @@ const NavTimerModes: React.FC<NavTimerModesProps> = ({ onModeSelect }) => {
             title={TIMER_MODES.find(m => m.id === "stopwatch")?.label ?? "Stopwatch"}
             Icon={StopwatchIcon}
             onClick={() => handleCardClick("stopwatch")}
+          />
+          <ModeCard
+          title={TIMER_MODES.find(m => m.id === "recommendation")?.label ?? "Recommendation"}
+          Icon={ChartIcon}
+          onClick={() => handleCardClick("recommendation")}
           />
           {/* only two options now */}
         </ContainerH>

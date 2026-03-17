@@ -9,6 +9,7 @@ import type { Session } from "../hooks/useTimerReducer";
 import { useTimer } from "../TimerContext";
 import { getTimerModeLabel, type TimerMode } from "../timerModes";
 import type { MoodValue, CategoryValue } from "../hooks/useMoodForm";
+import { getRecommendation } from "../utils/getRecommendation";
 import styles from "./Timer.module.css";
 
 interface TimerProps {
@@ -19,16 +20,20 @@ interface TimerProps {
 const Timer: React.FC<TimerProps> = ({ mode, onBack }) => {
   const { state, actions } = useTimer();
 
-  const [minutesInput, setMinutesInput] = useState("");
+  const [minutesInput, setMinutesInput] = useState("0");
   const [warning, setWarning] = useState("");
   const [pendingSession, setPendingSession] = useState<Session | null>(null);
 
   const isCustom = mode === "custom";
+  const isRecommendation = mode === "recommendation";
   const isStopwatch = mode === "stopwatch";
+  const isTimerMode = isCustom || isRecommendation;
+
+  const recommendation = getRecommendation(state.sessions);
 
   const inputDurationSeconds = (parseInt(minutesInput, 10) || 0) * 60;
 
-  const durationSeconds = isCustom
+  const durationSeconds = isTimerMode
     ? state.isActive
       ? state.durationSeconds
       : inputDurationSeconds
@@ -43,20 +48,39 @@ const Timer: React.FC<TimerProps> = ({ mode, onBack }) => {
   }, [state.isActive, state.isPaused]);
 
   useEffect(() => {
-    if (isCustom && state.durationSeconds > 0 && minutesInput === "") {
-      setMinutesInput(String(state.durationSeconds / 60));
+    if (state.isActive) return;
+
+    if (mode === "custom") {
+      setMinutesInput("0");
+      setWarning("");
+      return;
     }
-  }, [isCustom, state.durationSeconds, minutesInput]);
+
+    if (mode === "recommendation") {
+      setMinutesInput(String(recommendation.minutes));
+      setWarning("");
+      return;
+    }
+
+    if (mode === "stopwatch") {
+      setMinutesInput("0");
+      setWarning("");
+    }
+  }, [mode, recommendation.minutes, state.isActive]);
 
   const handleStartPause = () => {
     if (!state.isActive) {
-      if (isCustom && inputDurationSeconds <= 0) {
+      if (isTimerMode && inputDurationSeconds <= 0) {
         setWarning("Add time for how long you want to work.");
         return;
       }
 
       setWarning("");
-      actions.start(mode, inputDurationSeconds);
+
+      actions.start(
+        isRecommendation ? "custom" : mode,
+        isStopwatch ? 0 : inputDurationSeconds,
+      );
     } else {
       actions.togglePause();
     }
@@ -66,8 +90,9 @@ const Timer: React.FC<TimerProps> = ({ mode, onBack }) => {
     if (!state.startTime) return;
 
     const endTime = new Date();
+
     const session: Session = {
-      mode,
+      mode: isRecommendation ? "recommendation" : mode,
       start: state.startTime.toTimeString().slice(0, 8),
       end: endTime.toTimeString().slice(0, 8),
       duration: Math.floor(
@@ -101,7 +126,7 @@ const Timer: React.FC<TimerProps> = ({ mode, onBack }) => {
   if (pendingSession) {
     return (
       <ContainerV>
-        <h2>Logga tidsperiod</h2>
+        <h2>Log Session</h2>
         <MoodLogForm onSubmit={handleMoodSubmit} onCancel={handleMoodCancel} />
         <ButtonStd onClick={handleBack}>
           <p>Back to Modes</p>
@@ -112,9 +137,11 @@ const Timer: React.FC<TimerProps> = ({ mode, onBack }) => {
 
   return (
     <ContainerV>
-      <h2>{getTimerModeLabel(mode)}</h2>
+      <h2>
+        {isRecommendation ? "Recommended Timer" : getTimerModeLabel(mode)}
+      </h2>
 
-      {isCustom && (
+      {isTimerMode && (
         <div className={styles.containerInput}>
           <label className={styles.inputLabel}>
             Set minutes:
@@ -131,6 +158,10 @@ const Timer: React.FC<TimerProps> = ({ mode, onBack }) => {
               autoFocus
             />
           </label>
+
+          {isRecommendation && !state.isActive && (
+            <p>{recommendation.reason}</p>
+          )}
 
           {warning && <p className={styles.warningText}>{warning}</p>}
         </div>
