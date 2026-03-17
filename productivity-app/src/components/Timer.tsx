@@ -12,6 +12,8 @@ import type { MoodValue, CategoryValue } from "../hooks/useMoodForm";
 import { getRecommendation } from "../utils/getRecommendation";
 import styles from "./Timer.module.css";
 
+import RobotIcon from "../assets/robot-solid-full.svg?react";
+
 interface TimerProps {
   mode: TimerMode;
   onBack: () => void;
