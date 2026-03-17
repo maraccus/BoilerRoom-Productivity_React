@@ -8,11 +8,14 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-export default function Step1() {
-  // Hämta sessions från localStorage
-  const raw = JSON.parse(localStorage.getItem("timerSessions") || "{}");
-  console.log(raw);
-  // Konvertera till array + summera duration per dag
+
+ // Mood emojis mapping
+ 
+ export default function Step1() {
+   // Hämta sessions från localStorage
+   const raw = JSON.parse(localStorage.getItem("timerSessions") || "{}");
+   console.log(raw);
+   // Konvertera till array + summera duration per dag
   const data = Object.entries(raw)
     .map(([date, sessions]) => {
       const totalSeconds = sessions.reduce(
@@ -40,8 +43,7 @@ export default function Step1() {
     if (minutes === 0) return `${hours}h`;
     return `${hours}h ${minutes}m`;
   };
-
-  // Mood emojis mapping
+  
   const moodEmojis = {
     1: '😢',
     2: '😕',
@@ -49,7 +51,7 @@ export default function Step1() {
     4: '😊',
     5: '😄'
   };
-
+  
   return (
     <>
     

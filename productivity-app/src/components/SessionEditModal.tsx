@@ -3,6 +3,7 @@ import type { Session } from "../hooks/useTimerReducer";
 import { MOODS, CATEGORIES } from "../hooks/useMoodForm";
 import type { MoodValue, CategoryValue } from "../hooks/useMoodForm";
 import styles from "./SessionEditModal.module.css";
+import { moodEmojis } from "@/constants/Emoji";
 
 interface Props {
   session: Session;
@@ -76,7 +77,7 @@ const SessionEditModal: React.FC<Props> = ({ session, onSave, onDelete, onClose 
           <label>Mood</label>
           <select value={mood} onChange={e => setMood(e.target.value as MoodValue)}>
             {MOODS.map(m => (
-              <option key={m.value} value={m.value}>{m.label}</option>
+              <option key={m.value} value={m.value}>{m.key}</option>
             ))}
           </select>
         </div>
