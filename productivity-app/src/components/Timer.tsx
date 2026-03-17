@@ -128,11 +128,11 @@ const Timer: React.FC<TimerProps> = ({ mode, onBack }) => {
   if (pendingSession) {
     return (
       <ContainerV>
-        <h2>Log Session</h2>
+        {/* <h1>Log Session</h1> */}
         <MoodLogForm onSubmit={handleMoodSubmit} onCancel={handleMoodCancel} />
-        <ButtonStd onClick={handleBack}>
+        {/* <ButtonStd onClick={handleBack}>
           <p>Back to Modes</p>
-        </ButtonStd>
+        </ButtonStd> */}
       </ContainerV>
     );
   }
