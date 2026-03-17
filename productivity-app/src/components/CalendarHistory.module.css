@@ -123,3 +123,40 @@
 .sessionLabel {
   pointer-events: none;
 }
+
+.weekNav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.weekLabel {
+  margin: 0;
+  min-width: 10rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-graph);
+}
+
+.weekNavButton,
+.todayButton {
+  border: 1px solid var(--calendar-line);
+  background: transparent;
+  color: var(--text-graph);
+  border-radius: 8px;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  font: inherit;
+}
+
+.weekNavButton:hover,
+.todayButton:hover {
+  opacity: 0.85;
+}
+
+.hiddenNavButton {
+  visibility: hidden;
+}
