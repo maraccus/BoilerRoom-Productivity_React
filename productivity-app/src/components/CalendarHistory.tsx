@@ -14,11 +14,11 @@ const toLocalDateString = (d: Date): string => {
   return `${y}-${m}-${day}`;
 };
 
-const getCurrentWeek = () => {
+const getWeekDays = (weekOffset = 0) => {
   const today = new Date();
   const monday = new Date(today);
   monday.setHours(0, 0, 0, 0);
-  monday.setDate(today.getDate() - ((today.getDay() + 6) % 7));
+  monday.setDate(today.getDate() - ((today.getDay() + 6) % 7) + weekOffset * 7);
 
   return Array.from({ length: 7 }, (_, i) => {
     const d = new Date(monday);
@@ -33,6 +33,22 @@ const prettyHeader = (dateStr: string) => {
     weekday: d.toLocaleDateString("en-US", { weekday: "long" }),
     sub: d.toLocaleDateString("en-US", { month: "long", day: "numeric" }),
   };
+};
+
+const getWeekRangeLabel = (weekDays: { date: string; jsDay: number }[]) => {
+  if (weekDays.length === 0) return "";
+
+  const first = new Date(`${weekDays[0].date}T00:00:00`);
+  const last = new Date(`${weekDays[6].date}T00:00:00`);
+
+  const firstMonth = first.toLocaleDateString("en-US", { month: "short" });
+  const lastMonth = last.toLocaleDateString("en-US", { month: "short" });
+
+  if (firstMonth === lastMonth) {
+    return `${firstMonth} ${first.getDate()}–${last.getDate()}`;
+  }
+
+  return `${firstMonth} ${first.getDate()} – ${lastMonth} ${last.getDate()}`;
 };
 
 const timeStringToFractional = (t: string): number => {
@@ -70,8 +86,9 @@ const CalendarHistory: React.FC = () => {
   const { startHour, endHour } = settings;
 
   const [editTarget, setEditTarget] = useState<EditTarget | null>(null);
+  const [weekOffset, setWeekOffset] = useState(0);
 
-  const weekDays = useMemo(() => getCurrentWeek(), []);
+  const weekDays = useMemo(() => getWeekDays(weekOffset), [weekOffset]);
 
   const sessionsByDay = useMemo(() => {
     return Object.fromEntries(
@@ -117,6 +134,36 @@ const CalendarHistory: React.FC = () => {
 
   return (
     <div className={styles.calendarContainer}>
+      <div className={styles.weekNav}>
+        <button
+          className={styles.weekNavButton}
+          onClick={() => setWeekOffset((prev) => prev - 1)}
+        >
+          &lt;
+        </button>
+
+        <h2 className={styles.weekLabel}>{getWeekRangeLabel(weekDays)}</h2>
+
+        <button
+          className={`${styles.weekNavButton} ${
+            weekOffset === 0 ? styles.hiddenNavButton : ""
+          }`}
+          onClick={() => setWeekOffset((prev) => prev + 1)}
+          disabled={weekOffset === 0}
+          aria-hidden={weekOffset === 0}
+        >
+          &gt;
+        </button>
+        <button
+          className={`${styles.todayButton} ${
+            weekOffset === 0 ? styles.hiddenTodayButton : ""
+          }`}
+          onClick={() => setWeekOffset(0)}
+          disabled={weekOffset === 0}
+        >
+          This week
+        </button>
+      </div>
 
       <div className={styles.weekContainer}>
         {weekDays.map((day) => {
