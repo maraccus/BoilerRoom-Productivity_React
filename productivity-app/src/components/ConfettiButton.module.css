@@ -1,0 +1,15 @@
+.btn {
+  background-color: var(--team-icon);
+  color: var(--team-icon-text);
+  border-radius: .4rem;
+  padding: 4px 6px;
+  font-weight: 600;
+  transition: background-color .3s ease;
+  cursor: pointer;
+  border: 0;
+}
+
+.btn:hover {
+  background-color: rgb(84, 119, 159);
+  
+}

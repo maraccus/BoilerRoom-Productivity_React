@@ -20,12 +20,9 @@ const Navigation = () => {
 
   return (
     <>
-      
-
       <nav className={styles.navBar}>
 
       {activeMode && (
-
         <NavLink to={timerHref} className={styles.firstInNav}>
           <button className={styles.runningBtn} aria-label="Timer">
             <TimerRunningIcon className={styles.iconRunning}/>

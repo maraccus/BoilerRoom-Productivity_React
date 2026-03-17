@@ -18,18 +18,3 @@ align-items: center;
   font-size: .8rem;
   font-weight: 400;
 }
-
-.team {
-  background-color: var(--team-icon);
-  color: var(--team-icon-text);
-  border-radius: .4rem;
-  padding: 4px 6px;
-  font-weight: 600;
-  transition: background-color .3s ease;
-  cursor: pointer;
-}
-
-.team:hover {
-  background-color: rgb(84, 119, 159);
-  
-}
