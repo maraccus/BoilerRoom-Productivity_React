@@ -93,7 +93,7 @@ export default function Step1() {
         </LineChart>
       </ResponsiveContainer>
 
-      <h2>General Mood</h2>
+      <h2>Average Mood</h2>
       <ResponsiveContainer width="100%" height={400}>
       <LineChart data={data}>
         <CartesianGrid stroke="var(--calendar-line)" strokeDasharray="3 3" />
