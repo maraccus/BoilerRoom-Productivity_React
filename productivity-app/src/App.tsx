@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import MainContainer from "./components/MainContainer";
+import MainContainer from "./components/ui/MainContainer";
 import Navigation from "./components/Navigation";
-import Footer from "./components/Footer";
-import { TimerProvider } from "./TimerContext";
+import Footer from "./components/ui/Footer";
+import { TimerProvider } from "./features/timer/TimerContext";
 
 import DashboardPage from "./pages/DashboardPage";
-import TimerPage from "./pages/TimerPage";
-import TimerModePage from "./pages/TimerModePage";
+import TimerPage from "./features/timer/TimerPage";
+import TimerModePage from "./features/timer/TimerModePage";
 import GraphPage from "./pages/GraphPage";
 import CalendarPage from "./pages/CalendarPage";
 import NotFoundPage from "./pages/NotFoundPage";
@@ -31,7 +31,15 @@ function App() {
           <WorkDaySettingsProvider>
             <Navigation />
 
-            <div style={{ flex: 1, width: '100%', display: 'flex', justifyContent: 'center', alignItems: "center" }}>
+            <div
+              style={{
+                flex: 1,
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <Routes>
                 <Route path="/" element={<DashboardPage />} />
                 <Route path="/timer/:mode" element={<TimerModePage />} />

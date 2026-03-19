@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import TimerClock from "./TimerClock";
-import ButtonStd from "./ButtonStd";
-import ButtonStdRed from "./ButtonStdRed";
-import ContainerV from "./ContainerV";
-import ContainerH from "./ContainerH";
-import MoodLogForm from "./MoodLogForm";
-import type { Session } from "../hooks/useTimerReducer";
-import { useTimer } from "../TimerContext";
-import { getTimerModeLabel, type TimerMode } from "../timerModes";
-import type { MoodValue, CategoryValue } from "../hooks/useMoodForm";
-import { getRecommendation } from "../utils/getRecommendation";
+import ButtonStd from "../../components/ui/ButtonStd";
+import ButtonStdRed from "../../components/ui/ButtonStdRed";
+import ContainerV from "../../components/ui/ContainerV";
+import ContainerH from "../../components/ui/ContainerH";
+import MoodLogForm from "../mood/MoodLogForm";
+import type { Session } from "./useTimerReducer";
+import { useTimer } from "./TimerContext";
+import { getTimerModeLabel, type TimerMode } from "./timerModes";
+import type { MoodValue, CategoryValue } from "../mood/useMoodForm";
+import { getRecommendation } from "../../utils/getRecommendation";
 import styles from "./Timer.module.css";
 
 import BackIcon from "../assets/arrow-left-solid-full.svg?react";
@@ -165,7 +165,7 @@ const Timer: React.FC<TimerProps> = ({ mode, onBack }) => {
 
           {isRecommendation && !state.isActive && (
             <div className={styles.robotContainer}>
-              <RobotIcon className={styles.icon}/>
+              <RobotIcon className={styles.icon} />
               <p>{recommendation.reason}</p>
             </div>
           )}
@@ -208,7 +208,6 @@ const Timer: React.FC<TimerProps> = ({ mode, onBack }) => {
               <p>Stop & Log</p>
             </ButtonStdRed>
           )}
-
         </ContainerH>
       </ContainerV>
     </ContainerV>

@@ -6,7 +6,7 @@ import ButtonStd from "./ButtonStd";
 import MoonIcon from "../assets/moon-solid-full.svg?react";
 import SunIcon from "../assets/sun-solid-full.svg?react";
 import ContainerH from "./ContainerH";
-import { useWorkDaySettings } from "../WorkDaySettingsContext";
+import { useWorkDaySettings } from "../../WorkDaySettingsContext";
 
 const hours = Array.from({ length: 24 }, (_, i) => i);
 

@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./MoodCheck.module.css";
 
-import ButtonStd from "./ButtonStd";
-import { useMoodForm, MoodValue } from "@/hooks/useMoodForm";
-import { useMoodContext } from "@/contexts/MoodContext";
+import ButtonStd from "../../components/ui/ButtonStd";
+import { useMoodForm, MoodValue } from "@/features/mood/useMoodForm";
+import { useMoodContext } from "@/features/mood/MoodContext";
 
 export default function MoodCheck() {
   const navigate = useNavigate();

@@ -1,8 +1,8 @@
 // src/components/MoodCheck.test.tsx
 import { render, screen, fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import MoodCheck from "./MoodCheck";
-import { MoodContext } from "@/contexts/MoodContext";
+import MoodCheck from "../features/mood/MoodCheck";
+import { MoodContext } from "@/features/mood/MoodContext";
 
 // Mocka SVG-imports för att undvika importfel
 jest.mock("@/assets/MoodCheckEmoji/exhausted.svg?react", () => () => (

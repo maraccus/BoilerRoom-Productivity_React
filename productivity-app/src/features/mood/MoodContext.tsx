@@ -1,5 +1,5 @@
 import { createContext, useContext, ReactNode } from "react";
-import { MoodValue } from "@/hooks/useMoodForm";
+import { MoodValue } from "@/features/mood/useMoodForm";
 
 interface MoodContextType {
   onMoodSelected: (mood: MoodValue) => void;

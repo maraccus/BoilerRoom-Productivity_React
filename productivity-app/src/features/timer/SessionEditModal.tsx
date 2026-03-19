@@ -3,7 +3,7 @@ import type { Session } from "../hooks/useTimerReducer";
 import { MOODS, CATEGORIES } from "../hooks/useMoodForm";
 import type { MoodValue, CategoryValue } from "../hooks/useMoodForm";
 import styles from "./SessionEditModal.module.css";
-import { moodEmojis } from "@/constants/Emoji";
+import { moodEmojis } from "@/features/mood/Emoji";
 
 interface Props {
   session: Session;

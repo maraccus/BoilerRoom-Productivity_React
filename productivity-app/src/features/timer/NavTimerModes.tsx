@@ -1,11 +1,11 @@
 import React from "react";
-import ContainerH from "./ContainerH";
-import ContainerV from "./ContainerV";
+import ContainerH from "./ui/ContainerH";
+import ContainerV from "./ui/ContainerV";
 import ModeCard from "./ModeCard";
 import { TIMER_MODES } from "../timerModes";
 
 import ClockIcon from "../assets/alarm-clock-solid-full.svg?react";
-import StopwatchIcon from "../assets/stopwatch-solid-full.svg?react"; 
+import StopwatchIcon from "../assets/stopwatch-solid-full.svg?react";
 import RobotIcon from "../assets/robot-solid-full.svg?react";
 
 interface NavTimerModesProps {
@@ -25,19 +25,28 @@ const NavTimerModes: React.FC<NavTimerModesProps> = ({ onModeSelect }) => {
         </div>
         <ContainerH>
           <ModeCard
-            title={TIMER_MODES.find(m => m.id === "custom")?.label ?? "Custom Timer"}
+            title={
+              TIMER_MODES.find((m) => m.id === "custom")?.label ??
+              "Custom Timer"
+            }
             Icon={ClockIcon}
             onClick={() => handleCardClick("custom")}
           />
           <ModeCard
-            title={TIMER_MODES.find(m => m.id === "stopwatch")?.label ?? "Stopwatch"}
+            title={
+              TIMER_MODES.find((m) => m.id === "stopwatch")?.label ??
+              "Stopwatch"
+            }
             Icon={StopwatchIcon}
             onClick={() => handleCardClick("stopwatch")}
           />
           <ModeCard
-          title={TIMER_MODES.find(m => m.id === "recommendation")?.label ?? "Recommendation"}
-          Icon={RobotIcon}
-          onClick={() => handleCardClick("recommendation")}
+            title={
+              TIMER_MODES.find((m) => m.id === "recommendation")?.label ??
+              "Recommendation"
+            }
+            Icon={RobotIcon}
+            onClick={() => handleCardClick("recommendation")}
           />
           {/* only two options now */}
         </ContainerH>

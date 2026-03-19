@@ -1,4 +1,4 @@
-import type { Session } from "../hooks/useTimerReducer";
+import type { Session } from "../features/timer/useTimerReducer";
 
 export interface Recommendation {
   minutes: number;

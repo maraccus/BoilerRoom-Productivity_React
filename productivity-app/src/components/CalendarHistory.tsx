@@ -1,9 +1,9 @@
 import React, { useMemo, useState } from "react";
-import { useTimer } from "../TimerContext";
-import type { Session } from "../hooks/useTimerReducer";
+import { useTimer } from "../features/timer/TimerContext";
+import type { Session } from "../features/timer/useTimerReducer";
 import { formatDuration } from "../utils/timeUtils";
 import { useWorkDaySettings } from "../WorkDaySettingsContext";
-import SessionBlock from "./SessionBlock";
+import SessionBlock from "../features/timer/SessionBlock";
 import SessionEditModal from "./SessionEditModal";
 import styles from "./CalendarHistory.module.css";
 
@@ -142,7 +142,7 @@ const CalendarHistory: React.FC = () => {
           className={styles.weekNavButton}
           onClick={() => setWeekOffset((prev) => prev - 1)}
         >
-          <LeftIcon className={styles.icn}/>
+          <LeftIcon className={styles.icn} />
         </button>
 
         <h2 className={styles.weekLabel}>{getWeekRangeLabel(weekDays)}</h2>
@@ -155,7 +155,7 @@ const CalendarHistory: React.FC = () => {
           disabled={weekOffset === 0}
           aria-hidden={weekOffset === 0}
         >
-          <RightIcon className={styles.icn}/>
+          <RightIcon className={styles.icn} />
         </button>
         <button
           className={`${styles.todayButton} ${
