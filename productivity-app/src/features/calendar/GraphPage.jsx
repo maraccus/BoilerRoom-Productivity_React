@@ -1,7 +1,7 @@
 import React from "react";
-import ContainerV from "../components/ui/ContainerV";
-import BarChart from "../components/BarChart";
-import Rechart from "../components/Rechart";
+import ContainerV from "../../components/ui/ContainerV";
+import BarChart from "./BarChart";
+import Rechart from "./Rechart";
 
 const GraphPage = () => {
   return (

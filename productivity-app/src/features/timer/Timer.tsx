@@ -9,7 +9,7 @@ import type { Session } from "./useTimerReducer";
 import { useTimer } from "./TimerContext";
 import { getTimerModeLabel, type TimerMode } from "./timerModes";
 import type { MoodValue, CategoryValue } from "../mood/useMoodForm";
-import { getRecommendation } from "../../utils/getRecommendation";
+import { getRecommendation } from "../../lib/utils/getRecommendation";
 import styles from "./Timer.module.css";
 
 import BackIcon from "../assets/arrow-left-solid-full.svg?react";

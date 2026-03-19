@@ -1,9 +1,9 @@
 import React, { useMemo, useState } from "react";
-import { useTimer } from "../features/timer/TimerContext";
-import type { Session } from "../features/timer/useTimerReducer";
-import { formatDuration } from "../utils/timeUtils";
-import { useWorkDaySettings } from "../WorkDaySettingsContext";
-import SessionBlock from "../features/timer/SessionBlock";
+import { useTimer } from "../timer/TimerContext";
+import type { Session } from "../timer/useTimerReducer";
+import { formatDuration } from "../../lib/utils/timeUtils";
+import { useWorkDaySettings } from "../settings/WorkDaySettingsContext";
+import SessionBlock from "../timer/SessionBlock";
 import SessionEditModal from "./SessionEditModal";
 import styles from "./CalendarHistory.module.css";
 

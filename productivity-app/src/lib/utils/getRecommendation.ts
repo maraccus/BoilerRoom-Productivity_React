@@ -1,4 +1,4 @@
-import type { Session } from "../features/timer/useTimerReducer";
+import type { Session } from "../../features/timer/useTimerReducer";
 
 export interface Recommendation {
   minutes: number;

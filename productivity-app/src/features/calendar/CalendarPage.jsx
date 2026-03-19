@@ -1,5 +1,5 @@
 import React from "react";
-import CalendarHistory from "../components/CalendarHistory";
+import CalendarHistory from "./CalendarHistory";
 import ContainerV from "@/components/ui/ContainerV";
 
 const CalendarPage = () => {

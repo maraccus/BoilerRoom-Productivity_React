@@ -1,6 +1,6 @@
 import React from "react";
 import type { Session } from "./useTimerReducer";
-import { formatDuration } from "../../utils/timeUtils";
+import { formatDuration } from "../../lib/utils/timeUtils";
 import { MOODS } from "../mood/useMoodForm";
 import styles from "./CalendarHistory.module.css";
 

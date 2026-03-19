@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import MainContainer from "./components/ui/MainContainer";
+import MainContainer from "../components/ui/MainContainer";
 import Navigation from "./components/Navigation";
-import Footer from "./components/ui/Footer";
-import { TimerProvider } from "./features/timer/TimerContext";
+import Footer from "../components/ui/Footer";
+import { TimerProvider } from "../features/timer/TimerContext";
 
-import DashboardPage from "./pages/DashboardPage";
-import TimerPage from "./features/timer/TimerPage";
-import TimerModePage from "./features/timer/TimerModePage";
-import GraphPage from "./pages/GraphPage";
-import CalendarPage from "./pages/CalendarPage";
-import NotFoundPage from "./pages/NotFoundPage";
-import { WorkDaySettingsProvider } from "./WorkDaySettingsContext";
+import DashboardPage from "../features/calendar/DashboardPage";
+import TimerPage from "../features/timer/TimerPage";
+import TimerModePage from "../features/timer/TimerModePage";
+import GraphPage from "../features/calendar/GraphPage";
+import CalendarPage from "../features/calendar/CalendarPage";
+import NotFoundPage from "../pages/NotFoundPage";
+import { WorkDaySettingsProvider } from "../features/settings/WorkDaySettingsContext";
 
 import "./App.css";
 
