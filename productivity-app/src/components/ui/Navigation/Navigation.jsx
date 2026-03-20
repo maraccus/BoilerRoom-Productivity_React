@@ -3,15 +3,15 @@ import { Link, NavLink } from "react-router";
 import styles from "./Navigation.module.css";
 import NavigationSpacer from "./NavigationSpacer";
 
-import ButtonSettings from "./ButtonSettings";
+import ButtonSettings from "../Button/ButtonSettings";
 
-import HomeIcon from "../assets/house-regular-full.svg?react"
-import CalendarIcon from "../assets/calendar-regular-full.svg?react";
-import ChartIcon from "../assets/chart-simple-solid-full.svg?react";
-import ClockIcon from "../assets/clock-regular-full.svg?react";
-import { useTimer } from "../TimerContext";
+import HomeIcon from "@/assets/icons/house-regular-full.svg?react";
+import CalendarIcon from "@/assets/icons/calendar-regular-full.svg?react";
+import ChartIcon from "@/assets/icons/chart-simple-solid-full.svg?react";
+import ClockIcon from "@/assets/icons/clock-regular-full.svg?react";
+import { useTimer } from "../../../contexts/TimerContext";
 
-import TimerRunningIcon from "../assets/hourglass-half-solid-full.svg?react"
+import TimerRunningIcon from "@/assets/icons/hourglass-half-solid-full.svg?react"
 
 const Navigation = () => {
   const { state } = useTimer();

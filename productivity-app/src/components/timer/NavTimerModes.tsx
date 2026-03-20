@@ -1,12 +1,12 @@
 import React from "react";
-import ContainerH from "./ContainerH";
-import ContainerV from "./ContainerV";
-import ModeCard from "./ModeCard";
-import { TIMER_MODES } from "../timerModes";
+import ContainerH from "../ui/Container/ContainerH";
+import ContainerV from "../ui/Container/ContainerV";
+import ModeCard from "../mood/ModeCard";
+import { TIMER_MODES } from "@/constants/timerModes";
 
-import ClockIcon from "../assets/alarm-clock-solid-full.svg?react";
-import StopwatchIcon from "../assets/stopwatch-solid-full.svg?react"; 
-import RobotIcon from "../assets/robot-solid-full.svg?react";
+import ClockIcon from "@/assets/icons/alarm-clock-solid-full.svg?react";
+import StopwatchIcon from "@/assets/icons/stopwatch-solid-full.svg?react";
+import RobotIcon from "@/assets/icons/robot-solid-full.svg?react";
 
 interface NavTimerModesProps {
   onModeSelect?: (mode: string) => void;

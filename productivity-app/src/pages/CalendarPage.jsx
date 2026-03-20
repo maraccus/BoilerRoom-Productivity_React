@@ -1,6 +1,6 @@
 import React from 'react'
-import CalendarHistory from '../components/CalendarHistory';
-import ContainerV from '@/components/ContainerV';
+import CalendarHistory from '@/components/ui/Calender/CalendarHistory';
+import ContainerV from '@/components/ui/Container/ContainerV';
 
 const CalendarPage = () => {
   return (

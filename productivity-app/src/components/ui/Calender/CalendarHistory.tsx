@@ -1,14 +1,14 @@
 import React, { useMemo, useState } from "react";
-import { useTimer } from "../TimerContext";
-import type { Session } from "../hooks/useTimerReducer";
-import { formatDuration } from "../utils/timeUtils";
-import { useWorkDaySettings } from "../WorkDaySettingsContext";
-import SessionBlock from "./SessionBlock";
-import SessionEditModal from "./SessionEditModal";
+import { useTimer } from "@/contexts/TimerContext";
+import type { Session } from "@/hooks/useTimerReducer";
+import { formatDuration } from "@/utils/timeUtils";
+import { useWorkDaySettings } from "@/contexts/WorkDaySettingsContext";
+import SessionBlock from "@/components/ui/Session/SessionBlock"
+import SessionEditModal from "../Session/SessionEditModal";
 import styles from "./CalendarHistory.module.css";
 
-import LeftIcon from "../assets/arrow-left-solid-full.svg?react";
-import RightIcon from "../assets/arrow-right-solid-full.svg?react";
+import LeftIcon from "@/assets/icons/arrow-left-solid-full.svg?react"
+import RightIcon from "@/assets/icons/arrow-right-solid-full.svg?react"
 
 const toLocalDateString = (d: Date): string => {
   const y = d.getFullYear();

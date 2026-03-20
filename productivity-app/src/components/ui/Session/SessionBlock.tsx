@@ -1,10 +1,9 @@
 import React from "react";
-import type { Session } from "../hooks/useTimerReducer";
-import { formatDuration } from "../utils/timeUtils";
-import { MOODS } from "../hooks/useMoodForm";
-import styles from "./CalendarHistory.module.css";
+import type { Session } from "@/hooks/useTimerReducer";
+import { formatDuration } from "@/utils/timeUtils";
+import { MOODS } from "@/hooks/useMoodForm";
+import styles from "../Calender/CalendarHistory.module.css";
 
-// Cool-tone transparent colors per category
 const CATEGORY_COLORS: Record<string, string> = {
   work:      "rgba(44, 178, 51, 0.75)",
   deep_work: "rgba(178, 67, 44, 0.75)",  
@@ -23,7 +22,6 @@ const DEFAULT_COLOR_HOVER = "rgba(79, 70, 229, 0.92)";
 
 interface SessionBlockProps {
   session: Session;
-  /** vertical position within the timeline (0–100) */
   topPercent: number;
   heightPercent: number;
   onClick: () => void;
@@ -35,7 +33,7 @@ const SessionBlock: React.FC<SessionBlockProps> = ({
   heightPercent,
   onClick,
 }) => {
-  // Only skip truly zero-duration or out-of-window sessions
+
   if (heightPercent < 0.1) return null;
 
   const moodLabel = session.mood
@@ -64,7 +62,6 @@ const SessionBlock: React.FC<SessionBlockProps> = ({
         height: `${heightPercent}%`,
         minHeight: "6px",
         background: bg,
-        // CSS variable so the :hover rule in CSS can pick it up
         ["--block-hover-bg" as string]: bgHover,
       }}
       title={tooltip}

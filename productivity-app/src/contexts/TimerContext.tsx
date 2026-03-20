@@ -1,5 +1,5 @@
 import React, { createContext, useContext } from 'react';
-import { useTimerReducer } from './hooks/useTimerReducer';
+import { useTimerReducer } from '../hooks/useTimerReducer';
 
 const TimerContext = createContext<ReturnType<typeof useTimerReducer> | undefined>(undefined);
 

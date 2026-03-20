@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import ContainerH from "../components/ContainerH";
-import Timer from "../components/Timer";
+import ContainerH from "../components/ui/Container/ContainerH";
+import Timer from '@/components/timer/Timer';
 
 const TimerPage = () => {
   const navigate = useNavigate();

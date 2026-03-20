@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import Timer from '../components/Timer';
-import { isValidTimerMode, type TimerMode } from '../timerModes';
+import Timer from '@/components/timer/Timer';
+import { isValidTimerMode, type TimerMode } from '../constants/timerModes';
 
 const TimerModePage: React.FC = () => {
   const { mode } = useParams<{ mode: string }>();

@@ -1,4 +1,4 @@
-import ButtonStd from "./ButtonStd";
+import ButtonStd from "../ui/Button/ButtonStd";
 import { useMoodForm, MoodValue, CategoryValue } from "@/hooks/useMoodForm";
 import styles from "./MoodCheck.module.css";
 

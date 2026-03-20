@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import MainContainer from "./components/MainContainer";
-import Navigation from "./components/Navigation";
-import Footer from "./components/Footer";
-import { TimerProvider } from "./TimerContext";
+import MainContainer from "./components/ui/Container/MainContainer";
+import Navigation from "./components/ui/Navigation/Navigation";
+import Footer from "./components/ui/Footer/Footer"
+import { TimerProvider } from "./contexts/TimerContext";
 
 import DashboardPage from "./pages/DashboardPage";
 import TimerPage from "./pages/TimerPage";
@@ -12,7 +12,7 @@ import TimerModePage from "./pages/TimerModePage";
 import GraphPage from "./pages/GraphPage";
 import CalendarPage from "./pages/CalendarPage";
 import NotFoundPage from "./pages/NotFoundPage";
-import { WorkDaySettingsProvider } from "./WorkDaySettingsContext";
+import { WorkDaySettingsProvider } from "./contexts/WorkDaySettingsContext";
 
 import "./App.css";
 

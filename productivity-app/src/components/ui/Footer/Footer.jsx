@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from "./Footer.module.css";
-import ConfettiButton from './ConfettiButton';
+import ConfettiButton from '../Button/ConfettiButton';
 
 const Footer = () => {
 

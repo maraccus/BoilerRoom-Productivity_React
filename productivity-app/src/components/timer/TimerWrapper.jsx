@@ -1,5 +1,5 @@
 import React from 'react';
-import ContainerH from './ContainerH';
+import ContainerH from '../ui/Container/ContainerH';
 import Timer from './Timer';
 
 const TimerWrapper = () => (

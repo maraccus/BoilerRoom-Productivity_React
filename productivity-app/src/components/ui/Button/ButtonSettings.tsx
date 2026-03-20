@@ -1,12 +1,12 @@
-import GearIcon from "../assets/gear-solid-full.svg?react";
-import styles from "./Navigation.module.css";
-import popupStyles from "./ButtonSettings.module.css";
+import GearIcon from "@/assets/icons/gear-solid-full.svg?react";
+import styles from "@/components/ui/Navigation/Navigation.module.css";
+import popupStyles from "@/components/ui/Button/ButtonSettings.module.css"
 import { useState } from "react";
 import ButtonStd from "./ButtonStd";
-import MoonIcon from "../assets/moon-solid-full.svg?react";
-import SunIcon from "../assets/sun-solid-full.svg?react";
-import ContainerH from "./ContainerH";
-import { useWorkDaySettings } from "../WorkDaySettingsContext";
+import MoonIcon from "@/assets/icons/moon-solid-full.svg?react";
+import SunIcon from "@/assets/icons/sun-solid-full.svg?react";
+import ContainerH from "../Container/ContainerH";
+import { useWorkDaySettings } from "@/contexts/WorkDaySettingsContext";
 
 const hours = Array.from({ length: 24 }, (_, i) => i);
 

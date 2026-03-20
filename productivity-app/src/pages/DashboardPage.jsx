@@ -1,8 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import ContainerV from "../components/ContainerV";
-import ContainerH from "../components/ContainerH";
-import NavTimerModes from "../components/NavTimerModes";
+import ContainerV from "../components/ui/Container/ContainerV";
+import ContainerH from "../components/ui/Container/ContainerH";
+import NavTimerModes from '@/components/timer/NavTimerModes';
 
 const DashboardPage = () => {
   const navigate = useNavigate();

@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from "react";
 import TimerClock from "./TimerClock";
-import ButtonStd from "./ButtonStd";
-import ButtonStdRed from "./ButtonStdRed";
-import ContainerV from "./ContainerV";
-import ContainerH from "./ContainerH";
-import MoodLogForm from "./MoodLogForm";
-import type { Session } from "../hooks/useTimerReducer";
-import { useTimer } from "../TimerContext";
-import { getTimerModeLabel, type TimerMode } from "../timerModes";
-import type { MoodValue, CategoryValue } from "../hooks/useMoodForm";
-import { getRecommendation } from "../utils/getRecommendation";
+import ButtonStd from "../ui/Button/ButtonStd";
+import ButtonStdRed from "../ui/Button/ButtonStdRed";
+import ContainerV from "../ui/Container/ContainerV";
+import ContainerH from "../ui/Container/ContainerH";
+import MoodLogForm from "../mood/MoodLogForm";
+import type { Session } from "@/hooks/useTimerReducer";
+import { useTimer } from "@/contexts/TimerContext";
+import { getTimerModeLabel, type TimerMode } from "@/constants/timerModes"
+import type { MoodValue, CategoryValue } from "@/hooks/useMoodForm";
+import { getRecommendation } from "@/utils/getRecommendation";
 import styles from "./Timer.module.css";
 
-import BackIcon from "../assets/arrow-left-solid-full.svg?react";
-import StartTimerIcon from "../assets/alarm-clock-solid-full.svg?react";
-import RobotIcon from "../assets/robot-solid-full.svg?react";
+import RobotIcon from "@/assets/icons/robot-solid-full.svg?react"
 
 interface TimerProps {
   mode: TimerMode;

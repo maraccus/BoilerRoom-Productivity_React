@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
 import "./index.css";
-import "./css/themes.css";
+import "./styles/themes.css"
 
 // Notera: Jag ändrade från .jsx till .tsx för att stödja full TypeScript-syntax (Tomac)
 // Vet ICKE hur detta kommer att fungera när vi mergar min branch.
