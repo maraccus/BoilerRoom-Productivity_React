@@ -1,4 +1,4 @@
-// src/components/MoodCheck.test.tsx
+// src/components/mood/MoodCheck.test.tsx
 import { render, screen, fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import MoodCheck from "./MoodCheck";
@@ -60,12 +60,13 @@ test("renderar MoodCheck korrekt med headings, select, mood-knappar och disabled
   // Kontrollera select med options
   const select = screen.getByLabelText("Välj kategori") as HTMLSelectElement;
   expect(select).toBeInTheDocument();
+  expect(select.options).toHaveLength(5); // 1 disabled + 4 val
   expect(select.options[0].text).toBe("Välj en kategori");
-  expect(select.options[1].text).toBe("Deep work");
+  expect(select.options[1].text).toBe("Work");
 
   // Kontrollera mood-knappar (5 st, med aria-label)
   const moodButtons = screen.getAllByRole("button", {
-    name: /Utmattad|Trött|Okej|Energisk|Sprudlande/,
+    name: /exhausted|tired|okay|energetic|thriving/i,
   });
   expect(moodButtons).toHaveLength(5);
 
@@ -98,8 +99,8 @@ test("väljer kategori och mood, klickar logga, kallar onMoodSelected och navige
   const select = screen.getByLabelText("Välj kategori");
   fireEvent.change(select, { target: { value: "meeting" } });
 
-  // Välj mood (t.ex. "Okej" = 3)
-  const moodButton = screen.getByRole("button", { name: "Okej" });
+  // Välj mood (t.ex. "Okay")
+  const moodButton = screen.getByRole("button", { name: /okay/i });
   fireEvent.click(moodButton);
 
   // Log-knapp nu enabled
