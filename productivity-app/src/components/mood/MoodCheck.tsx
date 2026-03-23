@@ -1,3 +1,10 @@
+/**
+ * Komponent för att välja och logga humör + kategori.
+ * @component
+ * @returns {JSX.Element}
+ * @example
+ * <MoodCheck />
+ */
 import { useNavigate } from "react-router-dom";
 import styles from "./MoodCheck.module.css";
 

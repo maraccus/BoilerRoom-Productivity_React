@@ -1,7 +1,21 @@
+/**
+ * @module useTimerReducer
+ */
+
 import { useReducer, useCallback, useEffect } from "react";
 import type { TimerMode } from "../constants/timerModes";
 import type { MoodValue, CategoryValue } from "./useMoodForm";
 
+/**
+ * En tidsloggpost för användarens session.
+ * @typedef {Object} Session
+ * @property {string} mode - Timer-läge (t.ex. "focus", "break").
+ * @property {string} start - Starttid i ISO-strängformat.
+ * @property {string} end - Sluttid i ISO-strängformat.
+ * @property {number} duration - Längd i sekunder.
+ * @property {MoodValue} [mood] - Valfri humörsstatus.
+ * @property {CategoryValue} [category] - Valfri kategori.
+ */
 export interface Session {
   mode: string;
   start: string;
@@ -11,6 +25,16 @@ export interface Session {
   category?: CategoryValue;
 }
 
+/**
+ * Timerens interna state.
+ * @typedef {Object} TimerState
+ * @property {boolean} isActive - Om timern körs.
+ * @property {boolean} isPaused - Om timern är pausad.
+ * @property {Date|null} startTime - Tidpunkt då timern startades.
+ * @property {Record<string,Session[]>} sessions - Loggade sessioner per datum.
+ * @property {TimerMode|null} mode - Aktuellt timer-läge eller null.
+ * @property {number} durationSeconds - Total varaktighet i sekunder.
+ */
 export interface TimerState {
   isActive: boolean;
   isPaused: boolean;
@@ -20,6 +44,10 @@ export interface TimerState {
   durationSeconds: number;
 }
 
+/**
+ * Åtgärder för timerreduceraren.
+ * @typedef {Object} TimerAction
+ */
 export type TimerAction =
   | { type: "START"; payload: { mode: TimerMode; durationSeconds: number } }
   | { type: "PAUSE" }
@@ -33,6 +61,22 @@ export type TimerAction =
   | { type: "DELETE_SESSION"; payload: { date: string; index: number } }
   | { type: "LOAD_SESSIONS"; payload: Record<string, Session[]> };
 
+/**
+ * Reducer för timer-state.
+ * @param {TimerState} state - Nuvarande state.
+ * @param {TimerAction} action - Åtgärd att applicera.
+ * @returns {TimerState} Uppdaterat state.
+ * @example
+ * const next = timerReducer(current, { type: 'START', payload: { mode: 'focus', durationSeconds: 1500 } });
+ */
+/**
+ * Reducer för timer-state.
+ * @param {TimerState} state - Nuvarande state.
+ * @param {TimerAction} action - Åtgärd att applicera.
+ * @returns {TimerState} Uppdaterat state.
+ * @example
+ * const next = timerReducer(current, { type: 'START', payload: { mode: 'focus', durationSeconds: 1500 } });
+ */
 const timerReducer = (state: TimerState, action: TimerAction): TimerState => {
   switch (action.type) {
     case "START":
@@ -94,6 +138,26 @@ const timerReducer = (state: TimerState, action: TimerAction): TimerState => {
   }
 };
 
+/**
+ * Custom hook för timerstate och tillhörande actions.
+ * @returns {{
+ *   state: TimerState,
+ *   dispatch: React.Dispatch<TimerAction>,
+ *   actions: {
+ *     start: (mode: TimerMode, durationSeconds: number) => void,
+ *     pause: () => void,
+ *     resume: () => void,
+ *     stop: () => void,
+ *     togglePause: () => void,
+ *     logSession: (session: Session) => void,
+ *     updateSession: (date: string, index: number, session: Session) => void,
+ *     deleteSession: (date: string, index: number) => void
+ *   }
+ * }}
+ * @example
+ * const { state, actions } = useTimerReducer();
+ * actions.start('focus', 1500);
+ */
 export const useTimerReducer = () => {
   const [state, dispatch] = useReducer(timerReducer, {
     isActive: false,

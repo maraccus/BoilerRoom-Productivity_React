@@ -1,15 +1,24 @@
+/**
+ * Kalenderhistorikkomponent: visar veckovisa sessions och redigering.
+ * @module CalendarHistory
+ */
 import React, { useMemo, useState } from "react";
 import { useTimer } from "@/contexts/TimerContext";
 import type { Session } from "@/hooks/useTimerReducer";
 import { formatDuration } from "@/utils/timeUtils";
 import { useWorkDaySettings } from "@/contexts/WorkDaySettingsContext";
-import SessionBlock from "@/components/ui/Session/SessionBlock"
+import SessionBlock from "@/components/ui/Session/SessionBlock";
 import SessionEditModal from "../Session/SessionEditModal";
 import styles from "./CalendarHistory.module.css";
 
-import LeftIcon from "@/assets/icons/arrow-left-solid-full.svg?react"
-import RightIcon from "@/assets/icons/arrow-right-solid-full.svg?react"
+import LeftIcon from "@/assets/icons/arrow-left-solid-full.svg?react";
+import RightIcon from "@/assets/icons/arrow-right-solid-full.svg?react";
 
+/**
+ * Konverterar ett Date-objekt till lokal yyyy-mm-dd-sträng.
+ * @param {Date} d
+ * @returns {string}
+ */
 const toLocalDateString = (d: Date): string => {
   const y = d.getFullYear();
   const m = String(d.getMonth() + 1).padStart(2, "0");
@@ -17,6 +26,11 @@ const toLocalDateString = (d: Date): string => {
   return `${y}-${m}-${day}`;
 };
 
+/**
+ * Skapar listan av dagar i veckan utifrån offset.
+ * @param {number} [weekOffset=0] - 0=denna vecka, -1=föregående, +1=nästa.
+ * @returns {{date:string,jsDay:number}[]}
+ */
 const getWeekDays = (weekOffset = 0) => {
   const today = new Date();
   const monday = new Date(today);
@@ -30,6 +44,11 @@ const getWeekDays = (weekOffset = 0) => {
   });
 };
 
+/**
+ * Skapar text för daghuvud.
+ * @param {string} dateStr - Datumsträng i format yyyy-mm-dd.
+ * @returns {{weekday:string,sub:string}}
+ */
 const prettyHeader = (dateStr: string) => {
   const d = new Date(`${dateStr}T00:00:00`);
   return {
@@ -38,6 +57,11 @@ const prettyHeader = (dateStr: string) => {
   };
 };
 
+/**
+ * Skapar etikett för veckointervall.
+ * @param {{date:string,jsDay:number}[]} weekDays
+ * @returns {string}
+ */
 const getWeekRangeLabel = (weekDays: { date: string; jsDay: number }[]) => {
   if (weekDays.length === 0) return "";
 
@@ -54,11 +78,26 @@ const getWeekRangeLabel = (weekDays: { date: string; jsDay: number }[]) => {
   return `${firstMonth} ${first.getDate()} – ${lastMonth} ${last.getDate()}`;
 };
 
+/**
+ * Konverterar tidsträng "HH:MM:SS"/"HH:MM" till decimaltimmar.
+ * @param {string} t
+ * @returns {number}
+ * @example
+ * timeStringToFractional('08:30') // 8.5
+ */
 const timeStringToFractional = (t: string): number => {
   const [h, m, s = 0] = t.split(":").map(Number);
   return h + m / 60 + s / 3600;
 };
 
+/**
+ * Beräknar position i visualiseringsvy för sessionblock.
+ * @param {string} start Starttid i format "HH:MM".
+ * @param {string} end Sluttid i format "HH:MM".
+ * @param {number} windowStart Starttid i decimaltimmar (t.ex. 8).
+ * @param {number} windowEnd Sluttid i decimaltimmar (t.ex. 18).
+ * @returns {{topPercent:number,heightPercent:number}}
+ */
 const blockPosition = (
   start: string,
   end: string,
@@ -83,6 +122,11 @@ interface EditTarget {
   session: Session;
 }
 
+/**
+ * Kalenderhistorik för vecka med editable sessions.
+ * @component
+ * @returns {JSX.Element}
+ */
 const CalendarHistory: React.FC = () => {
   const { state, actions } = useTimer();
   const { settings } = useWorkDaySettings();
@@ -142,7 +186,7 @@ const CalendarHistory: React.FC = () => {
           className={styles.weekNavButton}
           onClick={() => setWeekOffset((prev) => prev - 1)}
         >
-          <LeftIcon className={styles.icn}/>
+          <LeftIcon className={styles.icn} />
         </button>
 
         <h2 className={styles.weekLabel}>{getWeekRangeLabel(weekDays)}</h2>
@@ -155,7 +199,7 @@ const CalendarHistory: React.FC = () => {
           disabled={weekOffset === 0}
           aria-hidden={weekOffset === 0}
         >
-          <RightIcon className={styles.icn}/>
+          <RightIcon className={styles.icn} />
         </button>
         <button
           className={`${styles.todayButton} ${
