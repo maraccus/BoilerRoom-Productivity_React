@@ -15,9 +15,9 @@ export const MOODS = [
 ] as const;
 
 export const CATEGORIES = [
-  { label: "Work", value: "work"},
+  { label: "Work", value: "work" },
   { label: "Deep work", value: "deep_work" },
-  { label: "Meet", value: "meeting" },
+  { label: "Meeting", value: "meeting" },
   { label: "Pause", value: "pause" },
 ] as const;
 
