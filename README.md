@@ -3,6 +3,10 @@
 Enkel och snygg produktivitetsapp byggd med React och TypeScript.  
 Tanken är att hjälpa dig hålla koll på arbetstid, logga hur du mår och se mönster över tid – allt i ett minimalistiskt gränssnitt som fungerar bra både på dator och mobil.
 
+## Presentation
+
+[Ladda ner presentationen här](./docs/PresentationReact_Malmö1.pdf)
+
 ## Vad kan man göra?
 
 - **Timer & klocka**  
